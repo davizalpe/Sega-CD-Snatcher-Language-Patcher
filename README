@@ -1,0 +1,62 @@
+Sega-CD-Snatcher-Language-Patcher-CakePHP-Component
+
+This is a CakePHP Component for path language in binary files from videogame Sega CD Snatcher
+
+1) For use add to your Controller from CakePHP:
+
+	public $components = array('Binary');
+
+2) Add in your method:
+
+	$filesize = $this->Binary->writeFile(
+			$path_ori_files . $filename,
+			$path_new_files . $filename,
+			$data);
+
+$path_ori_files is the path where store original files from Sega CD Snatcher (f.e /myapp/Files/snatcher/)
+
+$path_new_files is the patch where you can store new files pathed.
+
+$filename is the name to patch (f. e. SP06.BIN)
+
+$data is a array with this structure:
+
+- characher_id: identify the character id necesary for patch offset for each character from the Game. You can find her names in SUBCODE.BIN
+- position: It is the integer position from 0x3800, then first text in binary files has the integer position 0 (each word is one position)
+- new_text: It is the translation text. It is important data array has all translations in order acording binary file you want patch.
+- nchars: The number of characters from old original texts. I use it for avoid calculate the length in the "foreach" original texts loop.
+
+An example:
+
+array(
+	(int) 0 => array(
+		'character_id' => '1',
+		'position' => '0',
+		'new_text' => 'CONTINUAR',
+		'nchars' => '13'
+	),
+	(int) 1 => array(
+		'character_id' => '1',
+		'position' => '14',
+		'new_text' => 'TERMINAR',
+		'nchars' => '6'
+	),
+	(int) 2 => array(
+		'character_id' => '3',
+		'position' => '21',
+		'new_text' => '¡Oh no! ¡No hay suficiente <8>memoria<11> para guardar m¡s  datos! TendrÃ¡s que <8>sobrescribir<11> los datos existentes para guardar.',
+		'nchars' => '143'
+	),
+
+	...
+
+	(int) n => array(
+		'character_id' => '3',
+		'position' => '165',
+		'new_text' => 'Â¡Guardado!',
+		'nchars' => '15',
+
+)
+	
+	
+Binary->wirteFile returns the new filesize. There is a limit for this files: 55296 bytes.
