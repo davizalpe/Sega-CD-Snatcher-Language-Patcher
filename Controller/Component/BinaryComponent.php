@@ -25,12 +25,11 @@ class BinaryComponent extends Component {
 		 * WARNING!!! NO CHANGE THE ORDER OF special_chars 
 		 * */ 
 		$this->special_chars_orig = array(
-				$this->new_line, // <0>
-				pack("H*" , "ec"), $this->new_page, // <1>, <2>
-				pack("H*" , "ee"), pack("H*" , "f0"), // <3>, <4>
-				pack("H*" , "fe"), pack("H*" , "f4"), pack("H*" , "fa"), pack("H*", "fb"), pack("H*", "fc"), // <5>, <6>, <7>, <8>
-				pack("H*" , "fd"), pack("H*" , "f9"), // <9>, <10>
-				pack("H*" , "f7"), pack("H*" , "f8")  // <11>, <12>
+				$this->new_line,   pack("H*" , "ec"), $this->new_page, // <0>, <1>, <2>
+				pack("H*" , "ee"), pack("H*" , "f0"), pack("H*" , "fe"), // <3>, <4>, <5>
+				pack("H*" , "f4"), pack("H*" , "fa"), pack("H*", "fb"), // <6>, <7>, <8>
+				pack("H*", "fc"),  pack("H*" , "fd"), pack("H*" , "f9"), // <9>, <10>, <11>
+				pack("H*" , "f7"), pack("H*" , "f8")  // <12>, <13>
 		);
 				
 		$this->special_chars_temp = array();

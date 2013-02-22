@@ -1,6 +1,10 @@
-Sega-CD-Snatcher-Language-Patcher-CakePHP-Component
+Sega-CD-Snatcher-Language-Patcher
 
 This is a CakePHP Component for path language in binary files from videogame Sega CD Snatcher
+
+Binary->wirteFile returns the new filesize. There is a limit for this files: 55296 bytes
+
+Instrucctions for use:
 
 1) For use add to your Controller from CakePHP:
 
@@ -57,6 +61,19 @@ array(
 		'nchars' => '15',
 
 )
-	
-	
-Binary->wirteFile returns the new filesize. There is a limit for this files: 55296 bytes.
+
+3) You must convert special chars of the game into a <{number}> wildcard. The special chars are converted with array special_chars_orig:
+
+		/** 
+		 * WARNING!!! NO CHANGE THE ORDER OF special_chars 
+		 * */ 
+		$this->special_chars_orig = array(
+				$this->new_line,   pack("H*" , "ec"), $this->new_page, // <0>, <1>, <2>
+				pack("H*" , "ee"), pack("H*" , "f0"), pack("H*" , "fe"), // <3>, <4>, <5>
+				pack("H*" , "f4"), pack("H*" , "fa"), pack("H*", "fb"), // <6>, <7>, <8>
+				pack("H*", "fc"),  pack("H*" , "fd"), pack("H*" , "f9"), // <9>, <10>, <11>
+				pack("H*" , "f7"), pack("H*" , "f8")  // <12>, <13>
+		);
+
+
+When the script tranlates your new texts, it replaces the wildcard <{number}> with his special char defined in special_chars_orig.
