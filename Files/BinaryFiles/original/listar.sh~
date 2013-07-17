@@ -1,0 +1,6 @@
+#!/bin/bash
+
+for file in `ls *.BIN`
+do
+	echo $file: 
+done

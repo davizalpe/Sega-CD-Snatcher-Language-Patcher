@@ -1,0 +1,1517 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: SnatcherTranslator\n"
+"POT-Creation-Date: 2013-07-09 15:22+0000\n"
+"PO-Revision-Date: 2013-07-09 17:23+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Spanish\n"
+
+#: Controller/AppController.php:158
+msgid "The directory needs write permisions."
+msgstr "El directorio necesita permisos de escritura."
+
+#: Controller/AppController.php:236
+#: Controller/AttachmentsController.php:110
+msgid "The file %s not exists."
+msgstr "El fichero %s no existe."
+
+#: Controller/AppController.php:251
+msgid "The file %s exceeds %d bytes in %d bytes."
+msgstr "El fichero %s supera los %d bytes en %d bytes."
+
+#: Controller/AttachmentsController.php:39
+#: Controller/SavesController.php:75
+msgid "Invalid file"
+msgstr "Fichero no válido"
+
+#: Controller/AttachmentsController.php:44
+msgid "The file %s already exists."
+msgstr "El fichero %s ya existe."
+
+#: Controller/AttachmentsController.php:68
+msgid "The attachment could not be delete."
+msgstr "El archivo adjunto no se ha podido eliminar."
+
+#: Controller/AttachmentsController.php:96;170;201
+msgid "Invalid attachment"
+msgstr "Archivo adjunto no válido"
+
+#: Controller/AttachmentsController.php:145
+msgid "The file could not be copy."
+msgstr "El fichero no se ha podido copiar."
+
+#: Controller/AttachmentsController.php:153;179
+msgid "The attachment has been saved"
+msgstr "El archivo adjunto ha sido guardado"
+
+#: Controller/AttachmentsController.php:156;182
+msgid "The attachment could not be saved. Please, try again."
+msgstr "El archivo adjunto no se ha podido guardar. Por favor, prueba de nuevo."
+
+#: Controller/AttachmentsController.php:216
+msgid "Attachment deleted"
+msgstr "Adjunto eliminado."
+
+#: Controller/AttachmentsController.php:219
+msgid "Attachment was not deleted"
+msgstr "El archivo adjunto no se ha eliminado"
+
+#: Controller/BinaryFilesController.php:88;94;189
+#: Controller/BinaryTextsController.php:108;115;127
+#: Controller/ReviewsController.php:99;139;170;181
+msgid "Invalid binary file"
+msgstr "Fichero binario no válido"
+
+#: Controller/BinaryFilesController.php:164
+msgid "The zip file could not be created."
+msgstr "El fichero zip no se ha podido crear."
+
+#: Controller/BinaryFilesController.php:198
+msgid "The binary file has been saved"
+msgstr "El fichero binario ha sido guardado"
+
+#: Controller/BinaryFilesController.php:202
+msgid "The binary file could not be saved. Please, try again."
+msgstr "El fichero binario no se ha podido guardar. Por favor, prueba de nuevo."
+
+#: Controller/BinaryTextsController.php:159;169;246;292;300
+#: Controller/ReviewsController.php:29;224;242;287
+msgid "Invalid binary text"
+msgstr "Texto binario no válido"
+
+#: Controller/BinaryTextsController.php:182;313
+msgid "The binary text has been saved"
+msgstr "El texto binario ha sido guardado"
+
+#: Controller/BinaryTextsController.php:185;316
+msgid "The binary text could not be saved. Please, try again."
+msgstr "El texto binario no se ha podido guardar. Por favor, prueba de nuevo."
+
+#: Controller/BinaryTextsController.php:262
+msgid "The character from binary text has been changed"
+msgstr "El personaje del texto binario ha sido modificado"
+
+#: Controller/BinaryTextsController.php:265
+msgid "The character from binary text could not be changed. Please, try again."
+msgstr "El personaje del texto binario no se ha podido modificar. Por favor, prueba de nuevo."
+
+#: Controller/CharactersController.php:131
+#: Controller/FixedTextsController.php:95;131
+msgid "Invalid fixed text"
+msgstr "Texto fijo no válido"
+
+#: Controller/CharactersController.php:176;212;224;229;253;265;270
+msgid "Invalid character"
+msgstr "Personaje no válido"
+
+#: Controller/CharactersController.php:184
+msgid "The character has been saved"
+msgstr "El personaje ha sido guardado"
+
+#: Controller/CharactersController.php:187
+msgid "The character could not be saved. Please, try again."
+msgstr "El personaje no se ha podido guardar"
+
+#: Controller/CharactersController.php:237
+msgid "%d characters was changed"
+msgstr "%d personajes actualizados"
+
+#: Controller/CharactersController.php:278
+msgid "%d characters was restored"
+msgstr "%d personajes restaurados"
+
+#: Controller/FaqsController.php:54
+msgid "Invalid Faq"
+msgstr "FAQ no válido"
+
+#: Controller/FaqsController.php:60
+msgid "The Faq has been saved"
+msgstr "El FAQ ha sido guardado"
+
+#: Controller/FaqsController.php:63
+msgid "The Faq could not be saved. Please, try again."
+msgstr "El FAQ no se ha podido guardar. Por favor, prueba de nuevo."
+
+#: Controller/FaqsController.php:79
+msgid "The faq has been saved"
+msgstr "El FAQ ha sido guardado"
+
+#: Controller/FaqsController.php:82
+msgid "The faq could not be saved. Please, try again."
+msgstr "El FAQ no se ha podido guardar. Por favor, prueba de nuevo."
+
+#: Controller/FaqsController.php:101
+msgid "Invalid faq"
+msgstr "FAQ no válido"
+
+#: Controller/FaqsController.php:104
+msgid "Faq deleted"
+msgstr "FAQ borrado"
+
+#: Controller/FaqsController.php:107
+msgid "Faq was not deleted"
+msgstr "El FAQ no se borrado"
+
+#: Controller/FixedTextsController.php:148
+msgid "The fixed text has been saved"
+msgstr "El texto fijo ha sido guardado"
+
+#: Controller/FixedTextsController.php:151
+msgid "The fixed text could not be saved. Please, try again."
+msgstr "El texto fijo no se ha podido guardar. Por favor, prueba de nuevo"
+
+#: Controller/KeywordsController.php:139;159;206;240;262;293
+msgid "Invalid keyword"
+msgstr "Palabra clave no válida"
+
+#: Controller/KeywordsController.php:189;213
+msgid "The keyword has been saved"
+msgstr "La palabra clave ha sido guardada"
+
+#: Controller/KeywordsController.php:192;216
+msgid "The keyword could not be saved. Please, try again."
+msgstr "La palabra clave no ha podido ser guardada. Por favor, prueba de nuevo"
+
+#: Controller/KeywordsController.php:244
+msgid "Keyword deleted"
+msgstr "Palabra clave eliminada"
+
+#: Controller/KeywordsController.php:247
+msgid "Keyword was not deleted"
+msgstr "La palabra clave no se ha eliminado"
+
+#: Controller/KeywordsController.php:277
+msgid "%d keywords was changed"
+msgstr "%d palabras clave modificadas"
+
+#: Controller/KeywordsController.php:308
+msgid "%d keywords was restored"
+msgstr "%d palabras clave restauradas"
+
+#: Controller/ReviewsController.php:251;297;302;339;349;378;396;448;492
+msgid "Invalid review"
+msgstr "Revisión no válida"
+
+#: Controller/ReviewsController.php:264;310;464
+msgid "The review has been saved"
+msgstr "La revisión ha sido guardada"
+
+#: Controller/ReviewsController.php:267;313;467
+msgid "The review could not be saved. Please, try again."
+msgstr "La revisión no se ha podido guardar. Por favor, prueba de nuevo."
+
+#: Controller/ReviewsController.php:353;502
+msgid "Review deleted"
+msgstr "Revisión eliminada."
+
+#: Controller/ReviewsController.php:359
+msgid "You can not delete a validated review"
+msgstr "No puede eliminar una revisión validada"
+
+#: Controller/ReviewsController.php:361;506
+msgid "Review was not deleted"
+msgstr "La revisión no se ha podido eliminar."
+
+#: Controller/ReviewsController.php:404
+msgid "The review has been validated"
+msgstr "La revisión ha sido validada."
+
+#: Controller/ReviewsController.php:406
+msgid "The review could not be validated."
+msgstr "La revisión no se ha podido validar."
+
+#: Controller/SavesController.php:80
+msgid "The file %s is not a quicksave"
+msgstr "El fichero %s no es una partida rápida."
+
+#: Controller/SavesController.php:91
+msgid "The file could not be saved."
+msgstr "El fichero no se ha podido guardar."
+
+#: Controller/SavesController.php:132
+msgid "The file not exists."
+msgstr "El fichero no existe"
+
+#: Controller/SavesController.php:180
+msgid "The safe could not be delete."
+msgstr "La partida no se ha podido eliminar."
+
+#: Controller/SavesController.php:189
+msgid "The new safe could not be delete."
+msgstr "La nueva partida no se ha podido eliminar."
+
+#: Controller/SavesController.php:270;310;445
+msgid "The safe has been saved"
+msgstr "La partida ha sido guardada"
+
+#: Controller/SavesController.php:275;313;448
+msgid "The safe could not be saved. Please, try again."
+msgstr "La partida no se ha podido guardar. Por favor, prueba de nuevo."
+
+#: Controller/SavesController.php:292;301;335;341;383;392;438;468
+msgid "Invalid safe"
+msgstr "Partida no válida."
+
+#: Controller/SavesController.php:401;481
+msgid "Safe deleted"
+msgstr "Partida eliminada."
+
+#: Controller/SavesController.php:404;484
+msgid "Safe was not deleted"
+msgstr "La partida no se ha eliminado."
+
+#: Controller/UsersController.php:149
+msgid "Username or password is incorrect."
+msgstr "Usuario o contraseña incorrectos."
+
+#: Controller/UsersController.php:176;208;279;311;347
+msgid "Invalid user"
+msgstr "Usuario no válido."
+
+#: Controller/UsersController.php:184;255;287
+msgid "The user has been saved"
+msgstr "El usuario ha sido modificado."
+
+#: Controller/UsersController.php:187;219;260;290;322
+msgid "The user could not be saved. Please, try again."
+msgstr "El usuairo no se ha podido modificar. Por favor, prueba de nuevo."
+
+#: Controller/UsersController.php:216;319
+msgid "The user password has been changed"
+msgstr "La contraseña de usuario ha sido modificada."
+
+#: Controller/UsersController.php:351
+msgid "User deleted"
+msgstr "Usuario eliminado"
+
+#: Controller/UsersController.php:354
+msgid "User was not deleted"
+msgstr "Usuario no ha sido eliminado."
+
+#: View/Attachments/admin_add.ctp:4
+#: View/Attachments/admin_index.ctp:7
+msgid "Add Attachment"
+msgstr "Añadir archivo adjunto"
+
+#: View/Attachments/admin_add.ctp:8
+#: View/Attachments/admin_edit.ctp:9
+#: View/Attachments/admin_index.ctp:13
+#: View/Attachments/index.ctp:5
+#: View/BinaryFiles/admin_edit.ctp:7
+#: View/BinaryFiles/admin_index.ctp:11
+#: View/BinaryFiles/index.ctp:5
+#: View/BinaryFiles/test.ctp:5
+#: View/BinaryTexts/admin_index.ctp:11
+#: View/Characters/admin_view.ctp:51
+#: View/FixedTexts/admin_view.ctp:23
+#: View/Keywords/admin_view.ctp:51
+#: View/Reviews/admin_index.ctp:9
+msgid "Filename"
+msgstr "Nombre de fichero"
+
+#: View/Attachments/admin_add.ctp:12;13
+#: View/Attachments/admin_edit.ctp:13;14
+#: View/Attachments/admin_index.ctp:15
+#: View/Attachments/index.ctp:6
+#: View/BinaryFiles/admin_edit.ctp:8
+#: View/BinaryFiles/admin_index.ctp:12
+#: View/BinaryFiles/index.ctp:6
+#: View/BinaryFiles/test.ctp:6
+#: View/Saves/add.ctp:17;18
+#: View/Saves/admin_edit.ctp:17;18
+#: View/Saves/admin_index.ctp:21
+#: View/Saves/edit.ctp:17;18
+#: View/Saves/index.ctp:21
+msgid "Description"
+msgstr "Descripción"
+
+#: View/Attachments/admin_add.ctp:17
+#: View/Attachments/admin_edit.ctp:18
+#: View/BinaryFiles/admin_edit.ctp:23
+#: View/BinaryTexts/admin_change_character.ctp:29
+#: View/BinaryTexts/admin_edit.ctp:31
+#: View/BinaryTexts/edit.ctp:32
+#: View/Characters/admin_edit.ctp:20
+#: View/Faqs/admin_add.ctp:24
+#: View/Faqs/admin_edit.ctp:25
+#: View/FixedTexts/admin_edit.ctp:16
+#: View/Keywords/admin_add.ctp:17
+#: View/Keywords/admin_edit.ctp:19
+#: View/Reviews/add.ctp:35
+#: View/Reviews/admin_edit.ctp:45
+#: View/Reviews/edit.ctp:37
+#: View/Saves/add.ctp:22
+#: View/Saves/admin_edit.ctp:22
+#: View/Saves/edit.ctp:22
+#: View/Users/admin_add.ctp:43
+#: View/Users/admin_change_password.ctp:21
+#: View/Users/admin_edit.ctp:30
+#: View/Users/change_password.ctp:25
+#: View/Users/edit.ctp:19
+msgid "Submit"
+msgstr "Enviar"
+
+#: View/Attachments/admin_edit.ctp:4
+msgid "Admin Edit Attachment"
+msgstr "Editar archivo adjunto"
+
+#: View/Attachments/admin_edit.ctp:7
+#: View/Attachments/admin_index.ctp:17
+#: View/Attachments/index.ctp:7
+#: View/BinaryTexts/admin_index.ctp:16
+#: View/FixedTexts/admin_index.ctp:11
+#: View/Reviews/other_reviews.ctp:12
+#: View/Saves/admin_index.ctp:19
+#: View/Saves/index.ctp:19
+#: View/Users/admin_add.ctp:7;8
+#: View/Users/admin_edit.ctp:8
+#: View/Users/admin_index.ctp:11
+#: View/Users/edit.ctp:8
+#: View/Users/login.ctp:7;8
+msgid "Username"
+msgstr "Nombre de usuario"
+
+#: View/Attachments/admin_index.ctp:3
+msgid "Attachments List"
+msgstr "Listado de archivos adjuntos"
+
+#: View/Attachments/admin_index.ctp:19
+#: View/Attachments/index.ctp:8
+#: View/Saves/index.ctp:23
+#: View/Users/admin_index.ctp:14
+msgid "Created"
+msgstr "Creado"
+
+#: View/Attachments/admin_index.ctp:21
+#: View/Attachments/index.ctp:9
+#: View/BinaryFiles/admin_index.ctp:2;16
+#: View/BinaryFiles/index.ctp:10
+#: View/BinaryFiles/test.ctp:10
+#: View/BinaryTexts/admin_index.ctp:19
+#: View/BinaryTexts/index.ctp:19
+#: View/Characters/admin_index.ctp:15
+#: View/Characters/admin_view.ctp:54
+#: View/Faqs/admin_index.ctp:17
+#: View/FixedTexts/admin_index.ctp:15
+#: View/FixedTexts/admin_view.ctp:25
+#: View/Keywords/admin_index.ctp:21
+#: View/Keywords/admin_view.ctp:54
+#: View/Reviews/admin_index.ctp:17
+#: View/Reviews/index.ctp:20
+#: View/Reviews/test.ctp:34
+#: View/Saves/admin_index.ctp:25
+#: View/Saves/index.ctp:25
+#: View/Users/admin_index.ctp:17
+msgid "Actions"
+msgstr "Acciones"
+
+#: View/Attachments/admin_index.ctp:36
+#: View/Attachments/index.ctp:20
+#: View/BinaryFiles/admin_index.ctp:56
+#: View/BinaryFiles/index.ctp:61
+#: View/BinaryFiles/test.ctp:52
+#: View/Saves/admin_index.ctp:109
+#: View/Saves/index.ctp:109
+msgid "Download"
+msgstr "Descargar"
+
+#: View/Attachments/admin_index.ctp:37
+#: View/BinaryFiles/admin_index.ctp:54
+#: View/BinaryTexts/admin_index.ctp:123
+#: View/BinaryTexts/index.ctp:100
+#: View/Characters/admin_index.ctp:84
+#: View/Faqs/admin_index.ctp:26
+#: View/FixedTexts/admin_index.ctp:105
+#: View/Keywords/admin_index.ctp:78
+#: View/Reviews/admin_index.ctp:131
+#: View/Reviews/test.ctp:177
+#: View/Saves/admin_index.ctp:111
+#: View/Saves/index.ctp:114
+#: View/Users/admin_index.ctp:38
+msgid "Edit"
+msgstr "Editar"
+
+#: View/Attachments/admin_index.ctp:38
+#: View/Faqs/admin_index.ctp:27
+#: View/Keywords/admin_index.ctp:79
+#: View/Reviews/admin_index.ctp:132
+#: View/Reviews/test.ctp:181
+#: View/Saves/admin_index.ctp:112
+#: View/Saves/index.ctp:115
+#: View/Users/admin_index.ctp:40
+msgid "Delete"
+msgstr "Eliminar"
+
+#: View/Attachments/admin_index.ctp:38
+#: View/Faqs/admin_index.ctp:27
+#: View/Keywords/admin_index.ctp:79
+#: View/Reviews/admin_index.ctp:132
+#: View/Reviews/test.ctp:184
+#: View/Users/admin_index.ctp:40
+msgid "Delete %s?"
+msgstr "¿Eliminar %s?"
+
+#: View/Attachments/admin_index.ctp:46
+#: View/Attachments/index.ctp:28
+#: View/BinaryFiles/admin_index.ctp:66
+#: View/BinaryFiles/index.ctp:69
+#: View/BinaryFiles/test.ctp:60
+#: View/BinaryTexts/admin_index.ctp:161
+#: View/BinaryTexts/index.ctp:115
+#: View/Characters/admin_index.ctp:92
+#: View/Characters/admin_view.ctp:74
+#: View/Faqs/admin_index.ctp:35
+#: View/FixedTexts/admin_index.ctp:113
+#: View/FixedTexts/admin_view.ctp:44
+#: View/Keywords/admin_index.ctp:87
+#: View/Keywords/admin_view.ctp:74
+#: View/Reviews/admin_index.ctp:140
+#: View/Reviews/index.ctp:151
+#: View/Reviews/test.ctp:212
+#: View/Saves/admin_index.ctp:120
+#: View/Saves/index.ctp:123
+#: View/Users/admin_index.ctp:48
+msgid "Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}"
+msgstr "Página {:page} de {:pages}, mostrando {:current} registros de {:count}"
+
+#: View/Attachments/admin_index.ctp:53
+#: View/Attachments/index.ctp:34
+#: View/BinaryFiles/admin_index.ctp:72
+#: View/BinaryFiles/index.ctp:75
+#: View/BinaryFiles/test.ctp:66
+#: View/BinaryTexts/admin_index.ctp:166
+#: View/BinaryTexts/index.ctp:121
+#: View/Characters/admin_index.ctp:98
+#: View/Characters/admin_view.ctp:80
+#: View/Faqs/admin_index.ctp:42
+#: View/FixedTexts/admin_index.ctp:118
+#: View/FixedTexts/admin_view.ctp:50
+#: View/Keywords/admin_index.ctp:93
+#: View/Keywords/admin_view.ctp:80
+#: View/Reviews/admin_index.ctp:145
+#: View/Reviews/index.ctp:156
+#: View/Reviews/test.ctp:218
+#: View/Saves/admin_index.ctp:127
+#: View/Saves/index.ctp:130
+#: View/Users/admin_index.ctp:54
+msgid "previous"
+msgstr "Previo"
+
+#: View/Attachments/admin_index.ctp:55
+#: View/Attachments/index.ctp:36
+#: View/BinaryFiles/admin_index.ctp:74
+#: View/BinaryFiles/index.ctp:77
+#: View/BinaryFiles/test.ctp:68
+#: View/BinaryTexts/admin_index.ctp:168
+#: View/BinaryTexts/index.ctp:123
+#: View/Characters/admin_index.ctp:100
+#: View/Characters/admin_view.ctp:82
+#: View/Faqs/admin_index.ctp:44
+#: View/FixedTexts/admin_index.ctp:120
+#: View/FixedTexts/admin_view.ctp:52
+#: View/Keywords/admin_index.ctp:95
+#: View/Keywords/admin_view.ctp:82
+#: View/Reviews/admin_index.ctp:147
+#: View/Reviews/index.ctp:158
+#: View/Reviews/test.ctp:220
+#: View/Saves/admin_index.ctp:129
+#: View/Saves/index.ctp:132
+#: View/Users/admin_index.ctp:56
+msgid "next"
+msgstr "Siguiente"
+
+#: View/Attachments/index.ctp:2
+msgid "Admin Attachments List"
+msgstr "Administrar archivos adjuntos"
+
+#: View/BinaryFiles/admin_edit.ctp:4
+msgid "Edit Binary File"
+msgstr "Editar fichero binario"
+
+#: View/BinaryFiles/admin_edit.ctp:11
+msgid "Select Translator"
+msgstr "Seleccionar traductor"
+
+#: View/BinaryFiles/admin_edit.ctp:12
+#: View/BinaryFiles/admin_index.ctp:13
+#: View/BinaryFiles/test.ctp:7
+msgid "Translator"
+msgstr "Traductor"
+
+#: View/BinaryFiles/admin_edit.ctp:13
+msgid "Edit Title BinaryFile Username"
+msgstr "Seleccionar un usuario traductor del fichero. También validará las revisiones de los revisores."
+
+#: View/BinaryFiles/admin_edit.ctp:16
+msgid "Select Testers"
+msgstr "Seleccionar revisores"
+
+#: View/BinaryFiles/admin_edit.ctp:19
+#: View/BinaryFiles/admin_index.ctp:14
+#: View/BinaryFiles/index.ctp:8
+#: View/BinaryFiles/test.ctp:9
+msgid "Testers"
+msgstr "Revisores"
+
+#: View/BinaryFiles/admin_edit.ctp:20
+msgid "Edit Title BinaryFile Tester"
+msgstr "Seleccionar los usuarios que quieras que realizen pruebas y añadan revisiones a los textos."
+
+#: View/BinaryFiles/admin_index.ctp:4
+msgid "Download All"
+msgstr "Descargar todos"
+
+#: View/BinaryFiles/admin_index.ctp:8
+msgid "Manage Binary Files List"
+msgstr "Listado de ficheros binarios"
+
+#: View/BinaryFiles/admin_index.ctp:15
+#: View/BinaryTexts/admin_index.ctp:18
+#: View/BinaryTexts/index.ctp:18
+#: View/Elements/texts_edit_form.ctp:12
+#: View/FixedTexts/admin_view.ctp:7
+#: View/Reviews/admin_edit.ctp:24
+#: View/Reviews/admin_index.ctp:15
+#: View/Reviews/index.ctp:18
+msgid "Validated"
+msgstr "Validado"
+
+#: View/BinaryFiles/admin_index.ctp:25;38
+#: View/BinaryFiles/index.ctp:39
+#: View/BinaryFiles/test.ctp:26
+msgid "Unassigned"
+msgstr "Sin asignar"
+
+#: View/BinaryFiles/admin_index.ctp:44
+#: View/BinaryFiles/index.ctp:24
+msgid "%s of %s"
+msgstr "%s de %s"
+
+#: View/BinaryFiles/admin_index.ctp:47
+#: View/BinaryFiles/index.ctp:27
+#: View/BinaryFiles/test.ctp:36
+#: View/BinaryTexts/admin_index.ctp:76;114
+#: View/BinaryTexts/index.ctp:63;94
+#: View/Characters/admin_index.ctp:29
+#: View/FixedTexts/admin_index.ctp:54;94
+#: View/FixedTexts/admin_view.ctp:13
+#: View/Reviews/admin_index.ctp:77;123
+#: View/Reviews/index.ctp:74;118
+#: View/Reviews/other_reviews.ctp:33
+#: View/Reviews/test.ctp:75;94;134;158
+#: View/Users/admin_index.ctp:35
+msgid "Yes"
+msgstr "Si"
+
+#: View/BinaryFiles/index.ctp:2
+msgid "Binary Files Translate"
+msgstr "Traducción de ficheros binarios"
+
+#: View/BinaryFiles/index.ctp:7
+#: View/BinaryFiles/test.ctp:8
+#: View/Reviews/test.ctp:19
+msgid "Validated texts"
+msgstr "Textos validados"
+
+#: View/BinaryFiles/index.ctp:9
+#: View/Elements/menu.ctp:126
+msgid "Reviews"
+msgstr "Revisiones"
+
+#: View/BinaryFiles/index.ctp:47
+msgid "%d / %d reviews"
+msgstr "%d / %d revisiones"
+
+#: View/BinaryFiles/index.ctp:53
+msgid "%d reviews and %d validated reviews"
+msgstr "%d revisiones y %d revisiones validadas"
+
+#: View/BinaryFiles/test.ctp:2
+msgid "Binary Files Test"
+msgstr "Revisión de ficheros binarios"
+
+#: View/BinaryFiles/test.ctp:33
+msgid "%d of %d"
+msgstr "%d de %d"
+
+#: View/BinaryTexts/admin_change_character.ctp:4
+msgid "Change Character from Binary Text"
+msgstr "Cambiar personaje"
+
+#: View/BinaryTexts/admin_change_character.ctp:13
+#: View/BinaryTexts/admin_index.ctp:14
+#: View/BinaryTexts/index.ctp:15
+#: View/Characters/admin_view.ctp:52
+#: View/Elements/texts_edit_form.ctp:21
+#: View/FixedTexts/admin_index.ctp:9
+#: View/FixedTexts/admin_view.ctp:5
+#: View/Keywords/admin_view.ctp:52
+#: View/Reviews/admin_index.ctp:11
+#: View/Reviews/index.ctp:14
+#: View/Reviews/test.ctp:15
+msgid "Text"
+msgstr "Texto"
+
+#: View/BinaryTexts/admin_change_character.ctp:20
+#: View/BinaryTexts/admin_edit.ctp:19
+#: View/BinaryTexts/edit.ctp:19
+msgid "Original Character"
+msgstr "Personaje original"
+
+#: View/BinaryTexts/admin_change_character.ctp:26
+#: View/BinaryTexts/admin_edit.ctp:25
+#: View/BinaryTexts/admin_index.ctp:13
+#: View/BinaryTexts/edit.ctp:26
+#: View/BinaryTexts/index.ctp:14
+#: View/FixedTexts/admin_edit.ctp:10
+msgid "Character"
+msgstr "Personaje actual"
+
+#: View/BinaryTexts/admin_edit.ctp:5
+#: View/BinaryTexts/edit.ctp:5
+msgid "Are you sure you want to change the character from the text?"
+msgstr "¿Estás seguro que quiere modificar el personaje de este texto?"
+
+#: View/BinaryTexts/admin_edit.ctp:11
+msgid "Manage Edit Binary Text"
+msgstr "Editar texto binario"
+
+#: View/BinaryTexts/admin_index.ctp:7
+msgid "Manage Binary Texts List"
+msgstr "Listado de textos binarios"
+
+#: View/BinaryTexts/admin_index.ctp:12
+#: View/BinaryTexts/index.ctp:13
+#: View/Faqs/admin_add.ctp:7;9
+#: View/Faqs/admin_edit.ctp:8;10
+#: View/Faqs/admin_index.ctp:13
+#: View/Reviews/admin_index.ctp:10
+#: View/Reviews/index.ctp:13
+#: View/Reviews/test.ctp:13
+msgid "Order"
+msgstr "Orden"
+
+#: View/BinaryTexts/admin_index.ctp:15
+#: View/BinaryTexts/index.ctp:16
+#: View/Characters/admin_view.ctp:53
+#: View/Elements/texts_edit_form.ctp:6;7
+#: View/FixedTexts/admin_index.ctp:10
+#: View/FixedTexts/admin_view.ctp:6
+#: View/Keywords/admin_view.ctp:53
+#: View/Reviews/add.ctp:21
+#: View/Reviews/admin_edit.ctp:31
+#: View/Reviews/admin_index.ctp:12
+#: View/Reviews/edit.ctp:23
+#: View/Reviews/index.ctp:15
+#: View/Reviews/test.ctp:17
+msgid "New Text"
+msgstr "Nuevo texto"
+
+#: View/BinaryTexts/admin_index.ctp:17
+#: View/BinaryTexts/index.ctp:17
+#: View/FixedTexts/admin_index.ctp:12
+#: View/Users/admin_index.ctp:15
+msgid "Modified"
+msgstr "Modificado"
+
+#: View/BinaryTexts/admin_index.ctp:52
+#: View/BinaryTexts/index.ctp:47
+#: View/FixedTexts/admin_index.ctp:30
+msgid "Search Title Text"
+msgstr "Busca el texto original entre el listado"
+
+#: View/BinaryTexts/admin_index.ctp:60
+#: View/BinaryTexts/index.ctp:55
+#: View/FixedTexts/admin_index.ctp:38
+msgid "Search Title New Text"
+msgstr "Buscar el nuevo texto traducido en el fichero actual"
+
+#: View/BinaryTexts/admin_index.ctp:76;115
+#: View/BinaryTexts/index.ctp:63;94
+#: View/Characters/admin_index.ctp:31
+#: View/FixedTexts/admin_index.ctp:54;95
+#: View/FixedTexts/admin_view.ctp:14
+#: View/Reviews/admin_index.ctp:77;124
+#: View/Reviews/index.ctp:74;119
+#: View/Reviews/other_reviews.ctp:34
+#: View/Reviews/test.ctp:75;94;135;159
+#: View/Users/admin_index.ctp:35
+msgid "No"
+msgstr "No"
+
+#: View/BinaryTexts/admin_index.ctp:80
+#: View/BinaryTexts/index.ctp:68
+#: View/FixedTexts/admin_index.ctp:68
+#: View/Reviews/admin_index.ctp:84
+#: View/Reviews/index.ctp:81
+#: View/Reviews/test.ctp:101
+#: View/Saves/admin_index.ctp:87
+#: View/Saves/index.ctp:87
+msgid "Search"
+msgstr "Buscar"
+
+#: View/BinaryTexts/admin_index.ctp:138
+msgid "Change Character"
+msgstr "Cambiar personaje"
+
+#: View/BinaryTexts/admin_index.ctp:147
+#: View/BinaryTexts/index.ctp:105
+#: View/FixedTexts/admin_view.ctp:2
+msgid "Fixed Text"
+msgstr "Texto fijo"
+
+#: View/BinaryTexts/edit.ctp:11
+msgid "Edit Binary Text"
+msgstr "Editar texto binario"
+
+#: View/BinaryTexts/index.ctp:7
+#: View/Characters/admin_index.ctp:12;66
+#: View/Keywords/admin_index.ctp:17;61
+#: View/Reviews/index.ctp:7
+msgid "Translate"
+msgstr "Traducir"
+
+#: View/BinaryTexts/index.ctp:9
+msgid "Binary Texts from %s"
+msgstr "Textos binarios de %s"
+
+#: View/BinaryTexts/index.ctp:37
+msgid "Search Character"
+msgstr "Buscar personaje"
+
+#: View/BinaryTexts/index.ctp:66
+#: View/FixedTexts/admin_index.ctp:57
+msgid "Search Title  Validated"
+msgstr "Busca textos validados"
+
+#: View/Characters/admin_edit.ctp:4
+msgid "Admin Edit Character"
+msgstr "Editar personaje"
+
+#: View/Characters/admin_edit.ctp:7
+#: View/Characters/admin_index.ctp:5
+#: View/Characters/admin_view.ctp:38
+#: View/Keywords/admin_add.ctp:7;8
+#: View/Keywords/admin_edit.ctp:8
+#: View/Keywords/admin_index.ctp:13
+#: View/Keywords/admin_view.ctp:38
+msgid "Name"
+msgstr "Nombre"
+
+#: View/Characters/admin_edit.ctp:10;11
+#: View/Characters/admin_index.ctp:6
+#: View/Characters/admin_view.ctp:39
+#: View/Keywords/admin_add.ctp:12;13
+#: View/Keywords/admin_edit.ctp:13;14
+#: View/Keywords/admin_index.ctp:15
+#: View/Keywords/admin_view.ctp:39
+msgid "New Name"
+msgstr "Nuevo nombre"
+
+#: View/Characters/admin_edit.ctp:16
+msgid "Translatable"
+msgstr "Traducible"
+
+#: View/Characters/admin_index.ctp:2
+msgid "Admin Characters List"
+msgstr "Administrar personajes"
+
+#: View/Characters/admin_index.ctp:7
+msgid "Code title"
+msgstr "Representa el valor hexadecimal que identifica al personaje con el texto en el archivo binario."
+
+#: View/Characters/admin_index.ctp:8
+msgid "Code"
+msgstr "Código"
+
+#: View/Characters/admin_index.ctp:9
+msgid "Readonly title"
+msgstr "Personajes de sólo lectura no se pueden modificar. Son solo representativos, por ejemplo el menú del propio juego."
+
+#: View/Characters/admin_index.ctp:10
+msgid "Read Only"
+msgstr "Sólo lectura"
+
+#: View/Characters/admin_index.ctp:11
+#: View/Keywords/admin_index.ctp:17
+msgid "Translate title"
+msgstr "Seleccionar traducir para modificar las coincidencias del nombre original al nuevo nombre."
+
+#: View/Characters/admin_index.ctp:13
+#: View/Keywords/admin_index.ctp:19
+msgid "Restore title"
+msgstr "Seleccionar restaurar para modificar las coincidencias del nombre traducido al original."
+
+#: View/Characters/admin_index.ctp:14;75
+#: View/Keywords/admin_index.ctp:19;71
+msgid "Restore"
+msgstr "Restaurar"
+
+#: View/Characters/admin_index.ctp:38;51
+#: View/Keywords/admin_index.ctp:35;48
+msgid "%d matches"
+msgstr "%d coincidencias"
+
+#: View/Characters/admin_index.ctp:71
+msgid "Translate Character %s?"
+msgstr "¿Estás seguro que quieres TRADUCIR el nombre del personaje %s?"
+
+#: View/Characters/admin_index.ctp:80
+msgid "Restore Character %s?"
+msgstr "¿Estás seguro que quieres RESTAURAR el nombre del personaje %s?"
+
+#: View/Characters/admin_view.ctp:35
+msgid "Character's Texts"
+msgstr "Textos de personaje"
+
+#: View/Characters/admin_view.ctp:48
+#: View/FixedTexts/admin_view.ctp:20
+#: View/Keywords/admin_view.ctp:48
+msgid "%s Matches"
+msgstr "%s coincidencias"
+
+#: View/Characters/admin_view.ctp:62
+#: View/FixedTexts/admin_view.ctp:32
+#: View/Keywords/admin_view.ctp:62
+msgid "View"
+msgstr "Ver"
+
+#: View/Elements/footer.ctp:3
+msgid "About Us"
+msgstr "Acerca de nosotros"
+
+#: View/Elements/footer.ctp:9
+#: View/Pages/privacy.ctp:2
+msgid "Privacy Policy"
+msgstr "Política de Privacidad"
+
+#: View/Elements/footer.ctp:14
+#: View/Layouts/error.ctp:40;50
+msgid "CakePHP: the rapid development php framework"
+msgstr "CakePHP: the rapid development php framework"
+
+#: View/Elements/menu.ctp:111
+msgid "Project Nav Title"
+msgstr "Traductor Snatcher"
+
+#: View/Elements/menu.ctp:119
+msgid "Translates"
+msgstr "Traducciones"
+
+#: View/Elements/menu.ctp:133
+msgid "Files"
+msgstr "Archivos"
+
+#: View/Elements/menu.ctp:139
+msgid "Attachments"
+msgstr "Ficheros adjuntos"
+
+#: View/Elements/menu.ctp:146
+msgid "Saves"
+msgstr "Partidas"
+
+#: View/Elements/menu.ctp:156
+msgid "Faqs"
+msgstr "FAQs"
+
+#: View/Elements/menu.ctp:167
+msgid "Manage"
+msgstr "Gestión"
+
+#: View/Elements/menu.ctp:173
+msgid "Manage Binary Files"
+msgstr "Gestionar ficheros binarios"
+
+#: View/Elements/menu.ctp:180
+msgid "Manage Binary Texts"
+msgstr "Gestionar textos binarios"
+
+#: View/Elements/menu.ctp:187
+#: View/Reviews/admin_index.ctp:6
+msgid "Manage Reviews"
+msgstr "Gestionar revisiones"
+
+#: View/Elements/menu.ctp:194
+#: View/FixedTexts/admin_index.ctp:6
+msgid "Manage Fixed Texts"
+msgstr "Gestionar textos fijos"
+
+#: View/Elements/menu.ctp:201
+msgid "Manage Attachments"
+msgstr "Gestionar adjuntos"
+
+#: View/Elements/menu.ctp:216
+msgid "Admin"
+msgstr "Administración"
+
+#: View/Elements/menu.ctp:222
+msgid "Admin Users"
+msgstr "Administrar usuarios"
+
+#: View/Elements/menu.ctp:229
+msgid "Admin Faqs"
+msgstr "Administrar FAQs"
+
+#: View/Elements/menu.ctp:236
+msgid "Admin Saves"
+msgstr "Administrar partidas"
+
+#: View/Elements/menu.ctp:243
+msgid "Admin Characters"
+msgstr "Administrar personajes"
+
+#: View/Elements/menu.ctp:250
+msgid "Admin Keywords"
+msgstr "Administrar palabras clave"
+
+#: View/Elements/menu.ctp:262
+msgid "Logout"
+msgstr "Salir"
+
+#: View/Elements/menu.ctp:274
+msgid "Edit Profile"
+msgstr "Editar perfil"
+
+#: View/Elements/menu.ctp:280
+#: View/Users/admin_change_password.ctp:4
+#: View/Users/change_password.ctp:4
+msgid "Change Password"
+msgstr "Cambiar contraseña"
+
+#: View/Elements/menu.ctp:289
+msgid "Sign in"
+msgstr "Iniciar sesión"
+
+#: View/Elements/texts_edit_form.ctp:12
+msgid "Edit Title Validated"
+msgstr "Seleccionar textos validados"
+
+#: View/Elements/texts_edit_form.ctp:16
+msgid "Copy Text"
+msgstr "Copiar Texto"
+
+#: View/Elements/texts_edit_form.ctp:38
+msgid "Copy Suggestion"
+msgstr "Copiar sugerencia"
+
+#: View/Elements/texts_edit_form.ctp:43
+msgid "Suggestion"
+msgstr "Sugerencia"
+
+#: View/Elements/texts_edit_js.ctp:16
+msgid "There are $1 pixels left of $2 (up to $3 out of the blue bar)"
+msgstr "Quedan  $1 píxeles de $2 (hasta $3 fuera de la barra azul)"
+
+#: View/Elements/texts_edit_js.ctp:46;78
+msgid "There are $1 characters of $2"
+msgstr "Hay $1 caracteres de $2"
+
+#: View/Elements/texts_edit_js.ctp:51;83
+msgid "Answer can not be more than $2 characters"
+msgstr "La respuesta no puede tener más de $2 caracteres"
+
+#: View/Elements/texts_edit_js.ctp:58
+msgid "It only accepts numbers, \"¡\" and \"#\""
+msgstr "Solo se aceptan números, \"¡\" y \"#\""
+
+#: View/Elements/texts_edit_js.ctp:90
+msgid "It only accepts upper case, \"-\", \".\" and single quotation marks"
+msgstr "Solo se aceptan mayúsculas, \"-\", \".\" y comillas simples"
+
+#: View/Elements/texts_edit_js.ctp:102
+msgid "$1 characters written"
+msgstr "$1 caracteres escritos"
+
+#: View/Errors/missing_action.ctp:4
+#: View/Errors/missing_controller.ctp:4
+msgid "This page dont exists."
+msgstr "Esta página no existe."
+
+#: View/Faqs/admin_add.ctp:4
+#: View/Faqs/admin_index.ctp:7
+msgid "Add Faq"
+msgstr "Añadir FAQ"
+
+#: View/Faqs/admin_add.ctp:12;13
+#: View/Faqs/admin_edit.ctp:13;14
+#: View/Faqs/admin_index.ctp:14
+msgid "Question"
+msgstr "Pregunta"
+
+#: View/Faqs/admin_add.ctp:19;20
+#: View/Faqs/admin_edit.ctp:20;21
+#: View/Faqs/admin_index.ctp:16
+msgid "Answer"
+msgstr "Respuesta"
+
+#: View/Faqs/admin_edit.ctp:4
+msgid "Edit Faq"
+msgstr "Editar FAQ"
+
+#: View/Faqs/admin_index.ctp:3
+msgid "Admin Faqs List"
+msgstr "Administrar FAQs"
+
+#: View/Faqs/index.ctp:2
+msgid "FAQ"
+msgstr "FAQ"
+
+#: View/FixedTexts/admin_edit.ctp:4
+msgid "Edit Fixed Text"
+msgstr "Editar texto fijo"
+
+#: View/FixedTexts/admin_index.ctp:100
+msgid "%d Matches"
+msgstr "%d coincidencias"
+
+#: View/FixedTexts/admin_view.ctp:24
+msgid "Matches"
+msgstr "Coincidencias"
+
+#: View/Keywords/admin_add.ctp:4
+msgid "Admin Add Keyword"
+msgstr "Añadir palabra clave"
+
+#: View/Keywords/admin_edit.ctp:4
+msgid "Admin Edit Keyword"
+msgstr "Editar palabra clave"
+
+#: View/Keywords/admin_index.ctp:3
+msgid "Admin Keywords List"
+msgstr "Administrar palabras clave"
+
+#: View/Keywords/admin_index.ctp:7
+msgid "Add Keyword"
+msgstr "Añadir palabra clave"
+
+#: View/Keywords/admin_index.ctp:66
+msgid "Translate Keyword %s?"
+msgstr "¿Seguro que quieres TRADUCIR la palabra clave %s?"
+
+#: View/Keywords/admin_index.ctp:76
+msgid "Restore Keyword %s?"
+msgstr "¿Seguro que quieres RESTAURAR la palabra clave %s?"
+
+#: View/Keywords/admin_view.ctp:35
+msgid "Keyword's Texts"
+msgstr "Textos de palabras clave"
+
+#: View/Layouts/default.ctp:6
+msgid "Project Head Title:"
+msgstr "Traductor Snatcher:"
+
+#: View/Layouts/error.ctp:24
+msgid "CakePHP: the rapid development php framework:"
+msgstr "CakePHP: the rapid development php framework:"
+
+#: View/Pages/about.ctp:2
+msgid "About Title"
+msgstr "Traductor Snatcher: Snatcher en español"
+
+#: View/Pages/about.ctp:4
+#: View/Pages/home.ctp:6
+msgid "Home Url Project"
+msgstr "http://www.elotrolado.net/hilo_proyecto-snatcher-en-espanol_1790142"
+
+#: View/Pages/about.ctp:4
+#: View/Pages/home.ctp:4
+msgid "Home Title Project"
+msgstr "Snatcher en español"
+
+#: View/Pages/about.ctp:6
+msgid "About Description"
+msgstr "Snatcher en español es un proyecto que se inició el 21 de julio de 2012 y que pretende llevar a nuestro idioma uno de los grandes videojuegos de la historia. Afortunadamente, a día de hoy tenemos un gran equipo de traducción y disponemos de una web creada por david_82 que nos permite llevar este trabajo de manera cómoda y sencilla. Además, gracias al trabajo de Mairtrus, hemos podido romper barreras que nos impedían traducir debidamente. Junto a ellos, el resto de usuarios nos encargamos de traducir, un trabajo no muy complicado pero que requiere mucho tiempo, debido a la enorme cantidad de textos en el juego.Por eso seguimos necesitando usuarios dispuestos a colaborar y terminar este proyecto aún más pronto, a dichos usuarios se les proporcionará una cuenta en la web y se le asignará unos ficheros para traducir."
+
+#: View/Pages/home.ctp:6
+msgid "Home Message Project"
+msgstr "[Proyecto] Snatcher en español"
+
+#: View/Pages/privacy.ctp:4
+msgid "Privacy Policy Description"
+msgstr "Este sitio web es para una comunidad de usuarios de EOL que desean realizar la traducción del juego Snatcher para Mega CD del inglés al español. En ningún momento se guarda información privada de los usuarios, tan solo el nombre, la contraseña cifrada y la zona geográfica para las fechas de edición de los registros."
+
+#: View/Reviews/add.ctp:4
+msgid "Add Review"
+msgstr "Añadir revisión"
+
+#: View/Reviews/add.ctp:11;12
+#: View/Reviews/admin_edit.ctp:13;14
+#: View/Reviews/admin_index.ctp:13;132
+#: View/Reviews/edit.ctp:13;14
+#: View/Reviews/index.ctp:16
+#: View/Reviews/other_reviews.ctp:8
+#: View/Reviews/test.ctp:22;28
+msgid "Review"
+msgstr "Revisión"
+
+#: View/Reviews/add.ctp:28
+#: View/Reviews/admin_edit.ctp:38
+#: View/Reviews/edit.ctp:30
+msgid "Original Text"
+msgstr "Texto original"
+
+#: View/Reviews/admin_edit.ctp:4
+msgid "Manage Edit Review"
+msgstr "Editar revisión"
+
+#: View/Reviews/admin_index.ctp:14
+#: View/Reviews/index.ctp:17
+msgid "Tester"
+msgstr "Tester"
+
+#: View/Reviews/admin_index.ctp:16
+#: View/Reviews/index.ctp:19
+#: View/Reviews/other_reviews.ctp:13
+#: View/Reviews/test.ctp:26;32
+#: View/Saves/admin_index.ctp:23
+msgid "Date"
+msgstr "Fecha"
+
+#: View/Reviews/edit.ctp:4
+msgid "Edit Review"
+msgstr "Editar revisión"
+
+#: View/Reviews/index.ctp:9
+#: View/Reviews/test.ctp:9
+msgid "Reviews from %s"
+msgstr "Revisiones de %s"
+
+#: View/Reviews/index.ctp:135
+msgid "Validate"
+msgstr "Validar"
+
+#: View/Reviews/index.ctp:141
+msgid "Validate Review?"
+msgstr "¿Validar la revisión?"
+
+#: View/Reviews/other_reviews.ctp:10
+#: View/Reviews/test.ctp:24;30
+msgid "Validated reviews"
+msgstr "Revisiones validadas"
+
+#: View/Reviews/test.ctp:7
+msgid "Test"
+msgstr "Revisiones"
+
+#: View/Reviews/test.ctp:192
+msgid "Add review"
+msgstr "Añadir revisión"
+
+#: View/Reviews/test.ctp:201
+msgid "Other Reviews"
+msgstr "Otras revisiones"
+
+#: View/Saves/add.ctp:4
+#: View/Saves/admin_index.ctp:7
+#: View/Saves/index.ctp:7
+msgid "Add Safe"
+msgstr "Añadir partida"
+
+#: View/Saves/add.ctp:8
+#: View/Saves/admin_edit.ctp:8
+#: View/Saves/admin_index.ctp:13
+#: View/Saves/edit.ctp:8
+#: View/Saves/index.ctp:13
+msgid "Act"
+msgstr "Acto"
+
+#: View/Saves/add.ctp:12
+#: View/Saves/admin_edit.ctp:12
+#: View/Saves/edit.ctp:12
+msgid "Binary File"
+msgstr "Fichero Binario"
+
+#: View/Saves/add.ctp:14
+#: View/Saves/admin_edit.ctp:14
+#: View/Saves/edit.ctp:14
+msgid "Save slot"
+msgstr "Guardar slot"
+
+#: View/Saves/admin_edit.ctp:4
+msgid "Admin Edit Safe"
+msgstr "Editar partida"
+
+#: View/Saves/admin_index.ctp:3
+msgid "Admin Saves List"
+msgstr "Administrar Partidas"
+
+#: View/Saves/admin_index.ctp:15
+#: View/Saves/index.ctp:15
+msgid "BinaryFile"
+msgstr "Fichero Binario"
+
+#: View/Saves/admin_index.ctp:17
+#: View/Saves/index.ctp:17
+msgid "Slot"
+msgstr "Slot"
+
+#: View/Saves/admin_index.ctp:110
+#: View/Saves/index.ctp:110
+msgid "Download Original"
+msgstr "Descargar original"
+
+#: View/Saves/admin_index.ctp:112
+#: View/Saves/index.ctp:115
+msgid "Delete Safe?"
+msgstr "¿Eliminar partida?"
+
+#: View/Saves/edit.ctp:4
+msgid "Edit Safe"
+msgstr "Editar partida"
+
+#: View/Saves/index.ctp:3
+msgid "Saves List"
+msgstr "Listado de partidas"
+
+#: View/Users/admin_add.ctp:4
+#: View/Users/admin_index.ctp:5
+msgid "Add User"
+msgstr "Añadir usuario"
+
+#: View/Users/admin_add.ctp:13;14
+#: View/Users/login.ctp:12;13
+msgid "Password"
+msgstr "Contraseña"
+
+#: View/Users/admin_add.ctp:19;20
+#: View/Users/admin_change_password.ctp:16;17
+#: View/Users/change_password.ctp:20;21
+msgid "Repit Password"
+msgstr "Repite contraseña"
+
+#: View/Users/admin_add.ctp:25;26
+#: View/Users/admin_edit.ctp:13
+#: View/Users/admin_index.ctp:12
+msgid "Role"
+msgstr "Rol"
+
+#: View/Users/admin_add.ctp:33
+#: View/Users/admin_edit.ctp:20
+#: View/Users/edit.ctp:13
+msgid "Timezone"
+msgstr "Zona horaria"
+
+#: View/Users/admin_add.ctp:39
+#: View/Users/admin_edit.ctp:26
+#: View/Users/admin_index.ctp:16
+msgid "Active"
+msgstr "Activo"
+
+#: View/Users/admin_change_password.ctp:9;10
+#: View/Users/change_password.ctp:15;16
+msgid "New Password"
+msgstr "Nueva contraseña"
+
+#: View/Users/admin_edit.ctp:4
+#: View/Users/edit.ctp:4
+msgid "Edit User"
+msgstr "Editar usuario"
+
+#: View/Users/admin_index.ctp:2
+msgid "Admin Users List"
+msgstr "Administrar usuarios"
+
+#: View/Users/admin_index.ctp:13
+msgid "Last Login"
+msgstr "Último acceso"
+
+#: View/Users/admin_index.ctp:39
+msgid "Reset Password"
+msgstr "Reiniciar contraseña"
+
+#: View/Users/change_password.ctp:9;10
+msgid "Old Password"
+msgstr "Contraseña actual"
+
+#: View/Users/login.ctp:4
+msgid "Please enter your username and password"
+msgstr "Por favor, introduce tu nombre de usuario y contraseña"
+
+#: View/Users/login.ctp:16
+msgid "Login"
+msgstr "Iniciar sesión"
+
+#: Model/Attachment.php:validation
+#: for field user_id Model/Faq.php:validation
+#: order Model/FixedText.php:validation
+#: Model/Review.php:validation
+#: user_id;validation binary_text_id Model/Safe.php:validation
+#: binary_file_id;validation act;validation slot Model/User.php:validation
+#: role_id
+msgid "numeric"
+msgstr "El valor debe ser un número"
+
+#: Model/Attachment.php:validation
+#: for field filename
+#: Model/BinaryFile.php:validation
+#: filename;validation description
+#: Model/BinaryText.php:validation
+#: character_id;validation order;validation
+#: text;validation new_text Model/Character.php:validation
+#: name;validation
+#: new_name Model/Faq.php:validation
+#: question;validation answer
+#: Model/FixedText.php:validation
+#: Model/Keyword.php:validation
+#: Model/Review.php:validation
+#: Model/Role.php:validation
+#: name
+#: Model/Safe.php:validation
+#: description;validation Model/User.php:validation
+#: username;validation old_password;validation timezone
+msgid "notempty"
+msgstr "El valor no puede estar vacío"
+
+#: Model/BinaryFile.php:validation
+#: for field Testers
+msgid "Please select less than %d users."
+msgstr "Por favor, selecciona menos de %d usuarios."
+
+#: Model/BinaryFile.php:validation
+#: for field Testers
+msgid "You can not remove users with reviews."
+msgstr "No puedes eliminar usuarios con revisiones."
+
+#: Model/BinaryText.php:validation
+#: for field new_text
+msgid "You can not change the text if has a validated review."
+msgstr "No puedes cambiar un texto si tiene una revisión validada."
+
+#: Model/Character.php:validation
+#: for field name;validation new_name
+msgid "The name is already used"
+msgstr "El nombre ya está siendo usado"
+
+#: Model/Character.php:validation
+#: for field readonly
+#: Model/FixedText.php:validation
+#: validated Model/Review.php:validation
+#: Model/User.php:validation
+#: active
+msgid "boolean"
+msgstr "El valor debe ser booleano"
+
+#: Model/Keyword.php:validation
+#: for field new_name
+msgid "The new_name has same value than name"
+msgstr "El nuevo nombre tiene el mismo valor que el nombre original"
+
+#: Model/Keyword.php:validation
+#: for field new_name
+msgid "Name and new name are already used"
+msgstr "Los valores ya están siendo usados"
+
+#: Model/Review.php:validation
+#: for field new_text
+msgid "This text is already used for this review"
+msgstr "Este texto ya está siendo usado para esta revisión"
+
+#: Model/Review.php:validation
+#: for field new_text
+msgid "The review is equals to the translation of binary text"
+msgstr "La revisión es igual a la traducción del texto binario"
+
+#: Model/Review.php:validation
+#: for field new_text
+msgid "You can not change the review if has been validated."
+msgstr "No puedes cambiar una revisión si ya ha sido validada"
+
+#: Model/Review.php:validation
+#: for field validated
+msgid "There is already a validated review for the same binary text."
+msgstr "Ya hay una revisión validada para el mismo texto binario"
+
+#: Model/Safe.php:validation
+#: for field act
+msgid "Enter an act between 1 and 3."
+msgstr "Introduce un acto entre 1 y 3."
+
+#: Model/Safe.php:validation
+#: for field slot
+msgid "Enter a slot between 0 and 9."
+msgstr "Introduce un valor de slot entre 0 y 9."
+
+#: Model/User.php:validation
+#: for field username
+msgid "Username taken. Please use another."
+msgstr "El usuario ya está escogido. Coge otro distinto."
+
+#: Model/User.php:validation
+#: for field username
+msgid "Username must be at least 6 characters long."
+msgstr "El nombre de usuario debe tener al menos 6 letras."
+
+#: Model/User.php:validation
+#: for field old_password
+msgid "Old password incorrect"
+msgstr "Contraseña actual incorrecta."
+
+#: Model/User.php:validation
+#: for field password
+msgid "Password cannot be less than 6 characters"
+msgstr "La contraseña no puede tener menos de 6 letras"
+
+#: Model/User.php:validation
+#: for field password
+msgid "Password must contain letters and numbers"
+msgstr "La contraseña debe contener números y letras."
+
+#: Model/User.php:validation
+#: for field password
+msgid "Passwords do not match"
+msgstr "Las contraseñas no coinciden"
+
+#: Model/User.php:validation
+#: for field repit_password
+msgid "Repit password"
+msgstr "Repetir contraseña"
+
+#~ msgid "The review could not be invalidated."
+#~ msgstr "La revisión no se ha podido invalidar."
+
+#~ msgid "The binary text could not be changed."
+#~ msgstr "El texto binario no se ha podido modificar."
+
+#~ msgid "New Attachment"
+#~ msgstr "Nuevo fichero adjunto"
+
+#~ msgid "Edit Character"
+#~ msgstr "Editar personaje"
+
+#~ msgid "Faqs List"
+#~ msgstr "Listado de FAQs"
+
+#~ msgid "New Faq"
+#~ msgstr "Nuevo FAQ"
+
+#~ msgid "Keywords"
+#~ msgstr "Palabras Clave"
+
+#~ msgid "New Keyword"
+#~ msgstr "Nueva palabra clave"
+
+#~ msgid "New Safe"
+#~ msgstr "Nueva partida"
+
+#~ msgid "Users"
+#~ msgstr "Usuarios"
+
+#~ msgid "New User"
+#~ msgstr "Nuevo usuario"
+
+#~ msgid "%d / %d"
+#~ msgstr "%d / %d"
+
+#~ msgid "View reviews"
+#~ msgstr "Ver revisiones"
+
+#~ msgid "Enter"
+#~ msgstr "Entrar"

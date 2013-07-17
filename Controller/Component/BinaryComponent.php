@@ -1,17 +1,16 @@
 <?php
 
 /**
- * Component to copy and create Binary Files
- * with new translates
- * @author 3lm4dn0
+ * Component to copy and create Binary Files with new translates
  *
  */
+set_time_limit(0);
 class BinaryComponent extends Component {
 		
 	/**
 	 * Initialize vars
 	 * @param ComponentCollection $collection
-	 * @param Array $settings
+	 * @param array $settings
 	 */
 	function __construct(ComponentCollection $collection, $settings = array())
 	{	
@@ -22,19 +21,20 @@ class BinaryComponent extends Component {
 		$this->new_page = pack("H*" , "f6");
 
 		/** 
-		 * WARNING!!! NO CHANGE THE ORDER OF special_chars 
+		 * WARNING!!! NO CHANGE THE ORDER from special_chars after insert the binary texts
 		 * */ 
-		$this->special_chars_orig = array(
-				$this->new_line,   pack("H*" , "ec"), $this->new_page, // <0>, <1>, <2>
-				pack("H*" , "ee"), pack("H*" , "f0"), pack("H*" , "fe"), // <3>, <4>, <5>
-				pack("H*" , "f4"), pack("H*" , "fa"), pack("H*", "fb"), // <6>, <7>, <8>
-				pack("H*", "fc"),  pack("H*" , "fd"), pack("H*" , "f9"), // <9>, <10>, <11>
+		$this->wildcard_chars_orig = array(
+				$this->new_line, // <0>
+				pack("H*" , "ec"), $this->new_page, // <1>=Button A, <2>
+				pack("H*" , "ee"), pack("H*" , "f0"), // <3>=Button B, <4>=Button C
+				pack("H*" , "fe"), pack("H*" , "f4"), pack("H*" , "fa"), pack("H*", "fb"), pack("H*", "fc"), // <5>, <6>, <7>, <8>, <9>
+				pack("H*" , "fd"), pack("H*" , "f9"), // <10>, <11>
 				pack("H*" , "f7"), pack("H*" , "f8")  // <12>, <13>
 		);
 				
-		$this->special_chars_temp = array();
-		foreach($this->special_chars_orig as $key=>$value){
-			$this->special_chars_temp[] = "<".$key.">";
+		$this->wildcard_chars_temp = array();
+		foreach($this->wildcard_chars_orig as $key=>$value){
+			$this->wildcard_chars_temp[] = "<".$key.">";
 		}
 		
 		// Replace chars that not supports by default original binary file.
@@ -46,7 +46,7 @@ class BinaryComponent extends Component {
 		$this->long_menu = 224; 		// Min pixels text in menu
 		$this->long_jordan = 160; 		// Min pixels text in Jordan
 		
-		// Number of pixels for each char		
+		// Number of pixels for each char
 		$this->long_chars = array(
 				' ' => 6, '!' => 7, '"' => 7, '#' => 8, '$' => 7, '%' => 9, '&' => 8, '\''=> 4, 
 				'(' => 7, ')' => 6, '*' => 7, '+' => 7, ',' => 4, '-' => 7, '.' => 3, '/' => 9,  
@@ -60,18 +60,20 @@ class BinaryComponent extends Component {
 				'h' => 6, 'i' => 4, 'j' => 6, 'k' => 6, 'l' => 4, 'm' => 8, 'n' => 7, 'o' => 6,
 				'p' => 6, 'q' => 7, 'r' => 7, 's' => 6, 't' => 5, 'u' => 7, 'v' => 6, 'w' => 8,
 				'x' => 7, 'y' => 6, 'z' => 6, '{' => 7, '|' => 4, '}' => 7, '~' => 7, '©' => 9,
-				pack("H*" , "ec") => 8, pack("H*" , "ee") => 8, pack("H*" , "f0") => 8, // <1>, <3>, <4>
+				pack("H*" , "ec") => 9, pack("H*" , "ee") => 8, pack("H*" , "f0") => 8, // <1>, <3>, <4>
 		);
 
-		$this->character_menu = 1;
-		$this->character_computer = 2;
+		// Special characters, values in hex
+		$this->character_computer = Configure::read('Snatcher.Characters.computer');
+		$this->character_menu = Configure::read('Snatcher.Characters.menu');		
+		$this->character_nobody = Configure::read('Snatcher.Characters.nobody');
 	}	
 	
 	/**
 	 * Strpos recursive
 	 * @param $haystack The string to search in
 	 * @param $needle Character to search
-	 * @return array with positions 
+	 * @return array with positions
 	 */
 	private function strpos_recursive($haystack, $needle)
 	{
@@ -248,6 +250,90 @@ class BinaryComponent extends Component {
 	}	
 	
 	/**
+	 * Debug mode to check if all data is correct.
+	 * You'll need $str as string with first bytes until 0x3800 from binary file 
+	 * @param int $offset
+	 * @param int $character
+	 * @param string $str
+	 * @return NULL|mixed
+	 */
+	private function _debugCheckOffset($offset, $character, $str)
+	{
+		$str_hex = bin2hex($str);
+		
+		$multiple = false;
+		
+		switch($character)
+		{
+			case $this->character_menu:
+				$charlen = 2;
+				$search  = $this->character_menu . $offset;
+				$multiple = true;
+				break;
+		
+			case $this->character_nobody:
+				$charlen = 2;
+				$search  = $this->character_nobody . $offset;
+				break;
+		
+			default:
+				$charlen = 8;	
+				$search  = "432000" . $character . $offset;
+		}
+		
+		$count = 0;
+		
+		// Search offset in $str
+		$array_pos = $this->strpos_recursive($str_hex, $offset);
+						
+		$all_offsets = array();
+		
+		foreach($array_pos as $pos)
+		{
+			if($pos%2 == 0)
+			{	
+				$tmp_offset = substr($str_hex, $pos-$charlen, strlen($offset)+$charlen);
+				
+				$tmp_char = substr($str_hex, $pos-8, 6);
+				$tmp_char2 = substr($str_hex, $pos-2, 2);
+			
+				if( ($character != $this->character_menu) &&
+					($tmp_offset != $search) &&
+					(
+						($tmp_char == "432000") ||	
+						($tmp_char2 == $this->character_nobody)								
+					)
+				){
+					debug($tmp_offset);
+				}
+				
+				if($tmp_offset == $search)
+				{
+					$count++;				
+					break;
+				}
+				
+				$all_offset[] = $tmp_offset;
+				
+				if(!$multiple && $count>1)
+				{
+					debug($offsets);
+					die("Multiple offsets found for single text offset.");
+				}
+			}
+		}
+		
+		if($count == 0)
+		{
+			debug("No found $offset: $character");
+			debug($all_offsets);
+			die;
+		}
+		
+				
+	}
+	
+	/**
 	 * A partir de un array de Sentence obtiene un array con los textos.
 	 * @param multitype:int $data
 	 * @param int $array_offsets
@@ -259,76 +345,123 @@ class BinaryComponent extends Component {
 		$pos = 0;
 	
 		foreach($data as $value)
-		{
-			$ismenu = ($value['character_id'] == $this->character_menu);
+		{			
+			// Debug mode checks if are correct offsets and characters in database 
+// 			$this->_debugCheckOffset(					 
+// 					sprintf("%04x", $value['text_offset']),
+// 					$value['OldCharacter']['hex'],
+// 					$str_first
+// 					);
 			
-			if($sum_offset != 0)
-			{
+			
+			// Store new offsets if it changes
+			if( 
+				($sum_offset != 0) || // Last position equals new position
+				($value['OldCharacter']['hex'] != $value['Character']['hex']) // New Character from text  
+			){
 				$array_offsets[] = array(
-						'old_offset' => sprintf("%04x", $value['position'] ),
-						'new_offset' => sprintf("%04x", $value['position'] + $sum_offset),
-						'ismenu'=> $ismenu,
+						'old_offset' => sprintf("%04x", $value['text_offset'] ),
+						'new_offset' => sprintf("%04x", $value['text_offset'] + $sum_offset),
+						'old_character' => $value['OldCharacter']['hex'],
+						'new_character' => $value['Character']['hex']
 				);
 			}
 	
 			$str = str_replace($this->array_old_lang_chars, $this->array_new_lang_chars, $value['new_text']); // sustituye caracteres con tilde
-			$str = str_replace($this->special_chars_temp, $this->special_chars_orig, $str);				 // sustituye caracteres especiales <n>
+			$str = str_replace($this->wildcard_chars_temp, $this->wildcard_chars_orig, $str);				 // sustituye caracteres especiales <n>
 			
-			if( !$ismenu ) // Si no es menú, dividir texto en lineas
+			// If it is not a menu text, split in pages(<2>) and lines(<0>) 
+			if( $value['OldCharacter']['hex'] != $this->character_menu)
 			{
-				$str = $this->splitPage($str, ($value['character_id']==$this->character_computer)); 
+				$isComputer = $value['OldCharacter']['hex'] == $this->character_computer;
+				$str = $this->splitPage($str, $isComputer); 
 			}
 			
 			$sum_offset += strlen($str) - $value['nchars']; // Necesario para calcular el nuevo offset de siguientes textos.
 	
 			$array[] = $str;
-		}
+		}	
 
 		return implode($this->separator, $array);
-	}	
+	}
 	
 	/**
-	 * Reemplaza el offset anterior por el nuevo en el texto con valores propios:
-	 * 432000XXoffset donde XX es un valor entre 02 y 48 ó XX38offset 
-	 * @param $offset Array con los desplazamiento original y nuevo del texto traducido. 
-	 * Incluye character_id indicando si es un menú
-	 * @param $subject Texto donde buscar los offsets
+	 * Search and replace offset texts
+	 * @param array $offsets
+	 * @param string $result
+	 * @param string $search offset to search
+	 * @param string $replace offset to replace
+	 * @param boolean $multiple if true can replace more than one offset
+	 * @return string|NULL
 	 */
-	private function str_replace_offset($offsets, $subject)
-	{
-		if( $offsets['ismenu'] )
+	private function str_replace_offset_texts($offsets, $result, $search, $replace, $multiple = false){
+		
+		$count = 0;
+		
+		// Search all positions
+		$array_pos = $this->strpos_recursive($result, $search);	
+		
+		foreach($array_pos as $pos)
 		{
-			// Search if it is a MENU
-			$search  = "38" . $offsets['old_offset'];
-			$replace = "38" . $offsets['new_offset'];
+			// Only replace if its a correct position from $search in $subject
+			if($pos%2 == 0)
+			{
+				$result = substr_replace($result, $replace, $pos, strlen($replace));				
+				$count++;
 				
-			$result = str_replace($search, $replace, $subject, $count);
-			if($count > 0){
-				return $result;
-			}
-		}
-		else
-		{	
-			// Search texts
- 			$result = preg_replace('/432000([0-3])([a-f0-9])'.$offsets['old_offset'].'/', '432000${1}${2}'.$offsets['new_offset'], $subject, 1, $count);
- 			
-			if($count > 0){
-				return $result;
-			}
-			// Search another
-			$search  = "44" . $offsets['old_offset'];
-			$replace = "44" . $offsets['new_offset'];
-			$result = str_replace($search, $replace, $subject, $count);
-			if($count > 0){
-				return $result;
+				if(!$multiple && $count>1){
+					debug($offsets);
+					die("Multiple offsets found for single text offset.");
+				}
 			}
 		}
 		
-		return NULL;
+		if($count == 0)
+		{
+			return null;
+		}		
+		
+		return $result;
+	}
+	
+	/**
+	 * Replaces the previous offset by new offset from the text with the next values​​:
+	 * 		if it is a menu: 38{offset} 
+	 * 		if it is a text: 432000XX{offset} where XX has between 02 and 30 (base 16) values
+	 *	  	if it is a nobody text: 44{offset}
+	 * @param array $offset new and original offsets and character from the translated text. 
+	 * @param string $subject hex binary code where replace offsets.
+	 */
+	private function str_replace_offset($offsets, $subject)
+	{	
+		$multiple = false;				
+		
+		switch($offsets['old_character'])
+		{
+			case $this->character_menu:
+				$search  = $this->character_menu . $offsets['old_offset'];
+				$replace = $this->character_menu . $offsets['new_offset'];	
+				$multiple = true;
+				break;
+				
+			case $this->character_nobody:
+				$search  = $this->character_nobody . $offsets['old_offset'];
+				$replace = $this->character_nobody . $offsets['new_offset'];
+				break;
+				
+			default:
+				// Search characters texts before 0x432000
+				$search  = "432000" . $offsets['old_character'] . $offsets['old_offset'];
+				$replace = "432000" . $offsets['new_character'] . $offsets['new_offset'];					
+		}	
+		
+		return $this->str_replace_offset_texts($offsets, $subject, $search, $replace, $multiple);
 	}
 	
 	/**
 	 * Recorre un array y sustituye los offsets
+	 * @param array $array
+	 * @param string $str
 	 */
 	private function array_replace_offsets($array, $str)
 	{
@@ -340,16 +473,15 @@ class BinaryComponent extends Component {
 		{
 			if(in_array($offsets['old_offset'], $black_list, true))
 			{
-				var_dump($offsets['old_offset']);
-				die("Error este offset ha sido insertado previamente.");
+				debug($offsets['old_offset']);
+				die("Error: This offset has already been replaced before.");
 			}
 				
 			$str_hex = $this->str_replace_offset($offsets, $str_hex);
 			if( $str_hex == NULL)
 			{
-				var_dump($offsets);
-				echo "Original offset int: ".base_convert($offsets['old_offset'], 16, 10)."<br>";
-				die("Upps. No se encontró el old_offset válido en el fichero");
+				debug($offsets);
+				die("Error: Valid old offset " . base_convert($offsets['old_offset'], 16, 10) . " (base 10) not found in file");
 			}
 			
 			$black_list[] = $offsets['new_offset']; // add to black list
@@ -379,8 +511,8 @@ class BinaryComponent extends Component {
 	}
 	
 	/**
-	 * Si hay nuevos offsets que se pudieran sobreescribir con otros offsets anteriores
-	 * se reordena el array de offsets para que se cambien primero los anteriores.
+	 * If new offsets that could overwrite other previous offsets 
+	 * rearranges the array of offsets to be changed first before.
 	 * @param array() $array 
 	 * @return $array
 	 */
@@ -418,42 +550,41 @@ class BinaryComponent extends Component {
 	}
 
 	/**
-	 * Permite crear un fichero con los nuevos textos y sus offsets desplazados
-	 * a partir del fichero original. 
-	 * @param $filename Fichero original
-	 * @param $newfile Ruta del nuevo fichero a crear
-	 * @param $data Información de Sentence con la información de todos los textos del fichero original y sus traducciones.
-	 * @return devuelve NULL si ocurre algún error
+	 * Create a file with the new texts and their offsets displaced from the original file. 
+	 * @param $filename original file
+	 * @param $newfile Path from new file to be created
+	 * @param $data texts data
+	 * @return NULL|int total filesize from new file. Return null if there is an error.
 	 */
-	public function writeFile($filename, $newfile, $data){
-
-		if(!file_exists($filename) || empty($data))
-		{
-			return null;
-		}
-		
+	public function writeFile($filename, $newfile, $data)
+	{		
 		// Get content
 		$str = file_get_contents($filename);
-		$str_first = substr($str, 0, $this->pos_ini);
 		
-		// Obtener la parte del medio con los offsets
+		// Get first code without texts
+		$str_first = substr($str, 0, $this->pos_ini);			
+		
+		// Get file texts and an array_offsets with offsets from each text
 		$str_texts = $this->getNewTexts($data, $str, $array_offsets);
 		
-		// Buscar los que podrían coincidir con los offsets antiguos y obtener un array ordenado
+		// Order array offsets
 		$array_offsets = $this->orderArrayOffsets($array_offsets);
-
-		// Reemplaza los offsets anteriores por los nuevos
-		$str_first = $this->array_replace_offsets($array_offsets, $str_first);
 		
-		// Merge
+		// Replace offsets from texts
+		$str_first = $this->array_replace_offsets($array_offsets, $str_first);	
+		
+		// Merge output with new first code and new texts
 		$output = $str_first . $str_texts . $this->separator;
-		if( strlen($output) & 1 ){
+				
+		// if output is oder adds 00
+		if( strlen($output) & 0 )
+		{
 			$output .= pack("H*" , "00"); 
 		}
 		
 		// Create new file
 		$this->_createFile($newfile, $output);
-
+		
 		return filesize($newfile);
 	}
 	

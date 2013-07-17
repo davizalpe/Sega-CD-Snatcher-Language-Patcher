@@ -1,0 +1,199 @@
+@charset "utf-8";
+/** Sticky footer HTML5 */
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+	background: #fff;
+	color: #fff;
+	font-family:'lucida grande',verdana,helvetica,arial,sans-serif;
+	font-size: 85%;
+    margin: 0 0 50px; /* 50px footer height */        
+}
+/** header */
+header {
+	background: #003d4c;
+	text-align: left;
+	padding: 0px;	
+}
+header ul li{
+	margin:0px;
+}
+
+/** section content */
+section {
+	background: #fff;	
+	clear: both;
+	color: #333;
+	padding: 10px 20px 40px 20px;
+	overflow: auto;
+	margin: 0 auto;
+	width: 90%;
+}
+
+section .home {
+	text-align: center;	
+}
+
+/** footer */
+footer {
+	display: block;
+	background: #003d4c;
+	width: 100%;
+	text-aling: right;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 50px;
+}
+footer ul{
+	list-style: none;
+	margin: 0;
+    padding: 0;
+    width: 90%;	
+	clear: both;
+	padding: 5px;
+	overflow: auto;
+	margin: 0 auto;
+	width: 90%;        
+}
+footer ul li {
+	padding-top:10px;
+    display: inline; 
+    float:left;
+    text-align:center;
+}
+footer ul li a,
+footer ul li a:hover{
+    display: inline;
+	color:#fff;
+	text-align: center;	
+}
+
+footer ul li#footer-cakephp{
+	float:right;
+	padding-top: 10px;
+}
+
+/** contact form */
+.contact{
+	float:right;
+	width:50%;
+	margin-right: 25%;
+}
+.contact form .submit {
+	text-align: center;
+}
+
+/** login form */
+.login{
+	float:right;
+	width:30%;
+	margin-right: 35%;
+}
+.login form .submit {
+	text-align: center;
+}
+
+/** redefine some containers 
+*   from cakephp generic **/
+div.users form{
+	float:right;
+	width:30%;
+	margin-right: 35%;
+	border-left: 0px;
+	padding: 0px;
+}
+div.users form .submit {
+	text-align: center;
+}
+div.form{
+	float:left;
+	width:100%;	
+	border-left: 0px;
+	padding: 0px;
+}
+div.index,
+div.view {
+	float:left;
+	width:100%;
+	border-left: 0px;
+	padding: 0px;
+}
+div.actions {
+	margin-top: 10px;
+	float:left;
+	width:100;
+	padding:0px;
+}
+div.actions h3 {
+	padding-top:0;
+	color:#777;
+}
+
+/* search forms */
+table tr.search th{
+        padding:2px;
+}
+th.search,
+th.actions{
+        text-align: center;
+}
+select optgroup{
+    color:red;
+    font-size: 135%;
+    font-weight:bold;
+}
+select optgroup option{
+    color:#444;
+    font-weight:normal;		
+	clear:both;
+	font-size:90%;
+	margin-left: 25px;
+	vertical-align:text-bottom;
+}
+	
+table tr.search th input,
+table tr.search th select{
+        clear: both;
+        font-size: 100%;
+}
+
+/* add actions with block display for large buttons */
+table td.actions_block a {
+	display: block;
+	margin-bottom: 3px;
+}
+
+/* message for edit textarea from binary texts */
+.counter{
+    font-size: 120%;
+    display: block;
+}
+.remaining{
+	font-weight:bold;
+	color: green;
+}
+.limit{
+	color: blue;
+	font-weight:bold;
+}
+.label_checkbox{
+    font-size: 100%;
+    padding:5px;
+	font-weight:bold;
+}
+/* about */
+div.about{
+	width:90%;	
+	border-left: 0px;
+	padding: 0px;	
+	margin-left: 60px;
+	margin-top: 10px;
+}
+div.about div,
+div.about span{
+	font-size:110%;
+	margin-bottom: 25px;
+}
