@@ -111,8 +111,10 @@
 				<?php 
 				// Can access owner
 			if($this->Session->read('Auth.User.id') == $safe['Safe']['user_id']):?>
-				<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $safe['Safe']['id'])); ?>
-				<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $safe['Safe']['id']), null, __('Delete Safe?')); ?>
+				<?php echo $this->Html->link(__('Edit'), array_merge(
+						$this->passedArgs, array('action' => 'edit', $safe['Safe']['id']))); ?>
+				<?php echo $this->Form->postLink(__('Delete'), array_merge(
+						$this->passedArgs,array('action' => 'delete', $safe['Safe']['id'])), null, __('Delete Safe?')); ?>
 				<?php endif; ?></td>
 		</tr>
 		<?php endforeach; ?>

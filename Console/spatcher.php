@@ -34,7 +34,7 @@ function little2bigendian($hex) {
  * Replaces files table content with new filesize from file.
  * 
  * @param string $string Files table content
- * @param int $pos Position from $single_file_table in $search 
+ * @param int $pos Position from $file data in files table $string
  * @param string dir dir from binary files
  * @param string $file file name from actual binary file
  * @return string files table contents with new filesize from binary file

@@ -399,10 +399,10 @@ class SavesController extends AppController {
 		
 		if ($this->Safe->delete()) {
 			$this->Session->setFlash(__('Safe deleted'));
-			$this->redirect(array('action' => 'index'));
+			$this->redirect($this->_redirectPassedArgs());
 		}
 		$this->Session->setFlash(__('Safe was not deleted'));
-		$this->redirect(array('action' => 'index'));
+		$this->redirect($this->_redirectPassedArgs());
 	}
 
 /**
@@ -479,10 +479,10 @@ class SavesController extends AppController {
 		
 		if ($this->Safe->delete()) {
 			$this->Session->setFlash(__('Safe deleted'));
-			$this->redirect(array('action' => 'index'));
+			$this->redirect($this->_redirectPassedArgs());
 		}
 		$this->Session->setFlash(__('Safe was not deleted'));
-		$this->redirect(array('action' => 'index'));
+		$this->redirect($this->_redirectPassedArgs());
 	}
 	
 }

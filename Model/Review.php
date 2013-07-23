@@ -150,7 +150,7 @@ class Review extends AppModel {
 	*/
 	public function hasValidatedReview($data)
 	{
-		if( isset($data['validated']) )
+		if( isset($data['validated']) && ($data['validated']) )
 		{
 			return !$this->field('hasValidatedReview');
 		}

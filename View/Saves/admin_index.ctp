@@ -108,8 +108,10 @@
 			<td class="actions">
 				<?php echo $this->Html->link(__('Download'), array('admin' => false, 'action' => 'download', $safe['Safe']['id'], true)); ?>
 				<?php echo $this->Html->link(__('Download Original'), array('admin' => false, 'action' => 'download', $safe['Safe']['id'], true, true)); ?>
-				<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $safe['Safe']['id'])); ?>
-				<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $safe['Safe']['id']), null, __('Delete Safe?')); ?>
+				<?php echo $this->Html->link(__('Edit'), array_merge(
+						$this->passedArgs,array('action' => 'edit', $safe['Safe']['id']))); ?>
+				<?php echo $this->Form->postLink(__('Delete'), array_merge(
+						$this->passedArgs,array('action' => 'delete', $safe['Safe']['id'])), null, __('Delete Safe?')); ?>
 			</td>
 		</tr>
 		<?php endforeach; ?>
