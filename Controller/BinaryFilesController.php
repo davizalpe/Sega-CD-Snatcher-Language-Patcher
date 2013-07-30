@@ -142,7 +142,7 @@ class BinaryFilesController extends AppController {
 		$binaryFiles = $this->BinaryFile->find('all', array(
 				'fields' => 'filename', 
 				'contain' => array(
-						'BinaryText' => array('character_id', 'text_offset', 'new_text', 'nchars', 'Character.hex', 'OldCharacter.hex')),				
+						'BinaryText' => array('character_id', 'text_offset', 'new_text', 'nchars', 'Character.hex', 'OldCharacter.hex', 'BinaryFile.filename')),
 			));			
 		
 		foreach ($binaryFiles as $data)

@@ -4,7 +4,7 @@
  * Component to copy and create Binary Files with new translates
  *
  */
-set_time_limit(0);
+//set_time_limit(0);
 class BinaryComponent extends Component {
 		
 	/**
