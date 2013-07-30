@@ -107,7 +107,7 @@ class SavesController extends AppController {
 		$data = $this->Safe->BinaryFile->find('first', array(
 					'fields' => 'filename',
 					'contain' => array(
-							'BinaryText' => array('character_id', 'text_offset', 'text', 'new_text', 'nchars', 'Character.hex', 'OldCharacter.hex')
+							'BinaryText' => array('character_id', 'text_offset', 'text', 'new_text', 'nchars', 'Character.hex', 'OldCharacter.hex', 'BinaryFile.filename')
 							),
 					'conditions' => array($this->Safe->BinaryFile->alias . '.' . $this->Safe->BinaryFile->primaryKey => $id)
 				));		

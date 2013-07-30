@@ -75,8 +75,8 @@ function replace_file($string, $sector_LE, $dir, $file, $filesize, $original_fil
 	// Get content from new file
 	$replacement = file_get_contents($dir . $file);
 	
-	echo bin2hex(substr($string, $offset+$original_filesize-8, 8))."\n";
-	echo bin2hex(substr($string, $offset+$original_filesize, 8))."\n";
+	//echo bin2hex(substr($string, $offset+$original_filesize-8, 8))."\n";
+	//echo bin2hex(substr($string, $offset+$original_filesize, 8))."\n";
 
 	// Save content from binary file until $original_filesize
 	if( $original_filesize > $filesize)
@@ -232,7 +232,7 @@ function main(&$argv)
 	// Show version
 	if ( ($argc == 2) && ($argv[1] == "-version") )
 	{
-		echo "Version 0.1\n";
+		echo "Version 0.2\n";
 		echo "Sega CD Snatcher patcher for translate to spanish language\n";
 		exit;
 	}
