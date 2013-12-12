@@ -4,9 +4,7 @@ Sega-CD-Snatcher-Language-Patcher
 #   INTRO    #
 ##############
 
-
-This is a CakePHP Component for path language in binary files from videogame Sega CD Snatcher
-
+This is a CakePHP project to modify the texts from the great videogame Snatcher from Hideo Kojima for Sega/Mega CD.
 
 ################
 #   CONTENT    #
@@ -16,40 +14,42 @@ This is a CakePHP Component for path language in binary files from videogame Seg
 - Controller/Component/BinaryComponent.php: Component class from CakePHP to generate translated binary files with the data from a file game.
 - Controller/Component/QuicksaveComponent.php: Component class from CakePHP to patch quicksaves from Kega Fusion and include translated binary files. Usefull if you want to try a binary file from a Game directly without patch the ISO and use a save game.
 
-####################
-# MIN REQUIREMENTS #
-####################
+################
+# REQUIREMENTS # 
+################
 
-- CakePHP 2.3
+- CakePHP 2.3 or later
+- jQuery 1.8 or later
+- PHP 5.2 or later
+- Web Server and MySQL database
 
 ###########
 # INSTALL #
 ###########
 
-- Download CakePHP 2.3 or highter and create a new project (for example app).
-- Copy folders from project translater snatcher and paste into new project (for example app).
-- User Sql script from Config/Schema/snatcher.sql to create database.
+- Download CakePHP (www.cakephp.org) and create a new project with cake bake script (here I called "app").
+- Copy the folders from this project and paste into the new project.
+- Use the sql file from Config/Schema/snatcher.sql to create database schema in MySQL.
 - Copy data from Config/readme to the end of your core CakePHP file in app/Config/core.php (and change "esp" and "es" to your new language for translation).
-- Copy app in your localhost directory from Apache Server and set user, groups and necesary permission (app/tmp and app/File needs write permisions).
+- Copy app in your localhost directory from your web server and set user, groups and necesary permissions (app/tmp and app/File needs write permissions).
 - To access web, first time you need create an user administrator:
-	- Open Controller/UsersController.php with your favourite editor
-	- Uncomment the line number 26.
-		$this->Auth->allowedActions = array('admin_index', 'admin_add', 'admin_changePassword');		
+	- Open Controller/UsersController.php with any text editor
+	- Uncomment the line 26:
+		$this->Auth->allowedActions = array('admin_index', 'admin_add', 'admin_changePassword');
 	- Go to http://localhost/app/admin/users/
-	- Clic on add "New User", fill the data and password for new user and select role "Admin".
-- Enjoy.
+	- Click at "New User" and create a new user with the role "Admin" selected.
+	- Comment the line 26 from Controller/UsersController.php file.
+	- Go to http://localhost/app/ and sign in.
 
 #############
 # PATCH ISO #
 #############
 
-There is a spatcher.php script in Console dir. You can patch your ISO in terminal. Only needs specify the path from the Snatcher Sega CD ISO and the folder where you have the new binary files.
-	
+There is a spatcher.php CLI script in app/Console path for patch your ISO. Only needs specify the path from Snatcher Sega CD ISO and a folder where you stored the new binary files.
 
 ###############
 # DESCRIPTION #
 ###############
-
 
 Binary->wirteFile returns the new filesize. There is a limit for this files: 55296 bytes
 
@@ -126,3 +126,18 @@ array(
 
 
 When the script tranlates your new texts, it replaces the wildcard <{number}> with his special char defined in special_chars_orig.
+
+##########
+# Thanks #
+##########
+
+- Joxer for created this project
+- Maitrus for his technical knowledge and helpful with romhacking
+- m4x1m0, jam007, Tolvatar, djnox, Manveru Ainu, livekraft, tonycc, Drasglaf, randam_hajile for their helpful translating the texts and review.
+ 
+###########
+# License #
+###########
+
+The source code for the web project is licensed under the GPL version 3 or later
+(see LICENSE).
