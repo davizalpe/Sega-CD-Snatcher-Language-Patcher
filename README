@@ -27,7 +27,7 @@ This is a CakePHP project to modify the texts from the great videogame Snatcher 
 # INSTALL #
 ###########
 
-- Download CakePHP (www.cakephp.org) and create a new project with cake bake script (here I called "app").
+- Download CakePHP (www.cakephp.org) and create a new project with cake bake script (I will call "app" here).
 - Copy the folders from this project and paste into the new project.
 - Use the sql file from Config/Schema/snatcher.sql to create database schema in MySQL.
 - Copy data from Config/readme to the end of your core CakePHP file in app/Config/core.php (and change "esp" and "es" to your new language for translation).
@@ -131,8 +131,8 @@ When the script tranlates your new texts, it replaces the wildcard <{number}> wi
 # Thanks #
 ##########
 
-- Joxer for created this project
-- Maitrus for his technical knowledge and helpful with romhacking
+- Joxer for create and manage the translate project for Snatcher from EOL.
+- Maitrus for his technical knowledge and helpful with romhacking and for explain me how to modify the binary files and iso.
 - m4x1m0, jam007, Tolvatar, djnox, Manveru Ainu, livekraft, tonycc, Drasglaf, randam_hajile for their helpful translating the texts and review.
  
 ###########
