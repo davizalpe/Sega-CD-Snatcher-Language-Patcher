@@ -3,59 +3,21 @@
 
 ini_set('memory_limit', '512M');
 
-/**
- * Create temporal file $filename with chars in $str
- * @param string $filename
- * @param string $str
- */
-function create_file($filename, $str)
-{
-	$fp = fopen($filename, 'w') or die("can't open file");
-
-	fwrite($fp, $str);
-
-	fclose($fp);
-	
-	echo "New $filename created.\n";
-}
-
-/**
- * Change little endian to big endian on a little endian machine.
- * 
- * @param string $hex hexadecimal size in little endian with 0s.
- * @return string hex big endian
- */
-function little2bigendian($hex) {	
-	
-	$bin = strrev(pack("H*", $hex));
-	
-	return bin2hex($bin);	
-}
-
-/**
- * Replaces files table content with new filesize from file.
- * 
- * @param string $string Files table content
- * @param int $pos Position from $single_file_table in $search 
- * @param string dir dir from binary files
- * @param string $file file name from actual binary file
- * @return string files table contents with new filesize from binary file
- */
-function replace_table($string, $pos, $dir, $file, $filesize)
+function set_separator(&$dir)
 {	
-	if($filesize <= 0)
+	if(!is_dir($dir))
 	{
-		die("File $file has not size.\n");
+		die("$dir is not a directory\n");
+	}
+	
+	$pos = strrpos($dir, DIRECTORY_SEPARATOR);
+	if( ($pos === FALSE)
+	||
+	(($pos !== FALSE	) && ($pos != strlen($dir)-1))
+	)
+	{
+		$dir .= DIRECTORY_SEPARATOR;
 	}	
-		
-	$size_LE = sprintf("%08x", $filesize);
-	$size_BE = little2bigendian($size_LE);		
-	
-	$replace = pack("H*", $size_BE . $size_LE);
-		
-	$result = substr_replace($string, $replace, $pos-23, 8);
-	
-	return $result; 
 }
 
 /**
@@ -69,33 +31,49 @@ function replace_table($string, $pos, $dir, $file, $filesize)
  * @param string 
  * @return mixed Content from ISO with new binary file
  */
-function replace_file($string, $sector_LE, $dir, $file, $filesize, $original_filesize)
+function get_position($sector_LE)
 {
 	// Get offset in decimal with sector_BE * 2048(0x800)
-	$offset = base_convert(bin2hex($sector_LE), 16, 10) * 2048;
+	return base_convert(bin2hex($sector_LE), 16, 10) * 2048;	
 	
-	// Get content from new file
-	$replacement = file_get_contents($dir . $file);
-	
-	//echo bin2hex(substr($string, $offset+$original_filesize-8, 8))."\n";
-	//echo bin2hex(substr($string, $offset+$original_filesize, 8))."\n";
+}
 
-	// Update the content of $replacement with 0x00 since $original_filesize position to the end
-	if( $original_filesize > $filesize)
-	{
-		$replacement = str_pad($replacement, $original_filesize, pack("H*", "00"));
+/**
+ * Get free space
+ * @param unknown $file
+ * @param unknown $string
+ */
+function get_free_space($file, $offset, $filesize, $original_filesize, $string)
+{
+	echo $file."\n";
 		
-		// replacement the bytes with the added 0x00s until $original_filesize
-		$filesize = $original_filesize;
+	$zero = pack("H*", "00");
+	$free_bytes = 0;
+	$pos = $offset + $filesize;
+	$len = strlen($string);
+	
+	// count free bytes plus if new filesize is less than old file
+	$extra_bytes = 0;
+	if($original_filesize > $filesize)
+	{
+		$extra_bytes = $original_filesize - $filesize;
+		echo "\told_filesize: ". $filesize."\n";
+		echo "\textra_byes: ". $extra_bytes."\n";
 	}
 	
-	// Show file data
-	echo "original size ($original_filesize) / new size ($filesize)\n";	
+	echo "\tfilesize: ". $filesize."\n";
+	echo "\toffset: ". $offset."\n";
 	
-	// Replace the file content until $original_filesize
-	$result = substr_replace($string, $replacement, $offset, $filesize);
+	// count bytes with 0x00 until next file
+	while( ($pos < $len) && ($string[$pos] == $zero) )
+	{
+		$pos++;
+		$free_bytes++;
+	}
 	
-	return $result;	
+	echo "\textra bytes: ";
+	echo ($free_bytes+$extra_bytes)."\n";
+
 }
 
 /**
@@ -107,16 +85,12 @@ function patch_iso($string, $array_binary_files, $dir)
 {
 	// Files Table from 0xA000 (40960) to 0x0B26A (45674)
 	$orig_files_table = $files_table = substr($string, 40960, 45674-40960);
-
-	echo "Patching: \n";
 	
-	// Replace files
+	$bak_offset = 0;
 	foreach($array_binary_files as $file)
 	{		
 		if( ($pos=strpos($files_table, $file)) !== FALSE )
-		{		
-			echo "\tFile $file... ";
-			
+		{					
 			// Get data from table file LittleEndian 
 			$sector_LE = substr($files_table, $pos-27, 4);			
 			$size_LE = substr($files_table, $pos-19, 4);
@@ -124,47 +98,51 @@ function patch_iso($string, $array_binary_files, $dir)
 			// Get original filesize
 			$original_filesize = base_convert(bin2hex($size_LE), 16, 10);
 
-			// Get new filesize
-			$filesize = filesize($dir . $file);
-			
-			// Replace file		
-			$string = replace_file($string, $sector_LE, $dir, $file, $filesize, $original_filesize);		
-
-			// Replace table
-			if($filesize != $original_filesize)
+			// Get filesize from $file
+			if(file_exists($dir . $file))
 			{
-				$files_table = replace_table($files_table, $pos, $dir, $file, $filesize);
+				$filesize = filesize($dir . $file);
+			}
+			else
+			{
+				$filesize = $original_filesize;
+			}								
+			
+			// get position in ISO from $file
+			$offset = get_position($sector_LE);
+						
+			get_free_space($file, $offset, $filesize, $original_filesize, $string);			
+
+			/*
+			// Print info from the before bak $file
+			if($bak_offset > 0)
+			{
+				echo $bak_file." with free space ".($offset - $bak_offset + $bak_filesize)." bytes\n";
 			}						
+			
+			
+			// Show file data
+			//echo "original size ($original_filesize) / new size ($filesize)\n";
+			
+			// Store last file info
+			$bak_filesize = $filesize;
+			$bak_file = $file;
+			$bak_offset = $offset;
+			*/
 		}
 	}
-	
-	// Replace Files Table from ISO content
-	$result = str_replace($orig_files_table, $files_table, $string);
 
-	return $result;
 }
 
 /**
  * Check if it is a dir and read files from Snatcher CD
+ *
  * @param string $dir
+ * @return array $array_binary_files with list of valid files to replace from $dir
  */
 function check_path(&$dir)
 {	
 	echo "Checking dir $dir\n";
-	if(!is_dir($dir))
-	{
-		die("$dir is not a directory\n");
-	}
-	
-	// Set bar at end dir if not exists
-	$pos = strrpos($dir, DIRECTORY_SEPARATOR);
-	if( ($pos === FALSE)
-			||
-			(($pos !== FALSE	) && ($pos != strlen($dir)-1))
-	)
-	{
-		$dir .= DIRECTORY_SEPARATOR;
-	}	
 	
 	$array_valid_files = array("ABS.TXT", "BIB.TXT", "CPY.TXT", "DATA_A0.BIN", "DATA_B0.BIN", "DATA_D0.BIN", "DATA_D1.BIN",
 			"DATA_D2.BIN", "DATA_F0.BIN", "DATA_F4.BIN", "DATA_G0.BIN", "DATA_H00.BIN", "DATA_H01.BIN", "DATA_H02.BIN", 
@@ -180,21 +158,7 @@ function check_path(&$dir)
 			"SP22.BIN", "SP23.BIN", "SP24.BIN", "SP25.BIN", "SP26.BIN", "SP27.BIN", "SP28.BIN", "SP29.BIN", "SP30.BIN", 
 			"SP31.BIN", "SP32.BIN", "SP33.BIN", "SP34.BIN", "SP35.BIN", "SP36.BIN", "SP37.BIN", "SP38.BIN", "SUBCODE.BIN");	
 	
-	$array_binary_filesary_files = array();
-	foreach($array_valid_files as $valid_file)
-	{
-		if(file_exists($dir . $valid_file))
-		{
-			$array_binary_filesary_files[] = $valid_file;
-		}
-	}
-	
-	if(empty($array_binary_files))
-	{
-		die("$dir has not binary files from Snatcher game.\n");
-	}	
-	
-	return $array_binary_files;
+	return $array_valid_files;
 }
 
 /**
@@ -208,10 +172,11 @@ function check_iso($filename)
 	{
 		die("$filename not exists\n");
 	}
-
+		
 	$pal = "534547414449534353595354454D20205345474149504D454E552000010000014B4F4E414D492053303032000001000000000800000060000000000000000000000068000000180000000000000000003130313231393934202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020";
 	$usa = "534547414449534353595354454D20205345474149504D454E552000010000014B4F4E414D492052303032000001000000000800000060000000000000000000000068000000180000000000000000003130313031393934202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020";
 	
+
 	$string = file_get_contents($filename);
 	$fileData = strtoupper(bin2hex(substr($string, 0, 256)));
 	
@@ -243,7 +208,7 @@ function main(&$argv)
 	// Show version
 	if ( ($argc == 2) && ($argv[1] == "--version") )
 	{
-		echo "Version 0.2\n";
+		echo "Version 0.1\n";
 		echo "Sega CD Snatcher patcher for translate to spanish language\n";
 		exit;
 	}
@@ -255,7 +220,7 @@ function main(&$argv)
 		echo "after patch creates the file output.iso\n\n";
 		echo "where options include:\n";
 		echo "\t-version\tprint product version and exit\n";
-		echo "See https://github.com/3lm4dn0/Sega-CD-Snatcher-Language-Patcher\n";
+		echo "See https://github.com/3lm4dn0\n";
 		exit;		
 	}
 	
@@ -263,16 +228,15 @@ function main(&$argv)
 	$dir	 = $argv[2];
 
 	// Check ISO
-	$string = check_iso($fileiso);
-
-	// Check and get files
+	$string = check_iso($fileiso);	
+	
+	// Check dir and files
+	// Set bar at end dir if not exists
+	set_separator($dir);
 	$array_binary_files = check_path($dir);
 
 	// Patch ISO
-	$string = patch_iso($string, $array_binary_files, $dir);
-	
-	// Create new ISO
-	create_file("output.iso", $string);		
+	patch_iso($string, $array_binary_files, $dir);
 }
 
 main($argv);
