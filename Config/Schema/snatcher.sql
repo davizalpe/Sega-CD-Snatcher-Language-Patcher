@@ -271,11 +271,11 @@ CREATE TABLE IF NOT EXISTS `roles` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `saves`
+-- Table structure for table `quicksaves`
 --
 
-DROP TABLE IF EXISTS `saves`;
-CREATE TABLE IF NOT EXISTS `saves` (
+DROP TABLE IF EXISTS `quicksaves`;
+CREATE TABLE IF NOT EXISTS `quicksaves` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int(10) unsigned NOT NULL,
   `binary_file_id` int(10) unsigned NOT NULL,
@@ -360,11 +360,11 @@ ALTER TABLE `reviews`
   ADD CONSTRAINT `fk_reviews_testers` FOREIGN KEY (`user_id`, `binary_file_id`) REFERENCES `binary_files_testers` (`user_id`, `binary_file_id`);
 
 --
--- Constraints for table `saves`
+-- Constraints for table `quicksaves`
 --
-ALTER TABLE `saves`
-  ADD CONSTRAINT `saves_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `saves_ibfk_2` FOREIGN KEY (`binary_file_id`) REFERENCES `binary_files` (`id`);
+ALTER TABLE `quicksaves`
+  ADD CONSTRAINT `quicksaves_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `quicksaves_ibfk_2` FOREIGN KEY (`binary_file_id`) REFERENCES `binary_files` (`id`);
 
 --
 -- Constraints for table `users`
