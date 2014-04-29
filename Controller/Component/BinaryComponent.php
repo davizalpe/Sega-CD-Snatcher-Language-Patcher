@@ -4,7 +4,7 @@
  * Component to copy and create Binary Files with new translates
  *
  */
-//set_time_limit(0);
+set_time_limit(0);
 class BinaryComponent extends Component {
 		
 	/**
@@ -334,28 +334,6 @@ class BinaryComponent extends Component {
 	}
 	
 	/**
-	 * Get preoffset necessary to replace old offset
-	 * from a specific text.
-	 * Fix "38 00 25" offset to replace "F9 38 00 25"
-	 * @param string $filename
-	 * @param stirng $offset
-	 */
-	private function _get_pre_offset($filename, $text_offset)
-	{
-		$result = "";
-		
-		switch($filename){
-			case 'SP24.BIN':
-				if($text_offset == 37)
-				$result = "f9";
-				break;
-			default: 
-		}
-		
-		return $result;
-	}
-	
-	/**
 	 * A partir de un array de Sentence obtiene un array con los textos.
 	 * @param multitype:int $data
 	 * @param int $array_offsets
@@ -382,7 +360,6 @@ class BinaryComponent extends Component {
 				($value['OldCharacter']['hex'] != $value['Character']['hex']) // New Character from text  
 			){
 				$array_offsets[] = array(
-						'pre_offset' => $this->_get_pre_offset($value['BinaryFile']['filename'], $value['text_offset']), 
 						'old_offset' => sprintf("%04x", $value['text_offset'] ),
 						'new_offset' => sprintf("%04x", $value['text_offset'] + $sum_offset),
 						'old_character' => $value['OldCharacter']['hex'],
@@ -462,8 +439,8 @@ class BinaryComponent extends Component {
 		switch($offsets['old_character'])
 		{
 			case $this->character_menu:
-				$search  = $offsets['pre_offset'] . $this->character_menu . $offsets['old_offset'];
-				$replace = $offsets['pre_offset'] . $this->character_menu . $offsets['new_offset'];
+				$search  = $this->character_menu . $offsets['old_offset'];
+				$replace = $this->character_menu . $offsets['new_offset'];	
 				$multiple = true;
 				break;
 				
@@ -592,8 +569,6 @@ class BinaryComponent extends Component {
 		
 		// Order array offsets
 		$array_offsets = $this->orderArrayOffsets($array_offsets);
-			
-		//debug($array_offsets);die;
 		
 		// Replace offsets from texts
 		$str_first = $this->array_replace_offsets($array_offsets, $str_first);	

@@ -5,21 +5,22 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SnatcherTranslator\n"
 "POT-Creation-Date: 2013-07-09 15:22+0000\n"
-"PO-Revision-Date: 2014-04-29 20:28+0100\n"
+"PO-Revision-Date: 2013-07-09 17:23+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Language: en\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: English\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Generator: Poedit 1.5.4\n"
 
 #: Controller/AppController.php:158
 msgid "The directory needs write permisions."
 msgstr "The directory needs write permisions."
 
-#: Controller/AppController.php:236 Controller/AttachmentsController.php:110
+#: Controller/AppController.php:236
+#: Controller/AttachmentsController.php:110
 msgid "The file %s not exists."
 msgstr "The file %s not exists."
 
@@ -28,7 +29,7 @@ msgid "The file %s exceeds %d bytes in %d bytes."
 msgstr "The file %s exceeds %d bytes in %d bytes."
 
 #: Controller/AttachmentsController.php:39
-#: Controller/QuicksavesController.php:75
+#: Controller/SavesController.php:75
 msgid "Invalid file"
 msgstr "Invalid file"
 
@@ -101,8 +102,7 @@ msgstr "The character from binary text has been changed"
 
 #: Controller/BinaryTextsController.php:265
 msgid "The character from binary text could not be changed. Please, try again."
-msgstr ""
-"The character from binary text could not be changed. Please, try again."
+msgstr "The character from binary text could not be changed. Please, try again."
 
 #: Controller/CharactersController.php:131
 #: Controller/FixedTextsController.php:95;131
@@ -229,45 +229,45 @@ msgstr "The review has been validated"
 msgid "The review could not be validated."
 msgstr "The review could not be validated."
 
-#: Controller/QuicksavesController.php:80
+#: Controller/SavesController.php:80
 msgid "The file %s is not a quicksave"
 msgstr "The file %s is not a quicksave"
 
-#: Controller/QuicksavesController.php:91
+#: Controller/SavesController.php:91
 msgid "The file could not be saved."
 msgstr "The file could not be saved."
 
-#: Controller/QuicksavesController.php:132
+#: Controller/SavesController.php:132
 msgid "The file not exists."
 msgstr "The file not exists."
 
-#: Controller/QuicksavesController.php:180
+#: Controller/SavesController.php:180
 msgid "The safe could not be delete."
 msgstr "The safe could not be delete."
 
-#: Controller/QuicksavesController.php:189
+#: Controller/SavesController.php:189
 msgid "The new safe could not be delete."
 msgstr "The new safe could not be delete."
 
-#: Controller/QuicksavesController.php:270;310;445
+#: Controller/SavesController.php:270;310;445
 msgid "The safe has been saved"
 msgstr "The safe has been saved"
 
-#: Controller/QuicksavesController.php:275;313;448
+#: Controller/SavesController.php:275;313;448
 msgid "The safe could not be saved. Please, try again."
 msgstr "The safe could not be saved. Please, try again."
 
-#: Controller/QuicksavesController.php:292;301;335;341;383;392;438;468
+#: Controller/SavesController.php:292;301;335;341;383;392;438;468
 msgid "Invalid safe"
 msgstr "Invalid safe"
 
-#: Controller/QuicksavesController.php:401;481
-msgid "Quicksave deleted"
-msgstr "Quicksave deleted"
+#: Controller/SavesController.php:401;481
+msgid "Safe deleted"
+msgstr "Safe deleted"
 
-#: Controller/QuicksavesController.php:404;484
-msgid "Quicksave was not deleted"
-msgstr "Quicksave was not deleted"
+#: Controller/SavesController.php:404;484
+msgid "Safe was not deleted"
+msgstr "Safe was not deleted"
 
 #: Controller/UsersController.php:149
 msgid "Username or password is incorrect."
@@ -297,42 +297,65 @@ msgstr "User deleted"
 msgid "User was not deleted"
 msgstr "User was not deleted"
 
-#: View/Attachments/admin_add.ctp:4 View/Attachments/admin_index.ctp:7
+#: View/Attachments/admin_add.ctp:4
+#: View/Attachments/admin_index.ctp:7
 msgid "Add Attachment"
 msgstr "Add Attachment"
 
-#: View/Attachments/admin_add.ctp:8 View/Attachments/admin_edit.ctp:9
-#: View/Attachments/admin_index.ctp:13 View/Attachments/index.ctp:5
-#: View/BinaryFiles/admin_edit.ctp:7 View/BinaryFiles/admin_index.ctp:11
-#: View/BinaryFiles/index.ctp:5 View/BinaryFiles/test.ctp:5
-#: View/BinaryTexts/admin_index.ctp:11 View/Characters/admin_view.ctp:51
-#: View/FixedTexts/admin_view.ctp:23 View/Keywords/admin_view.ctp:51
+#: View/Attachments/admin_add.ctp:8
+#: View/Attachments/admin_edit.ctp:9
+#: View/Attachments/admin_index.ctp:13
+#: View/Attachments/index.ctp:5
+#: View/BinaryFiles/admin_edit.ctp:7
+#: View/BinaryFiles/admin_index.ctp:11
+#: View/BinaryFiles/index.ctp:5
+#: View/BinaryFiles/test.ctp:5
+#: View/BinaryTexts/admin_index.ctp:11
+#: View/Characters/admin_view.ctp:51
+#: View/FixedTexts/admin_view.ctp:23
+#: View/Keywords/admin_view.ctp:51
 #: View/Reviews/admin_index.ctp:9
 msgid "Filename"
 msgstr "Filename"
 
-#: View/Attachments/admin_add.ctp:12;13 View/Attachments/admin_edit.ctp:13;14
-#: View/Attachments/admin_index.ctp:15 View/Attachments/index.ctp:6
-#: View/BinaryFiles/admin_edit.ctp:8 View/BinaryFiles/admin_index.ctp:12
-#: View/BinaryFiles/index.ctp:6 View/BinaryFiles/test.ctp:6
-#: View/Quicksaves/add.ctp:17;18 View/Quicksaves/admin_edit.ctp:17;18
-#: View/Quicksaves/admin_index.ctp:21 View/Quicksaves/edit.ctp:17;18
-#: View/Quicksaves/index.ctp:21
+#: View/Attachments/admin_add.ctp:12;13
+#: View/Attachments/admin_edit.ctp:13;14
+#: View/Attachments/admin_index.ctp:15
+#: View/Attachments/index.ctp:6
+#: View/BinaryFiles/admin_edit.ctp:8
+#: View/BinaryFiles/admin_index.ctp:12
+#: View/BinaryFiles/index.ctp:6
+#: View/BinaryFiles/test.ctp:6
+#: View/Saves/add.ctp:17;18
+#: View/Saves/admin_edit.ctp:17;18
+#: View/Saves/admin_index.ctp:21
+#: View/Saves/edit.ctp:17;18
+#: View/Saves/index.ctp:21
 msgid "Description"
 msgstr "Description"
 
-#: View/Attachments/admin_add.ctp:17 View/Attachments/admin_edit.ctp:18
+#: View/Attachments/admin_add.ctp:17
+#: View/Attachments/admin_edit.ctp:18
 #: View/BinaryFiles/admin_edit.ctp:23
 #: View/BinaryTexts/admin_change_character.ctp:29
-#: View/BinaryTexts/admin_edit.ctp:31 View/BinaryTexts/edit.ctp:32
-#: View/Characters/admin_edit.ctp:20 View/Faqs/admin_add.ctp:24
-#: View/Faqs/admin_edit.ctp:25 View/FixedTexts/admin_edit.ctp:16
-#: View/Keywords/admin_add.ctp:17 View/Keywords/admin_edit.ctp:19
-#: View/Reviews/add.ctp:35 View/Reviews/admin_edit.ctp:45
-#: View/Reviews/edit.ctp:37 View/Quicksaves/add.ctp:22
-#: View/Quicksaves/admin_edit.ctp:22 View/Quicksaves/edit.ctp:22
-#: View/Users/admin_add.ctp:43 View/Users/admin_change_password.ctp:21
-#: View/Users/admin_edit.ctp:30 View/Users/change_password.ctp:25
+#: View/BinaryTexts/admin_edit.ctp:31
+#: View/BinaryTexts/edit.ctp:32
+#: View/Characters/admin_edit.ctp:20
+#: View/Faqs/admin_add.ctp:24
+#: View/Faqs/admin_edit.ctp:25
+#: View/FixedTexts/admin_edit.ctp:16
+#: View/Keywords/admin_add.ctp:17
+#: View/Keywords/admin_edit.ctp:19
+#: View/Reviews/add.ctp:35
+#: View/Reviews/admin_edit.ctp:45
+#: View/Reviews/edit.ctp:37
+#: View/Saves/add.ctp:22
+#: View/Saves/admin_edit.ctp:22
+#: View/Saves/edit.ctp:22
+#: View/Users/admin_add.ctp:43
+#: View/Users/admin_change_password.ctp:21
+#: View/Users/admin_edit.ctp:30
+#: View/Users/change_password.ctp:25
 #: View/Users/edit.ctp:19
 msgid "Submit"
 msgstr "Submit"
@@ -341,12 +364,18 @@ msgstr "Submit"
 msgid "Admin Edit Attachment"
 msgstr "Admin Edit Attachment"
 
-#: View/Attachments/admin_edit.ctp:7 View/Attachments/admin_index.ctp:17
-#: View/Attachments/index.ctp:7 View/BinaryTexts/admin_index.ctp:16
-#: View/FixedTexts/admin_index.ctp:11 View/Reviews/other_reviews.ctp:12
-#: View/Quicksaves/admin_index.ctp:19 View/Quicksaves/index.ctp:19
-#: View/Users/admin_add.ctp:7;8 View/Users/admin_edit.ctp:8
-#: View/Users/admin_index.ctp:11 View/Users/edit.ctp:8
+#: View/Attachments/admin_edit.ctp:7
+#: View/Attachments/admin_index.ctp:17
+#: View/Attachments/index.ctp:7
+#: View/BinaryTexts/admin_index.ctp:16
+#: View/FixedTexts/admin_index.ctp:11
+#: View/Reviews/other_reviews.ctp:12
+#: View/Saves/admin_index.ctp:19
+#: View/Saves/index.ctp:19
+#: View/Users/admin_add.ctp:7;8
+#: View/Users/admin_edit.ctp:8
+#: View/Users/admin_index.ctp:11
+#: View/Users/edit.ctp:8
 #: View/Users/login.ctp:7;8
 msgid "Username"
 msgstr "Username"
@@ -355,94 +384,148 @@ msgstr "Username"
 msgid "Attachments List"
 msgstr "Attachments List"
 
-#: View/Attachments/admin_index.ctp:19 View/Attachments/index.ctp:8
-#: View/Quicksaves/index.ctp:23 View/Users/admin_index.ctp:14
+#: View/Attachments/admin_index.ctp:19
+#: View/Attachments/index.ctp:8
+#: View/Saves/index.ctp:23
+#: View/Users/admin_index.ctp:14
 msgid "Created"
 msgstr "Created"
 
-#: View/Attachments/admin_index.ctp:21 View/Attachments/index.ctp:9
-#: View/BinaryFiles/admin_index.ctp:2;16 View/BinaryFiles/index.ctp:10
-#: View/BinaryFiles/test.ctp:10 View/BinaryTexts/admin_index.ctp:19
-#: View/BinaryTexts/index.ctp:19 View/Characters/admin_index.ctp:15
-#: View/Characters/admin_view.ctp:54 View/Faqs/admin_index.ctp:17
-#: View/FixedTexts/admin_index.ctp:15 View/FixedTexts/admin_view.ctp:25
-#: View/Keywords/admin_index.ctp:21 View/Keywords/admin_view.ctp:54
-#: View/Reviews/admin_index.ctp:17 View/Reviews/index.ctp:20
-#: View/Reviews/test.ctp:34 View/Quicksaves/admin_index.ctp:25
-#: View/Quicksaves/index.ctp:25 View/Users/admin_index.ctp:17
+#: View/Attachments/admin_index.ctp:21
+#: View/Attachments/index.ctp:9
+#: View/BinaryFiles/admin_index.ctp:2;16
+#: View/BinaryFiles/index.ctp:10
+#: View/BinaryFiles/test.ctp:10
+#: View/BinaryTexts/admin_index.ctp:19
+#: View/BinaryTexts/index.ctp:19
+#: View/Characters/admin_index.ctp:15
+#: View/Characters/admin_view.ctp:54
+#: View/Faqs/admin_index.ctp:17
+#: View/FixedTexts/admin_index.ctp:15
+#: View/FixedTexts/admin_view.ctp:25
+#: View/Keywords/admin_index.ctp:21
+#: View/Keywords/admin_view.ctp:54
+#: View/Reviews/admin_index.ctp:17
+#: View/Reviews/index.ctp:20
+#: View/Reviews/test.ctp:34
+#: View/Saves/admin_index.ctp:25
+#: View/Saves/index.ctp:25
+#: View/Users/admin_index.ctp:17
 msgid "Actions"
 msgstr "Actions"
 
-#: View/Attachments/admin_index.ctp:36 View/Attachments/index.ctp:20
-#: View/BinaryFiles/admin_index.ctp:56 View/BinaryFiles/index.ctp:61
-#: View/BinaryFiles/test.ctp:52 View/Quicksaves/admin_index.ctp:109
-#: View/Quicksaves/index.ctp:109
+#: View/Attachments/admin_index.ctp:36
+#: View/Attachments/index.ctp:20
+#: View/BinaryFiles/admin_index.ctp:56
+#: View/BinaryFiles/index.ctp:61
+#: View/BinaryFiles/test.ctp:52
+#: View/Saves/admin_index.ctp:109
+#: View/Saves/index.ctp:109
 msgid "Download"
 msgstr "Download"
 
-#: View/Attachments/admin_index.ctp:37 View/BinaryFiles/admin_index.ctp:54
-#: View/BinaryTexts/admin_index.ctp:123 View/BinaryTexts/index.ctp:100
-#: View/Characters/admin_index.ctp:84 View/Faqs/admin_index.ctp:26
-#: View/FixedTexts/admin_index.ctp:105 View/Keywords/admin_index.ctp:78
-#: View/Reviews/admin_index.ctp:131 View/Reviews/test.ctp:177
-#: View/Quicksaves/admin_index.ctp:111 View/Quicksaves/index.ctp:114
+#: View/Attachments/admin_index.ctp:37
+#: View/BinaryFiles/admin_index.ctp:54
+#: View/BinaryTexts/admin_index.ctp:123
+#: View/BinaryTexts/index.ctp:100
+#: View/Characters/admin_index.ctp:84
+#: View/Faqs/admin_index.ctp:26
+#: View/FixedTexts/admin_index.ctp:105
+#: View/Keywords/admin_index.ctp:78
+#: View/Reviews/admin_index.ctp:131
+#: View/Reviews/test.ctp:177
+#: View/Saves/admin_index.ctp:111
+#: View/Saves/index.ctp:114
 #: View/Users/admin_index.ctp:38
 msgid "Edit"
 msgstr "Edit"
 
-#: View/Attachments/admin_index.ctp:38 View/Faqs/admin_index.ctp:27
-#: View/Keywords/admin_index.ctp:79 View/Reviews/admin_index.ctp:132
-#: View/Reviews/test.ctp:181 View/Quicksaves/admin_index.ctp:112
-#: View/Quicksaves/index.ctp:115 View/Users/admin_index.ctp:40
+#: View/Attachments/admin_index.ctp:38
+#: View/Faqs/admin_index.ctp:27
+#: View/Keywords/admin_index.ctp:79
+#: View/Reviews/admin_index.ctp:132
+#: View/Reviews/test.ctp:181
+#: View/Saves/admin_index.ctp:112
+#: View/Saves/index.ctp:115
+#: View/Users/admin_index.ctp:40
 msgid "Delete"
 msgstr "Delete"
 
-#: View/Attachments/admin_index.ctp:38 View/Faqs/admin_index.ctp:27
-#: View/Keywords/admin_index.ctp:79 View/Reviews/admin_index.ctp:132
-#: View/Reviews/test.ctp:184 View/Users/admin_index.ctp:40
+#: View/Attachments/admin_index.ctp:38
+#: View/Faqs/admin_index.ctp:27
+#: View/Keywords/admin_index.ctp:79
+#: View/Reviews/admin_index.ctp:132
+#: View/Reviews/test.ctp:184
+#: View/Users/admin_index.ctp:40
 msgid "Delete %s?"
 msgstr "Delete %s?"
 
-#: View/Attachments/admin_index.ctp:46 View/Attachments/index.ctp:28
-#: View/BinaryFiles/admin_index.ctp:66 View/BinaryFiles/index.ctp:69
-#: View/BinaryFiles/test.ctp:60 View/BinaryTexts/admin_index.ctp:161
-#: View/BinaryTexts/index.ctp:115 View/Characters/admin_index.ctp:92
-#: View/Characters/admin_view.ctp:74 View/Faqs/admin_index.ctp:35
-#: View/FixedTexts/admin_index.ctp:113 View/FixedTexts/admin_view.ctp:44
-#: View/Keywords/admin_index.ctp:87 View/Keywords/admin_view.ctp:74
-#: View/Reviews/admin_index.ctp:140 View/Reviews/index.ctp:151
-#: View/Reviews/test.ctp:212 View/Quicksaves/admin_index.ctp:120
-#: View/Quicksaves/index.ctp:123 View/Users/admin_index.ctp:48
-msgid ""
-"Page {:page} of {:pages}, showing {:current} records out of {:count} total, "
-"starting on record {:start}, ending on {:end}"
-msgstr ""
-"Page {:page} of {:pages}, showing {:current} records out of {:count} total, "
-"starting on record {:start}, ending on {:end}"
+#: View/Attachments/admin_index.ctp:46
+#: View/Attachments/index.ctp:28
+#: View/BinaryFiles/admin_index.ctp:66
+#: View/BinaryFiles/index.ctp:69
+#: View/BinaryFiles/test.ctp:60
+#: View/BinaryTexts/admin_index.ctp:161
+#: View/BinaryTexts/index.ctp:115
+#: View/Characters/admin_index.ctp:92
+#: View/Characters/admin_view.ctp:74
+#: View/Faqs/admin_index.ctp:35
+#: View/FixedTexts/admin_index.ctp:113
+#: View/FixedTexts/admin_view.ctp:44
+#: View/Keywords/admin_index.ctp:87
+#: View/Keywords/admin_view.ctp:74
+#: View/Reviews/admin_index.ctp:140
+#: View/Reviews/index.ctp:151
+#: View/Reviews/test.ctp:212
+#: View/Saves/admin_index.ctp:120
+#: View/Saves/index.ctp:123
+#: View/Users/admin_index.ctp:48
+msgid "Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}"
+msgstr "Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}"
 
-#: View/Attachments/admin_index.ctp:53 View/Attachments/index.ctp:34
-#: View/BinaryFiles/admin_index.ctp:72 View/BinaryFiles/index.ctp:75
-#: View/BinaryFiles/test.ctp:66 View/BinaryTexts/admin_index.ctp:166
-#: View/BinaryTexts/index.ctp:121 View/Characters/admin_index.ctp:98
-#: View/Characters/admin_view.ctp:80 View/Faqs/admin_index.ctp:42
-#: View/FixedTexts/admin_index.ctp:118 View/FixedTexts/admin_view.ctp:50
-#: View/Keywords/admin_index.ctp:93 View/Keywords/admin_view.ctp:80
-#: View/Reviews/admin_index.ctp:145 View/Reviews/index.ctp:156
-#: View/Reviews/test.ctp:218 View/Quicksaves/admin_index.ctp:127
-#: View/Quicksaves/index.ctp:130 View/Users/admin_index.ctp:54
+#: View/Attachments/admin_index.ctp:53
+#: View/Attachments/index.ctp:34
+#: View/BinaryFiles/admin_index.ctp:72
+#: View/BinaryFiles/index.ctp:75
+#: View/BinaryFiles/test.ctp:66
+#: View/BinaryTexts/admin_index.ctp:166
+#: View/BinaryTexts/index.ctp:121
+#: View/Characters/admin_index.ctp:98
+#: View/Characters/admin_view.ctp:80
+#: View/Faqs/admin_index.ctp:42
+#: View/FixedTexts/admin_index.ctp:118
+#: View/FixedTexts/admin_view.ctp:50
+#: View/Keywords/admin_index.ctp:93
+#: View/Keywords/admin_view.ctp:80
+#: View/Reviews/admin_index.ctp:145
+#: View/Reviews/index.ctp:156
+#: View/Reviews/test.ctp:218
+#: View/Saves/admin_index.ctp:127
+#: View/Saves/index.ctp:130
+#: View/Users/admin_index.ctp:54
 msgid "previous"
 msgstr "previous"
 
-#: View/Attachments/admin_index.ctp:55 View/Attachments/index.ctp:36
-#: View/BinaryFiles/admin_index.ctp:74 View/BinaryFiles/index.ctp:77
-#: View/BinaryFiles/test.ctp:68 View/BinaryTexts/admin_index.ctp:168
-#: View/BinaryTexts/index.ctp:123 View/Characters/admin_index.ctp:100
-#: View/Characters/admin_view.ctp:82 View/Faqs/admin_index.ctp:44
-#: View/FixedTexts/admin_index.ctp:120 View/FixedTexts/admin_view.ctp:52
-#: View/Keywords/admin_index.ctp:95 View/Keywords/admin_view.ctp:82
-#: View/Reviews/admin_index.ctp:147 View/Reviews/index.ctp:158
-#: View/Reviews/test.ctp:220 View/Quicksaves/admin_index.ctp:129
-#: View/Quicksaves/index.ctp:132 View/Users/admin_index.ctp:56
+#: View/Attachments/admin_index.ctp:55
+#: View/Attachments/index.ctp:36
+#: View/BinaryFiles/admin_index.ctp:74
+#: View/BinaryFiles/index.ctp:77
+#: View/BinaryFiles/test.ctp:68
+#: View/BinaryTexts/admin_index.ctp:168
+#: View/BinaryTexts/index.ctp:123
+#: View/Characters/admin_index.ctp:100
+#: View/Characters/admin_view.ctp:82
+#: View/Faqs/admin_index.ctp:44
+#: View/FixedTexts/admin_index.ctp:120
+#: View/FixedTexts/admin_view.ctp:52
+#: View/Keywords/admin_index.ctp:95
+#: View/Keywords/admin_view.ctp:82
+#: View/Reviews/admin_index.ctp:147
+#: View/Reviews/index.ctp:158
+#: View/Reviews/test.ctp:220
+#: View/Saves/admin_index.ctp:129
+#: View/Saves/index.ctp:132
+#: View/Users/admin_index.ctp:56
 msgid "next"
 msgstr "next"
 
@@ -458,7 +541,8 @@ msgstr "Edit Binary File"
 msgid "Select Translator"
 msgstr "Select Translator"
 
-#: View/BinaryFiles/admin_edit.ctp:12 View/BinaryFiles/admin_index.ctp:13
+#: View/BinaryFiles/admin_edit.ctp:12
+#: View/BinaryFiles/admin_index.ctp:13
 #: View/BinaryFiles/test.ctp:7
 msgid "Translator"
 msgstr "Translator"
@@ -471,8 +555,10 @@ msgstr "Edit Title BinaryFile Username"
 msgid "Select Testers"
 msgstr "Select Testers"
 
-#: View/BinaryFiles/admin_edit.ctp:19 View/BinaryFiles/admin_index.ctp:14
-#: View/BinaryFiles/index.ctp:8 View/BinaryFiles/test.ctp:9
+#: View/BinaryFiles/admin_edit.ctp:19
+#: View/BinaryFiles/admin_index.ctp:14
+#: View/BinaryFiles/index.ctp:8
+#: View/BinaryFiles/test.ctp:9
 msgid "Testers"
 msgstr "Testers"
 
@@ -488,28 +574,40 @@ msgstr "Download All"
 msgid "Manage Binary Files List"
 msgstr "Manage Binary Files List"
 
-#: View/BinaryFiles/admin_index.ctp:15 View/BinaryTexts/admin_index.ctp:18
-#: View/BinaryTexts/index.ctp:18 View/Elements/texts_edit_form.ctp:12
-#: View/FixedTexts/admin_view.ctp:7 View/Reviews/admin_edit.ctp:24
-#: View/Reviews/admin_index.ctp:15 View/Reviews/index.ctp:18
+#: View/BinaryFiles/admin_index.ctp:15
+#: View/BinaryTexts/admin_index.ctp:18
+#: View/BinaryTexts/index.ctp:18
+#: View/Elements/texts_edit_form.ctp:12
+#: View/FixedTexts/admin_view.ctp:7
+#: View/Reviews/admin_edit.ctp:24
+#: View/Reviews/admin_index.ctp:15
+#: View/Reviews/index.ctp:18
 msgid "Validated"
 msgstr "Validated"
 
-#: View/BinaryFiles/admin_index.ctp:25;38 View/BinaryFiles/index.ctp:39
+#: View/BinaryFiles/admin_index.ctp:25;38
+#: View/BinaryFiles/index.ctp:39
 #: View/BinaryFiles/test.ctp:26
 msgid "Unassigned"
 msgstr "Unassigned"
 
-#: View/BinaryFiles/admin_index.ctp:44 View/BinaryFiles/index.ctp:24
+#: View/BinaryFiles/admin_index.ctp:44
+#: View/BinaryFiles/index.ctp:24
 msgid "%s of %s"
 msgstr "%s of %s"
 
-#: View/BinaryFiles/admin_index.ctp:47 View/BinaryFiles/index.ctp:27
-#: View/BinaryFiles/test.ctp:36 View/BinaryTexts/admin_index.ctp:76;114
-#: View/BinaryTexts/index.ctp:63;94 View/Characters/admin_index.ctp:29
-#: View/FixedTexts/admin_index.ctp:54;94 View/FixedTexts/admin_view.ctp:13
-#: View/Reviews/admin_index.ctp:77;123 View/Reviews/index.ctp:74;118
-#: View/Reviews/other_reviews.ctp:33 View/Reviews/test.ctp:75;94;134;158
+#: View/BinaryFiles/admin_index.ctp:47
+#: View/BinaryFiles/index.ctp:27
+#: View/BinaryFiles/test.ctp:36
+#: View/BinaryTexts/admin_index.ctp:76;114
+#: View/BinaryTexts/index.ctp:63;94
+#: View/Characters/admin_index.ctp:29
+#: View/FixedTexts/admin_index.ctp:54;94
+#: View/FixedTexts/admin_view.ctp:13
+#: View/Reviews/admin_index.ctp:77;123
+#: View/Reviews/index.ctp:74;118
+#: View/Reviews/other_reviews.ctp:33
+#: View/Reviews/test.ctp:75;94;134;158
 #: View/Users/admin_index.ctp:35
 msgid "Yes"
 msgstr "Yes"
@@ -518,12 +616,14 @@ msgstr "Yes"
 msgid "Binary Files Translate"
 msgstr "Binary Files Translate"
 
-#: View/BinaryFiles/index.ctp:7 View/BinaryFiles/test.ctp:8
+#: View/BinaryFiles/index.ctp:7
+#: View/BinaryFiles/test.ctp:8
 #: View/Reviews/test.ctp:19
 msgid "Validated texts"
 msgstr "Validated texts"
 
-#: View/BinaryFiles/index.ctp:9 View/Elements/menu.ctp:126
+#: View/BinaryFiles/index.ctp:9
+#: View/Elements/menu.ctp:126
 msgid "Reviews"
 msgstr "Reviews"
 
@@ -548,27 +648,36 @@ msgid "Change Character from Binary Text"
 msgstr "Change Character from Binary Text"
 
 #: View/BinaryTexts/admin_change_character.ctp:13
-#: View/BinaryTexts/admin_index.ctp:14 View/BinaryTexts/index.ctp:15
-#: View/Characters/admin_view.ctp:52 View/Elements/texts_edit_form.ctp:21
-#: View/FixedTexts/admin_index.ctp:9 View/FixedTexts/admin_view.ctp:5
-#: View/Keywords/admin_view.ctp:52 View/Reviews/admin_index.ctp:11
-#: View/Reviews/index.ctp:14 View/Reviews/test.ctp:15
+#: View/BinaryTexts/admin_index.ctp:14
+#: View/BinaryTexts/index.ctp:15
+#: View/Characters/admin_view.ctp:52
+#: View/Elements/texts_edit_form.ctp:21
+#: View/FixedTexts/admin_index.ctp:9
+#: View/FixedTexts/admin_view.ctp:5
+#: View/Keywords/admin_view.ctp:52
+#: View/Reviews/admin_index.ctp:11
+#: View/Reviews/index.ctp:14
+#: View/Reviews/test.ctp:15
 msgid "Text"
 msgstr "Text"
 
 #: View/BinaryTexts/admin_change_character.ctp:20
-#: View/BinaryTexts/admin_edit.ctp:19 View/BinaryTexts/edit.ctp:19
+#: View/BinaryTexts/admin_edit.ctp:19
+#: View/BinaryTexts/edit.ctp:19
 msgid "Original Character"
 msgstr "Original Character"
 
 #: View/BinaryTexts/admin_change_character.ctp:26
-#: View/BinaryTexts/admin_edit.ctp:25 View/BinaryTexts/admin_index.ctp:13
-#: View/BinaryTexts/edit.ctp:26 View/BinaryTexts/index.ctp:14
+#: View/BinaryTexts/admin_edit.ctp:25
+#: View/BinaryTexts/admin_index.ctp:13
+#: View/BinaryTexts/edit.ctp:26
+#: View/BinaryTexts/index.ctp:14
 #: View/FixedTexts/admin_edit.ctp:10
 msgid "Character"
 msgstr "Character"
 
-#: View/BinaryTexts/admin_edit.ctp:5 View/BinaryTexts/edit.ctp:5
+#: View/BinaryTexts/admin_edit.ctp:5
+#: View/BinaryTexts/edit.ctp:5
 msgid "Are you sure you want to change the character from the text?"
 msgstr "Are you sure you want to change the character from the text?"
 
@@ -580,49 +689,73 @@ msgstr "Manage Edit Binary Text"
 msgid "Manage Binary Texts List"
 msgstr "Manage Binary Texts List"
 
-#: View/BinaryTexts/admin_index.ctp:12 View/BinaryTexts/index.ctp:13
-#: View/Faqs/admin_add.ctp:7;9 View/Faqs/admin_edit.ctp:8;10
-#: View/Faqs/admin_index.ctp:13 View/Reviews/admin_index.ctp:10
-#: View/Reviews/index.ctp:13 View/Reviews/test.ctp:13
+#: View/BinaryTexts/admin_index.ctp:12
+#: View/BinaryTexts/index.ctp:13
+#: View/Faqs/admin_add.ctp:7;9
+#: View/Faqs/admin_edit.ctp:8;10
+#: View/Faqs/admin_index.ctp:13
+#: View/Reviews/admin_index.ctp:10
+#: View/Reviews/index.ctp:13
+#: View/Reviews/test.ctp:13
 msgid "Order"
 msgstr "Order"
 
-#: View/BinaryTexts/admin_index.ctp:15 View/BinaryTexts/index.ctp:16
-#: View/Characters/admin_view.ctp:53 View/Elements/texts_edit_form.ctp:6;7
-#: View/FixedTexts/admin_index.ctp:10 View/FixedTexts/admin_view.ctp:6
-#: View/Keywords/admin_view.ctp:53 View/Reviews/add.ctp:21
-#: View/Reviews/admin_edit.ctp:31 View/Reviews/admin_index.ctp:12
-#: View/Reviews/edit.ctp:23 View/Reviews/index.ctp:15 View/Reviews/test.ctp:17
+#: View/BinaryTexts/admin_index.ctp:15
+#: View/BinaryTexts/index.ctp:16
+#: View/Characters/admin_view.ctp:53
+#: View/Elements/texts_edit_form.ctp:6;7
+#: View/FixedTexts/admin_index.ctp:10
+#: View/FixedTexts/admin_view.ctp:6
+#: View/Keywords/admin_view.ctp:53
+#: View/Reviews/add.ctp:21
+#: View/Reviews/admin_edit.ctp:31
+#: View/Reviews/admin_index.ctp:12
+#: View/Reviews/edit.ctp:23
+#: View/Reviews/index.ctp:15
+#: View/Reviews/test.ctp:17
 msgid "New Text"
 msgstr "New Text"
 
-#: View/BinaryTexts/admin_index.ctp:17 View/BinaryTexts/index.ctp:17
-#: View/FixedTexts/admin_index.ctp:12 View/Users/admin_index.ctp:15
+#: View/BinaryTexts/admin_index.ctp:17
+#: View/BinaryTexts/index.ctp:17
+#: View/FixedTexts/admin_index.ctp:12
+#: View/Users/admin_index.ctp:15
 msgid "Modified"
 msgstr "Modified"
 
-#: View/BinaryTexts/admin_index.ctp:52 View/BinaryTexts/index.ctp:47
+#: View/BinaryTexts/admin_index.ctp:52
+#: View/BinaryTexts/index.ctp:47
 #: View/FixedTexts/admin_index.ctp:30
 msgid "Search Title Text"
 msgstr "Search Title Text"
 
-#: View/BinaryTexts/admin_index.ctp:60 View/BinaryTexts/index.ctp:55
+#: View/BinaryTexts/admin_index.ctp:60
+#: View/BinaryTexts/index.ctp:55
 #: View/FixedTexts/admin_index.ctp:38
 msgid "Search Title New Text"
 msgstr "Search Title New Text"
 
-#: View/BinaryTexts/admin_index.ctp:76;115 View/BinaryTexts/index.ctp:63;94
-#: View/Characters/admin_index.ctp:31 View/FixedTexts/admin_index.ctp:54;95
-#: View/FixedTexts/admin_view.ctp:14 View/Reviews/admin_index.ctp:77;124
-#: View/Reviews/index.ctp:74;119 View/Reviews/other_reviews.ctp:34
-#: View/Reviews/test.ctp:75;94;135;159 View/Users/admin_index.ctp:35
+#: View/BinaryTexts/admin_index.ctp:76;115
+#: View/BinaryTexts/index.ctp:63;94
+#: View/Characters/admin_index.ctp:31
+#: View/FixedTexts/admin_index.ctp:54;95
+#: View/FixedTexts/admin_view.ctp:14
+#: View/Reviews/admin_index.ctp:77;124
+#: View/Reviews/index.ctp:74;119
+#: View/Reviews/other_reviews.ctp:34
+#: View/Reviews/test.ctp:75;94;135;159
+#: View/Users/admin_index.ctp:35
 msgid "No"
 msgstr "No"
 
-#: View/BinaryTexts/admin_index.ctp:80 View/BinaryTexts/index.ctp:68
-#: View/FixedTexts/admin_index.ctp:68 View/Reviews/admin_index.ctp:84
-#: View/Reviews/index.ctp:81 View/Reviews/test.ctp:101
-#: View/Quicksaves/admin_index.ctp:87 View/Quicksaves/index.ctp:87
+#: View/BinaryTexts/admin_index.ctp:80
+#: View/BinaryTexts/index.ctp:68
+#: View/FixedTexts/admin_index.ctp:68
+#: View/Reviews/admin_index.ctp:84
+#: View/Reviews/index.ctp:81
+#: View/Reviews/test.ctp:101
+#: View/Saves/admin_index.ctp:87
+#: View/Saves/index.ctp:87
 msgid "Search"
 msgstr "Search"
 
@@ -630,7 +763,8 @@ msgstr "Search"
 msgid "Change Character"
 msgstr "Change Character"
 
-#: View/BinaryTexts/admin_index.ctp:147 View/BinaryTexts/index.ctp:105
+#: View/BinaryTexts/admin_index.ctp:147
+#: View/BinaryTexts/index.ctp:105
 #: View/FixedTexts/admin_view.ctp:2
 msgid "Fixed Text"
 msgstr "Fixed Text"
@@ -639,8 +773,10 @@ msgstr "Fixed Text"
 msgid "Edit Binary Text"
 msgstr "Edit Binary Text"
 
-#: View/BinaryTexts/index.ctp:7 View/Characters/admin_index.ctp:12;66
-#: View/Keywords/admin_index.ctp:17;61 View/Reviews/index.ctp:7
+#: View/BinaryTexts/index.ctp:7
+#: View/Characters/admin_index.ctp:12;66
+#: View/Keywords/admin_index.ctp:17;61
+#: View/Reviews/index.ctp:7
 msgid "Translate"
 msgstr "Translate"
 
@@ -652,7 +788,8 @@ msgstr "Binary Texts from %s"
 msgid "Search Character"
 msgstr "Search Character"
 
-#: View/BinaryTexts/index.ctp:66 View/FixedTexts/admin_index.ctp:57
+#: View/BinaryTexts/index.ctp:66
+#: View/FixedTexts/admin_index.ctp:57
 msgid "Search Title  Validated"
 msgstr "Search Title  Validated"
 
@@ -660,16 +797,22 @@ msgstr "Search Title  Validated"
 msgid "Admin Edit Character"
 msgstr "Admin Edit Character"
 
-#: View/Characters/admin_edit.ctp:7 View/Characters/admin_index.ctp:5
-#: View/Characters/admin_view.ctp:38 View/Keywords/admin_add.ctp:7;8
-#: View/Keywords/admin_edit.ctp:8 View/Keywords/admin_index.ctp:13
+#: View/Characters/admin_edit.ctp:7
+#: View/Characters/admin_index.ctp:5
+#: View/Characters/admin_view.ctp:38
+#: View/Keywords/admin_add.ctp:7;8
+#: View/Keywords/admin_edit.ctp:8
+#: View/Keywords/admin_index.ctp:13
 #: View/Keywords/admin_view.ctp:38
 msgid "Name"
 msgstr "Name"
 
-#: View/Characters/admin_edit.ctp:10;11 View/Characters/admin_index.ctp:6
-#: View/Characters/admin_view.ctp:39 View/Keywords/admin_add.ctp:12;13
-#: View/Keywords/admin_edit.ctp:13;14 View/Keywords/admin_index.ctp:15
+#: View/Characters/admin_edit.ctp:10;11
+#: View/Characters/admin_index.ctp:6
+#: View/Characters/admin_view.ctp:39
+#: View/Keywords/admin_add.ctp:12;13
+#: View/Keywords/admin_edit.ctp:13;14
+#: View/Keywords/admin_index.ctp:15
 #: View/Keywords/admin_view.ctp:39
 msgid "New Name"
 msgstr "New Name"
@@ -698,19 +841,23 @@ msgstr "Readonly title"
 msgid "Read Only"
 msgstr "Read Only"
 
-#: View/Characters/admin_index.ctp:11 View/Keywords/admin_index.ctp:17
+#: View/Characters/admin_index.ctp:11
+#: View/Keywords/admin_index.ctp:17
 msgid "Translate title"
 msgstr "Translate title"
 
-#: View/Characters/admin_index.ctp:13 View/Keywords/admin_index.ctp:19
+#: View/Characters/admin_index.ctp:13
+#: View/Keywords/admin_index.ctp:19
 msgid "Restore title"
 msgstr "Restore title"
 
-#: View/Characters/admin_index.ctp:14;75 View/Keywords/admin_index.ctp:19;71
+#: View/Characters/admin_index.ctp:14;75
+#: View/Keywords/admin_index.ctp:19;71
 msgid "Restore"
 msgstr "Restore"
 
-#: View/Characters/admin_index.ctp:38;51 View/Keywords/admin_index.ctp:35;48
+#: View/Characters/admin_index.ctp:38;51
+#: View/Keywords/admin_index.ctp:35;48
 msgid "%d matches"
 msgstr "%d matches"
 
@@ -726,12 +873,14 @@ msgstr "Restore Character %s?"
 msgid "Character's Texts"
 msgstr "Character's Texts"
 
-#: View/Characters/admin_view.ctp:48 View/FixedTexts/admin_view.ctp:20
+#: View/Characters/admin_view.ctp:48
+#: View/FixedTexts/admin_view.ctp:20
 #: View/Keywords/admin_view.ctp:48
 msgid "%s Matches"
 msgstr "%s Matches"
 
-#: View/Characters/admin_view.ctp:62 View/FixedTexts/admin_view.ctp:32
+#: View/Characters/admin_view.ctp:62
+#: View/FixedTexts/admin_view.ctp:32
 #: View/Keywords/admin_view.ctp:62
 msgid "View"
 msgstr "View"
@@ -740,11 +889,13 @@ msgstr "View"
 msgid "About Us"
 msgstr "About Us"
 
-#: View/Elements/footer.ctp:9 View/Pages/privacy.ctp:2
+#: View/Elements/footer.ctp:9
+#: View/Pages/privacy.ctp:2
 msgid "Privacy Policy"
 msgstr "Privacy Policy"
 
-#: View/Elements/footer.ctp:14 View/Layouts/error.ctp:40;50
+#: View/Elements/footer.ctp:14
+#: View/Layouts/error.ctp:40;50
 msgid "CakePHP: the rapid development php framework"
 msgstr "CakePHP: the rapid development php framework"
 
@@ -765,8 +916,8 @@ msgid "Attachments"
 msgstr "Attachments"
 
 #: View/Elements/menu.ctp:146
-msgid "Quicksaves"
-msgstr "Quicksaves"
+msgid "Saves"
+msgstr "Saves"
 
 #: View/Elements/menu.ctp:156
 msgid "Faqs"
@@ -784,11 +935,13 @@ msgstr "Manage Binary Files"
 msgid "Manage Binary Texts"
 msgstr "Manage Binary Texts"
 
-#: View/Elements/menu.ctp:187 View/Reviews/admin_index.ctp:6
+#: View/Elements/menu.ctp:187
+#: View/Reviews/admin_index.ctp:6
 msgid "Manage Reviews"
 msgstr "Manage Reviews"
 
-#: View/Elements/menu.ctp:194 View/FixedTexts/admin_index.ctp:6
+#: View/Elements/menu.ctp:194
+#: View/FixedTexts/admin_index.ctp:6
 msgid "Manage Fixed Texts"
 msgstr "Manage Fixed Texts"
 
@@ -809,8 +962,8 @@ msgid "Admin Faqs"
 msgstr "Admin Faqs"
 
 #: View/Elements/menu.ctp:236
-msgid "Admin Quicksaves"
-msgstr "Admin Quicksaves"
+msgid "Admin Saves"
+msgstr "Admin Saves"
 
 #: View/Elements/menu.ctp:243
 msgid "Admin Characters"
@@ -828,7 +981,8 @@ msgstr "Logout"
 msgid "Edit Profile"
 msgstr "Edit Profile"
 
-#: View/Elements/menu.ctp:280 View/Users/admin_change_password.ctp:4
+#: View/Elements/menu.ctp:280
+#: View/Users/admin_change_password.ctp:4
 #: View/Users/change_password.ctp:4
 msgid "Change Password"
 msgstr "Change Password"
@@ -877,20 +1031,24 @@ msgstr "It only accepts upper case, \"-\", \".\" and single quotation marks"
 msgid "$1 characters written"
 msgstr "$1 characters written"
 
-#: View/Errors/missing_action.ctp:4 View/Errors/missing_controller.ctp:4
+#: View/Errors/missing_action.ctp:4
+#: View/Errors/missing_controller.ctp:4
 msgid "This page dont exists."
 msgstr "This page dont exists."
 
-#: View/Faqs/admin_add.ctp:4 View/Faqs/admin_index.ctp:7
+#: View/Faqs/admin_add.ctp:4
+#: View/Faqs/admin_index.ctp:7
 msgid "Add Faq"
 msgstr "Add Faq"
 
-#: View/Faqs/admin_add.ctp:12;13 View/Faqs/admin_edit.ctp:13;14
+#: View/Faqs/admin_add.ctp:12;13
+#: View/Faqs/admin_edit.ctp:13;14
 #: View/Faqs/admin_index.ctp:14
 msgid "Question"
 msgstr "Question"
 
-#: View/Faqs/admin_add.ctp:19;20 View/Faqs/admin_edit.ctp:20;21
+#: View/Faqs/admin_add.ctp:19;20
+#: View/Faqs/admin_edit.ctp:20;21
 #: View/Faqs/admin_index.ctp:16
 msgid "Answer"
 msgstr "Answer"
@@ -959,11 +1117,13 @@ msgstr "CakePHP: the rapid development php framework:"
 msgid "About Title"
 msgstr "About Title"
 
-#: View/Pages/about.ctp:4 View/Pages/home.ctp:6
+#: View/Pages/about.ctp:4
+#: View/Pages/home.ctp:6
 msgid "Home Url Project"
 msgstr "http://www.elotrolado.net/hilo_proyecto-snatcher-en-espanol_1790142"
 
-#: View/Pages/about.ctp:4 View/Pages/home.ctp:4
+#: View/Pages/about.ctp:4
+#: View/Pages/home.ctp:4
 msgid "Home Title Project"
 msgstr "Snarcher Translator"
 
@@ -973,9 +1133,7 @@ msgstr "About Description"
 
 #: View/Pages/home.ctp:6
 msgid "Home Message Project"
-msgstr ""
-"Snatcher in Spanish is a project that began on July 21, 2012 and intends to "
-"take our language one of the greatest video games in history."
+msgstr "Snatcher in Spanish is a project that began on July 21, 2012 and intends to take our language one of the greatest video games in history."
 
 #: View/Pages/privacy.ctp:4
 msgid "Privacy Policy Description"
@@ -985,14 +1143,18 @@ msgstr "Privacy Policy Description"
 msgid "Add Review"
 msgstr "Add Review"
 
-#: View/Reviews/add.ctp:11;12 View/Reviews/admin_edit.ctp:13;14
-#: View/Reviews/admin_index.ctp:13;132 View/Reviews/edit.ctp:13;14
-#: View/Reviews/index.ctp:16 View/Reviews/other_reviews.ctp:8
+#: View/Reviews/add.ctp:11;12
+#: View/Reviews/admin_edit.ctp:13;14
+#: View/Reviews/admin_index.ctp:13;132
+#: View/Reviews/edit.ctp:13;14
+#: View/Reviews/index.ctp:16
+#: View/Reviews/other_reviews.ctp:8
 #: View/Reviews/test.ctp:22;28
 msgid "Review"
 msgstr "Review"
 
-#: View/Reviews/add.ctp:28 View/Reviews/admin_edit.ctp:38
+#: View/Reviews/add.ctp:28
+#: View/Reviews/admin_edit.ctp:38
 #: View/Reviews/edit.ctp:30
 msgid "Original Text"
 msgstr "Original Text"
@@ -1001,13 +1163,16 @@ msgstr "Original Text"
 msgid "Manage Edit Review"
 msgstr "Manage Edit Review"
 
-#: View/Reviews/admin_index.ctp:14 View/Reviews/index.ctp:17
+#: View/Reviews/admin_index.ctp:14
+#: View/Reviews/index.ctp:17
 msgid "Tester"
 msgstr "Tester"
 
-#: View/Reviews/admin_index.ctp:16 View/Reviews/index.ctp:19
-#: View/Reviews/other_reviews.ctp:13 View/Reviews/test.ctp:26;32
-#: View/Quicksaves/admin_index.ctp:23
+#: View/Reviews/admin_index.ctp:16
+#: View/Reviews/index.ctp:19
+#: View/Reviews/other_reviews.ctp:13
+#: View/Reviews/test.ctp:26;32
+#: View/Saves/admin_index.ctp:23
 msgid "Date"
 msgstr "Date"
 
@@ -1015,7 +1180,8 @@ msgstr "Date"
 msgid "Edit Review"
 msgstr "Edit Review"
 
-#: View/Reviews/index.ctp:9 View/Reviews/test.ctp:9
+#: View/Reviews/index.ctp:9
+#: View/Reviews/test.ctp:9
 msgid "Reviews from %s"
 msgstr "Reviews from %s"
 
@@ -1027,7 +1193,8 @@ msgstr "Validate"
 msgid "Validate Review?"
 msgstr "Validate Review?"
 
-#: View/Reviews/other_reviews.ctp:10 View/Reviews/test.ctp:24;30
+#: View/Reviews/other_reviews.ctp:10
+#: View/Reviews/test.ctp:24;30
 msgid "Validated reviews"
 msgstr "Validated reviews"
 
@@ -1043,83 +1210,98 @@ msgstr "Add review"
 msgid "Other Reviews"
 msgstr "Other Reviews"
 
-#: View/Quicksaves/add.ctp:4 View/Quicksaves/admin_index.ctp:7
-#: View/Quicksaves/index.ctp:7
-msgid "Add Quicksave"
-msgstr "Add Quicksave"
+#: View/Saves/add.ctp:4
+#: View/Saves/admin_index.ctp:7
+#: View/Saves/index.ctp:7
+msgid "Add Safe"
+msgstr "Add Safe"
 
-#: View/Quicksaves/add.ctp:8 View/Quicksaves/admin_edit.ctp:8
-#: View/Quicksaves/admin_index.ctp:13 View/Quicksaves/edit.ctp:8
-#: View/Quicksaves/index.ctp:13
+#: View/Saves/add.ctp:8
+#: View/Saves/admin_edit.ctp:8
+#: View/Saves/admin_index.ctp:13
+#: View/Saves/edit.ctp:8
+#: View/Saves/index.ctp:13
 msgid "Act"
 msgstr "Act"
 
-#: View/Quicksaves/add.ctp:12 View/Quicksaves/admin_edit.ctp:12
-#: View/Quicksaves/edit.ctp:12
+#: View/Saves/add.ctp:12
+#: View/Saves/admin_edit.ctp:12
+#: View/Saves/edit.ctp:12
 msgid "Binary File"
 msgstr "Binary File"
 
-#: View/Quicksaves/add.ctp:14 View/Quicksaves/admin_edit.ctp:14
-#: View/Quicksaves/edit.ctp:14
+#: View/Saves/add.ctp:14
+#: View/Saves/admin_edit.ctp:14
+#: View/Saves/edit.ctp:14
 msgid "Save slot"
 msgstr "Save slot"
 
-#: View/Quicksaves/admin_edit.ctp:4
-msgid "Admin Edit Quicksave"
-msgstr "Admin Edit Quicksave"
+#: View/Saves/admin_edit.ctp:4
+msgid "Admin Edit Safe"
+msgstr "Admin Edit Safe"
 
-#: View/Quicksaves/admin_index.ctp:3
-msgid "Admin Quicksaves List"
-msgstr "Admin Quicksaves List"
+#: View/Saves/admin_index.ctp:3
+msgid "Admin Saves List"
+msgstr "Admin Saves List"
 
-#: View/Quicksaves/admin_index.ctp:15 View/Quicksaves/index.ctp:15
+#: View/Saves/admin_index.ctp:15
+#: View/Saves/index.ctp:15
 msgid "BinaryFile"
 msgstr "BinaryFile"
 
-#: View/Quicksaves/admin_index.ctp:17 View/Quicksaves/index.ctp:17
+#: View/Saves/admin_index.ctp:17
+#: View/Saves/index.ctp:17
 msgid "Slot"
 msgstr "Slot"
 
-#: View/Quicksaves/admin_index.ctp:110 View/Quicksaves/index.ctp:110
+#: View/Saves/admin_index.ctp:110
+#: View/Saves/index.ctp:110
 msgid "Download Original"
 msgstr "Download Original"
 
-#: View/Quicksaves/admin_index.ctp:112 View/Quicksaves/index.ctp:115
-msgid "Delete Quicksave?"
-msgstr "Delete Quicksave?"
+#: View/Saves/admin_index.ctp:112
+#: View/Saves/index.ctp:115
+msgid "Delete Safe?"
+msgstr "Delete Safe?"
 
-#: View/Quicksaves/edit.ctp:4
-msgid "Edit Quicksave"
-msgstr "Edit Quicksave"
+#: View/Saves/edit.ctp:4
+msgid "Edit Safe"
+msgstr "Edit Safe"
 
-#: View/Quicksaves/index.ctp:3
-msgid "Quicksaves List"
-msgstr "Quicksaves List"
+#: View/Saves/index.ctp:3
+msgid "Saves List"
+msgstr "Saves List"
 
-#: View/Users/admin_add.ctp:4 View/Users/admin_index.ctp:5
+#: View/Users/admin_add.ctp:4
+#: View/Users/admin_index.ctp:5
 msgid "Add User"
 msgstr "Add User"
 
-#: View/Users/admin_add.ctp:13;14 View/Users/login.ctp:12;13
+#: View/Users/admin_add.ctp:13;14
+#: View/Users/login.ctp:12;13
 msgid "Password"
 msgstr "Password"
 
-#: View/Users/admin_add.ctp:19;20 View/Users/admin_change_password.ctp:16;17
+#: View/Users/admin_add.ctp:19;20
+#: View/Users/admin_change_password.ctp:16;17
 #: View/Users/change_password.ctp:20;21
 msgid "Repit Password"
 msgstr "Repit Password"
 
-#: View/Users/admin_add.ctp:25;26 View/Users/admin_edit.ctp:13
+#: View/Users/admin_add.ctp:25;26
+#: View/Users/admin_edit.ctp:13
 #: View/Users/admin_index.ctp:12
 msgid "Role"
 msgstr "Role"
 
-#: View/Users/admin_add.ctp:33 View/Users/admin_edit.ctp:20
+#: View/Users/admin_add.ctp:33
+#: View/Users/admin_edit.ctp:20
 #: View/Users/edit.ctp:13
 msgid "Timezone"
 msgstr "Timezone"
 
-#: View/Users/admin_add.ctp:39 View/Users/admin_edit.ctp:26
+#: View/Users/admin_add.ctp:39
+#: View/Users/admin_edit.ctp:26
 #: View/Users/admin_index.ctp:16
 msgid "Active"
 msgstr "Active"
@@ -1129,7 +1311,8 @@ msgstr "Active"
 msgid "New Password"
 msgstr "New Password"
 
-#: View/Users/admin_edit.ctp:4 View/Users/edit.ctp:4
+#: View/Users/admin_edit.ctp:4
+#: View/Users/edit.ctp:4
 msgid "Edit User"
 msgstr "Edit User"
 
@@ -1157,106 +1340,138 @@ msgstr "Please enter your username and password"
 msgid "Login"
 msgstr "Login"
 
-#: Model/Attachment.php:validation for field user_id Model/Faq.php:validation
-#: order Model/FixedText.php:validation Model/Review.php:validation
-#: user_id;validation binary_text_id Model/Quicksave.php:validation
+#: Model/Attachment.php:validation
+#: for field user_id Model/Faq.php:validation
+#: order Model/FixedText.php:validation
+#: Model/Review.php:validation
+#: user_id;validation binary_text_id Model/Safe.php:validation
 #: binary_file_id;validation act;validation slot Model/User.php:validation
 #: role_id
 msgid "numeric"
 msgstr "This field must be numeric"
 
-#: Model/Attachment.php:validation for field filename
-#: Model/BinaryFile.php:validation filename;validation description
-#: Model/BinaryText.php:validation character_id;validation order;validation
-#: text;validation new_text Model/Character.php:validation name;validation
-#: new_name Model/Faq.php:validation question;validation answer
-#: Model/FixedText.php:validation Model/Keyword.php:validation
-#: Model/Review.php:validation Model/Role.php:validation name
-#: Model/Quicksave.php:validation description;validation
-#: Model/User.php:validation username;validation old_password;validation
-#: timezone
+#: Model/Attachment.php:validation
+#: for field filename
+#: Model/BinaryFile.php:validation
+#: filename;validation description
+#: Model/BinaryText.php:validation
+#: character_id;validation order;validation
+#: text;validation new_text Model/Character.php:validation
+#: name;validation
+#: new_name Model/Faq.php:validation
+#: question;validation answer
+#: Model/FixedText.php:validation
+#: Model/Keyword.php:validation
+#: Model/Review.php:validation
+#: Model/Role.php:validation
+#: name
+#: Model/Safe.php:validation
+#: description;validation Model/User.php:validation
+#: username;validation old_password;validation timezone
 msgid "notempty"
 msgstr "This field can not be empty"
 
-#: Model/BinaryFile.php:validation for field Testers
+#: Model/BinaryFile.php:validation
+#: for field Testers
 msgid "Please select less than %d users."
 msgstr "Please select less than %d users."
 
-#: Model/BinaryFile.php:validation for field Testers
+#: Model/BinaryFile.php:validation
+#: for field Testers
 msgid "You can not remove users with reviews."
 msgstr "You can not remove users with reviews."
 
-#: Model/BinaryText.php:validation for field new_text
+#: Model/BinaryText.php:validation
+#: for field new_text
 msgid "You can not change the text if has a validated review."
 msgstr "You can not change the text if has a validated review."
 
-#: Model/Character.php:validation for field name;validation new_name
+#: Model/Character.php:validation
+#: for field name;validation new_name
 msgid "The name is already used"
 msgstr "The name is already used"
 
-#: Model/Character.php:validation for field readonly
-#: Model/FixedText.php:validation validated Model/Review.php:validation
-#: Model/User.php:validation active
+#: Model/Character.php:validation
+#: for field readonly
+#: Model/FixedText.php:validation
+#: validated Model/Review.php:validation
+#: Model/User.php:validation
+#: active
 msgid "boolean"
 msgstr "This field must be boolean"
 
-#: Model/Keyword.php:validation for field new_name
+#: Model/Keyword.php:validation
+#: for field new_name
 msgid "The new_name has same value than name"
 msgstr "The new name has same value than original name"
 
-#: Model/Keyword.php:validation for field new_name
+#: Model/Keyword.php:validation
+#: for field new_name
 msgid "Name and new name are already used"
 msgstr "Name and new name are already used"
 
-#: Model/Review.php:validation for field new_text
+#: Model/Review.php:validation
+#: for field new_text
 msgid "This text is already used for this review"
 msgstr "This text is already used for this review"
 
-#: Model/Review.php:validation for field new_text
+#: Model/Review.php:validation
+#: for field new_text
 msgid "The review is equals to the translation of binary text"
 msgstr "The review is equals to the translation of binary text"
 
-#: Model/Review.php:validation for field new_text
+#: Model/Review.php:validation
+#: for field new_text
 msgid "You can not change the review if has been validated."
 msgstr "You can not change the review if has been validated."
 
-#: Model/Review.php:validation for field validated
+#: Model/Review.php:validation
+#: for field validated
 msgid "There is already a validated review for the same binary text."
 msgstr "There is already a validated review for the same binary text."
 
-#: Model/Quicksave.php:validation for field act
+#: Model/Safe.php:validation
+#: for field act
 msgid "Enter an act between 1 and 3."
 msgstr "Enter an act between 1 and 3."
 
-#: Model/Quicksave.php:validation for field slot
+#: Model/Safe.php:validation
+#: for field slot
 msgid "Enter a slot between 0 and 9."
 msgstr "Enter a slot between 0 and 9."
 
-#: Model/User.php:validation for field username
+#: Model/User.php:validation
+#: for field username
 msgid "Username taken. Please use another."
 msgstr "Username taken. Please use another."
 
-#: Model/User.php:validation for field username
+#: Model/User.php:validation
+#: for field username
 msgid "Username must be at least 6 characters long."
 msgstr "Username must be at least 6 characters long."
 
-#: Model/User.php:validation for field old_password
+#: Model/User.php:validation
+#: for field old_password
 msgid "Old password incorrect"
 msgstr "Old password incorrect"
 
-#: Model/User.php:validation for field password
+#: Model/User.php:validation
+#: for field password
 msgid "Password cannot be less than 6 characters"
 msgstr "Password cannot be less than 6 characters"
 
-#: Model/User.php:validation for field password
+#: Model/User.php:validation
+#: for field password
 msgid "Password must contain letters and numbers"
 msgstr "Password must contain letters and numbers"
 
-#: Model/User.php:validation for field password
+#: Model/User.php:validation
+#: for field password
 msgid "Passwords do not match"
 msgstr "Passwords do not match"
 
-#: Model/User.php:validation for field repit_password
+#: Model/User.php:validation
+#: for field repit_password
 msgid "Repit password"
 msgstr "Repit password"
 
@@ -1284,8 +1499,8 @@ msgstr "Repit password"
 #~ msgid "New Keyword"
 #~ msgstr "New Keyword"
 
-#~ msgid "New Quicksave"
-#~ msgstr "New Quicksave"
+#~ msgid "New Safe"
+#~ msgstr "New Safe"
 
 #~ msgid "Users"
 #~ msgstr "Users"

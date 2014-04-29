@@ -1,9 +1,9 @@
 <div class="saves form">
-<?php echo $this->Form->create('Safe', array('type' => 'file', 'enctype' => 'multipart/form-data'));?>
+<?php echo $this->Form->create('Quicksave'); ?>
 	<fieldset>
-		<legend><?php echo __('Add Safe'); ?></legend>
+		<legend><?php echo __('Admin Edit Quicksave'); ?></legend>
 	<?php
-		echo $this->Form->input('filename', array('type' => 'file', 'label' => 'Filename'));
+		echo $this->Form->input('id');
 		echo $this->Form->input('act', array(
 				'label' => __('Act'), 
 				'type' => 'select', 
@@ -14,9 +14,9 @@
 		echo $this->Form->input('slot', array('label' => __('Save slot'), 'type' => 'select', 'options' => array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)));
 		
 		echo $this->Form->input('description', array(
-				'label' => __('Description'),
-				'placeholder' => __('Description'),				 
-				'type' => 'textarea'));				
+				'label' => __('Description'), 
+				'placeholder' => __('Description'),				
+				'type' => 'textarea'));		
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

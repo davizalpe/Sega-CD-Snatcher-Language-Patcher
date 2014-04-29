@@ -33,12 +33,12 @@ class User extends AppModel {
 	public function beforeSave($options = array()) {
 		if (isset($this->data[$this->alias]['password'])) {
 			
-			/* Bcrypt auth since 2.3, recomended */
-			// $hash = Security::hash($this->data[$this->alias]['password'], 'blowfish');
-			// $this->data[$this->alias]['password'] = $hash;
+			/* Bcrypt auth since 2.3, recomended. Require PHP 5.3 */
+			$hash = Security::hash($this->data[$this->alias]['password'], 'blowfish');
+			$this->data[$this->alias]['password'] = $hash;
 			
 			/* Traditional password hash */
-			$this->data['User']['password'] = AuthComponent::password($this->data['User']['password']);
+			// $this->data['User']['password'] = AuthComponent::password($this->data['User']['password']);
 		}
 		return true;
 	}	

@@ -1,19 +1,18 @@
 <?php
 App::uses('AppController', 'Controller');
 /**
- * Saves Controller
+ * Quicksaves Controller
  *
- * @property Safe $Safe
+ * @property Quicksave $Quicksave
  */
-class SavesController extends AppController {
-
-	public $components = array('Binary', 'Quicksave');
+class QuicksavesController extends AppController {
+	public $components = array('Binary', 'QuicksaveCreator');
 	
 	public $paginate = array(
 				'contain' => array('User.username', 'BinaryFile.filename'),
-				'order' => 'Safe.created desc',
+				'order' => 'Quicksave.created desc',
 			);
-	
+
 	/**
 	 * @see AppController::beforeFilter()
 	 */
@@ -23,7 +22,7 @@ class SavesController extends AppController {
 		$this->fileuploaddir = $this->files_path . $this->name . DS;
 		$this->ori_files_path = $this->fileuploaddir . 'original' . DS;
 		$this->new_files_path = $this->fileuploaddir . 'translated' . DS;
-	
+
 		$this->_checkdir($this->fileuploaddir);
 		$this->_checkdir($this->ori_files_path);
 		$this->_checkdir($this->new_files_path);
@@ -104,16 +103,16 @@ class SavesController extends AppController {
 	private function _callCreateBinaryFile($id, $admin = false)
 	{					
 		// Get al binary texts
-		$data = $this->Safe->BinaryFile->find('first', array(
+		$data = $this->Quicksave->BinaryFile->find('first', array(
 					'fields' => 'filename',
 					'contain' => array(
-							'BinaryText' => array('character_id', 'text_offset', 'text', 'new_text', 'nchars', 'Character.hex', 'OldCharacter.hex', 'BinaryFile.filename')
+							'BinaryText' => array('character_id', 'text_offset', 'text', 'new_text', 'nchars', 'Character.hex', 'OldCharacter.hex')
 							),
-					'conditions' => array($this->Safe->BinaryFile->alias . '.' . $this->Safe->BinaryFile->primaryKey => $id)
+					'conditions' => array($this->Quicksave->BinaryFile->alias . '.' . $this->Quicksave->BinaryFile->primaryKey => $id)
 				));		
 				
 		return $this->_createBinaryFile($data['BinaryFile']['filename'],
-					Inflector::pluralize($this->Safe->BinaryFile->name),
+					Inflector::pluralize($this->Quicksave->BinaryFile->name),
 					$data['BinaryText'],
 					$admin
 				);	
@@ -125,7 +124,7 @@ class SavesController extends AppController {
 	 * @param string $binary_file_path
 	 * @param boolean $admin
 	 */
-	private function _createSafeFile($filename, $binary_file_path, $admin)
+	private function _createQuicksaveFile($filename, $binary_file_path, $admin)
 	{
 		if( !file_exists($this->ori_files_path . $filename) )
 		{
@@ -134,7 +133,7 @@ class SavesController extends AppController {
 		}
 		
 		// Create new save
-		$this->Quicksave->writeFile(
+		$this->QuicksaveCreator->writeFile(
 				$this->ori_files_path . $filename,
 				$this->new_files_path . $filename,
 				$binary_file_path,
@@ -149,7 +148,7 @@ class SavesController extends AppController {
 	private function _getBinaryFiles(){
 	
 		$binary_files = array();
-		$data = $this->Safe->BinaryFile->find('all', array(
+		$data = $this->Quicksave->BinaryFile->find('all', array(
 				'recursive' => -1,
 				'fields' => array('id' , 'filename', 'description'),
 				'order' => 'filename'));
@@ -227,7 +226,7 @@ class SavesController extends AppController {
 		$this->paginate = array(
 				'contain' => array('BinaryFile' => array('user_id', 'filename'), 'User.username'),
 				'conditions' => array('AND' => 
-						$this->_searchConditions($this->Safe),
+						$this->_searchConditions($this->Quicksave),
 						array('OR' => array(
 								'BinaryFile.user_id' => $user_id,
 								'BinaryFileTesters.user_id' => $user_id
@@ -237,16 +236,16 @@ class SavesController extends AppController {
 							'table'=> 'binary_files_testers',
 				            'type' => 'LEFT',
 				            'alias' => 'BinaryFileTesters',
-				            'conditions' => 'BinaryFileTesters.binary_file_id = Safe.binary_file_id')),
-				'order' => 'Safe.modified DESC'
+				            'conditions' => 'BinaryFileTesters.binary_file_id = Quicksave.binary_file_id')),
+				'order' => 'Quicksave.modified DESC'
 				);
 		
-		$saves = $this->paginate();
+		$quicksaves = $this->paginate();
 			
-		$binaryFiles = $this->Safe->BinaryFile->find('list', array('fields' => array('id', 'filename'), 'order' => 'filename'));
-		$users = $this->Safe->User->find('list', array('fields' => array('id', 'username'), 'order' => 'username'));		
+		$binaryFiles = $this->Quicksave->BinaryFile->find('list', array('fields' => array('id', 'filename'), 'order' => 'filename'));
+		$users = $this->Quicksave->User->find('list', array('fields' => array('id', 'username'), 'order' => 'username'));		
 		
-		$this->set(compact('saves', 'binaryFiles', 'users'));
+		$this->set(compact('quicksaves', 'binaryFiles', 'users'));
 	}
 
 /**
@@ -258,15 +257,15 @@ class SavesController extends AppController {
 		if ($this->request->is('post'))
 		{
 			// set user id
-			$this->request->data['Safe']['user_id'] = $this->Auth->user('id');
+			$this->request->data['Quicksave']['user_id'] = $this->Auth->user('id');
 
 			// set filename
-			$this->request->data['Safe']['filename'] = $this->_fileUpload($this->request->data['Safe']['filename']);			
+			$this->request->data['Quicksave']['filename'] = $this->_fileUpload($this->request->data['Quicksave']['filename']);			
 			
 			$options = array('fieldList' => array('user_id', 'binary_file_id', 'act', 'slot', 'description', 'filename'));
 			
-			$this->Safe->create();
-			if ($this->Safe->save($this->request->data, $options)) {
+			$this->Quicksave->create();
+			if ($this->Quicksave->save($this->request->data, $options)) {
 				$this->Session->setFlash(__('The safe has been saved'));
 				$this->redirect($this->_redirectPassedArgs(array('index'), $admin));
 			} else {
@@ -288,15 +287,15 @@ class SavesController extends AppController {
  */
 	public function edit($id = null) 
 	{
-		if (!$this->Safe->exists($id)) {
+		if (!$this->Quicksave->exists($id)) {
 			throw new NotFoundException(__('Invalid safe'));
 		}
 		
-		$data = $this->Safe->find('first',
+		$data = $this->Quicksave->find('first',
 				array('fields' => array('user_id'),
-						'conditions' => array('Safe.' . $this->Safe->primaryKey => $id)));
+						'conditions' => array('Quicksave.' . $this->Quicksave->primaryKey => $id)));
 		
-		if( $data['Safe']['user_id'] != $this->Auth->user('id'))
+		if( $data['Quicksave']['user_id'] != $this->Auth->user('id'))
 		{
 			throw new NotFoundException(__('Invalid safe'));
 		}
@@ -305,7 +304,7 @@ class SavesController extends AppController {
 		{
 			$options = array('fieldList' => array('act', 'description', 'binary_file_id', 'slot'));
 			
-			if ($this->Safe->save($this->request->data, $options)) 
+			if ($this->Quicksave->save($this->request->data, $options)) 
 			{
 				$this->Session->setFlash(__('The safe has been saved'));
 				$this->redirect(array('action' => 'index'));
@@ -313,8 +312,8 @@ class SavesController extends AppController {
 				$this->Session->setFlash(__('The safe could not be saved. Please, try again.'));
 			}
 		} else {
-			$options = array('conditions' => array('Safe.' . $this->Safe->primaryKey => $id));
-			$this->request->data = $this->Safe->find('first', $options);
+			$options = array('conditions' => array('Quicksave.' . $this->Quicksave->primaryKey => $id));
+			$this->request->data = $this->Quicksave->find('first', $options);
 		}
 
 		$this->set('binaryFiles', $this->_getBinaryFiles());
@@ -330,28 +329,28 @@ class SavesController extends AppController {
 	 */
 	public function download($id = null, $admin = false, $original = false)
 	{
-		$this->Safe->id = $id;
-		if (!$this->Safe->exists($id)) {
+		$this->Quicksave->id = $id;
+		if (!$this->Quicksave->exists($id)) {
 			throw new NotFoundException(__('Invalid safe'));
 		}
 		
 		// Check if user can download this $id
-		if( !$this->_canDownload((int)$this->Safe->field('binary_file_id'), $this->Safe->BinaryFile) )
+		if( !$this->_canDownload((int)$this->Quicksave->field('binary_file_id'), $this->Quicksave->BinaryFile) )
 		{
 			throw new NotFoundException(__('Invalid safe'));
 		}		
 	
-		$data = $this->Safe->find('first', 
+		$data = $this->Quicksave->find('first', 
 				array('fields' => array('filename', 'slot', 'binary_file_id'), 
-						'conditions' => array('Safe.' . $this->Safe->primaryKey => $id)));		
+						'conditions' => array('Quicksave.' . $this->Quicksave->primaryKey => $id)));		
 	
 		if( !$original )
 		{
 			// Create binary file
-			$binary_file_path = $this->_callCreateBinaryFile($data['Safe']['binary_file_id'], $admin);
+			$binary_file_path = $this->_callCreateBinaryFile($data['Quicksave']['binary_file_id'], $admin);
 		
 			// Create save file
-			$this->_createSafeFile($data['Safe']['filename'], $binary_file_path, $admin);
+			$this->_createQuicksaveFile($data['Quicksave']['filename'], $binary_file_path, $admin);
 			
 			$dir = 'translated' . DS;
 		}else{
@@ -360,8 +359,8 @@ class SavesController extends AppController {
 	
 		$this->viewClass = 'Media';
 		$params = array(
-				'id'        => $data['Safe']['filename'],
-				'name'      => $this->filename . $data['Safe']['slot'],
+				'id'        => $data['Quicksave']['filename'],
+				'name'      => $this->filename . $data['Quicksave']['slot'],
 				'download'  => true,
 				'path'      => $this->path . $dir
 		);
@@ -378,16 +377,16 @@ class SavesController extends AppController {
  * @return void
  */
 	public function delete($id = null) {
-		$this->Safe->id = $id;
-		if (!$this->Safe->exists()) {
+		$this->Quicksave->id = $id;
+		if (!$this->Quicksave->exists()) {
 			throw new NotFoundException(__('Invalid safe'));
 		}
 		
-		$data = $this->Safe->find('first',
+		$data = $this->Quicksave->find('first',
 				array('fields' => array('user_id', 'filename'),
-						'conditions' => array('Safe.' . $this->Safe->primaryKey => $id)));		
+						'conditions' => array('Quicksave.' . $this->Quicksave->primaryKey => $id)));		
 		
-		if( $data['Safe']['user_id'] != $this->Auth->user('id'))
+		if( $data['Quicksave']['user_id'] != $this->Auth->user('id'))
 		{
 			throw new NotFoundException(__('Invalid safe'));
 		}
@@ -395,14 +394,14 @@ class SavesController extends AppController {
 		$this->request->onlyAllow('post', 'delete');
 
 		// Delete save file
-		$this->_deleteFile($data['Safe']['filename']);
+		$this->_deleteFile($data['Quicksave']['filename']);
 		
-		if ($this->Safe->delete()) {
-			$this->Session->setFlash(__('Safe deleted'));
-			$this->redirect($this->_redirectPassedArgs());
+		if ($this->Quicksave->delete()) {
+			$this->Session->setFlash(__('Quicksave deleted'));
+			$this->redirect(array('action' => 'index'));
 		}
-		$this->Session->setFlash(__('Safe was not deleted'));
-		$this->redirect($this->_redirectPassedArgs());
+		$this->Session->setFlash(__('Quicksave was not deleted'));
+		$this->redirect(array('action' => 'index'));
 	}
 
 /**
@@ -411,19 +410,19 @@ class SavesController extends AppController {
  * @return void
  */
 	public function admin_index() {
-		$this->Safe->recursive = 0;
+		$this->Quicksave->recursive = 0;
 		
 		$this->paginate = array(
-				'conditions' => $this->_searchConditions($this->Safe),
-				'order' => 'Safe.modified DESC'
+				'conditions' => $this->_searchConditions($this->Quicksave)
+				,'order' => 'Quicksave.modified DESC'
 		);
 		
-		$saves = $this->paginate();
+		$quicksaves = $this->paginate();
 		
-		$binaryFiles = $this->Safe->BinaryFile->find('list', array('fields' => array('id', 'filename'), 'order' => 'filename'));
-		$users = $this->Safe->User->find('list', array('fields' => array('id', 'username'), 'order' => 'username'));		
+		$binaryFiles = $this->Quicksave->BinaryFile->find('list', array('fields' => array('id', 'filename'), 'order' => 'filename'));
+		$users = $this->Quicksave->User->find('list', array('fields' => array('id', 'username'), 'order' => 'username'));		
 		
-		$this->set(compact('saves', 'binaryFiles', 'users'));
+		$this->set(compact('quicksaves', 'binaryFiles', 'users'));
 	}
 
 /**
@@ -434,22 +433,22 @@ class SavesController extends AppController {
  * @return void
  */
 	public function admin_edit($id = null) {
-		if (!$this->Safe->exists($id)) {
+		if (!$this->Quicksave->exists($id)) {
 			throw new NotFoundException(__('Invalid safe'));
 		}
 		if ($this->request->is('post') || $this->request->is('put'))
 		{			
 			$options = array('fieldList' => array('act', 'description', 'binary_file_id', 'slot'));
 			
-			if ($this->Safe->save($this->request->data, $options)) {
+			if ($this->Quicksave->save($this->request->data, $options)) {
 				$this->Session->setFlash(__('The safe has been saved'));
 				$this->redirect($this->_redirectPassedArgs());
 			} else {
 				$this->Session->setFlash(__('The safe could not be saved. Please, try again.'));
 			}
 		} else {
-			$options = array('conditions' => array('Safe.' . $this->Safe->primaryKey => $id));
-			$this->request->data = $this->Safe->find('first', $options);
+			$options = array('conditions' => array('Quicksave.' . $this->Quicksave->primaryKey => $id));
+			$this->request->data = $this->Quicksave->find('first', $options);
 		}
 		$this->set('binaryFiles', $this->_getBinaryFiles());
 	}
@@ -463,26 +462,26 @@ class SavesController extends AppController {
  * @return void
  */
 	public function admin_delete($id = null) {
-		$this->Safe->id = $id;
-		if (!$this->Safe->exists()) {
+		$this->Quicksave->id = $id;
+		if (!$this->Quicksave->exists()) {
 			throw new NotFoundException(__('Invalid safe'));
 		}
 		
 		$this->request->onlyAllow('post', 'delete');
 		
-		$data = $this->Safe->find('first',
+		$data = $this->Quicksave->find('first',
 				array('fields' => array('filename'),
-						'conditions' => array('Safe.' . $this->Safe->primaryKey => $id)));		
+						'conditions' => array('Quicksave.' . $this->Quicksave->primaryKey => $id)));		
 		
 		// Delete file
-		$this->_deleteFile($data['Safe']['filename']);		
+		$this->_deleteFile($data['Quicksave']['filename']);		
 		
-		if ($this->Safe->delete()) {
-			$this->Session->setFlash(__('Safe deleted'));
-			$this->redirect($this->_redirectPassedArgs());
+		if ($this->Quicksave->delete()) {
+			$this->Session->setFlash(__('Quicksave deleted'));
+			$this->redirect(array('action' => 'index'));
 		}
-		$this->Session->setFlash(__('Safe was not deleted'));
-		$this->redirect($this->_redirectPassedArgs());
+		$this->Session->setFlash(__('Quicksave was not deleted'));
+		$this->redirect(array('action' => 'index'));
 	}
 	
 }

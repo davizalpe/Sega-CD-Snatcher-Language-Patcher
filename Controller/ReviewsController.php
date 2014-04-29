@@ -458,7 +458,6 @@ class ReviewsController extends AppController {
 			/* Quit the checkRepitedText validation from new_text
 			 * in review model for you can set validated to false in reviews */
 			unset($this->Review->validate['new_text']['checkRepitedText']);
-			unset($this->Review->validate['new_text']['isValidatedText']);					
 
 			$params = array('fieldList' => array('new_text', 'validated'));
 			if ($this->Review->save($this->request->data, $params)) {

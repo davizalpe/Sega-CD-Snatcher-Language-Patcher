@@ -1,10 +1,10 @@
 <div class="saves index">
 	<h2>
-		<?php echo __('Admin Saves List'); ?>
+		<?php echo __('Quicksaves List'); ?>
 	</h2>
 	<div class="actions">
 		<ul>
-			<li><?php echo $this->Html->link(__('Add Safe'), array('admin' => false, 'action' => 'add', true)); ?>
+			<li><?php echo $this->Html->link(__('Add Quicksave'), array('action' => 'add')); ?>
 			</li>
 		</ul>
 	</div>
@@ -20,17 +20,14 @@
 			</th>
 			<th width="45%"><?php echo $this->Paginator->sort('description', __('Description')); ?>
 			</th>
-			<th width="15%"><?php echo $this->Paginator->sort('created', __('Date')); ?>
+			<th width="15%"><?php echo $this->Paginator->sort('created', __('Created')); ?>
 			</th>
 			<th width="15%" class="actions"><?php echo __('Actions'); ?>
 			</th>
 		</tr>
 
-		<tr>
-		
-		
 		<tr class="search">
-			<?php echo $this->Form->create('Safe', array('url' => array('admin' => false, 'action' => 'search', true)));?>
+			<?php echo $this->Form->create('Quicksave', array('url' => array('action' => 'search')));?>
 
 			<th><?php 
 			echo $this->Form->input('Search.act', array(
@@ -42,7 +39,8 @@
 				'options' => array(1 => 1, 2 => 2, 3 => 3),
 		));
 
-		?></th>
+		?>
+			</th>
 			<th><?php echo $this->Form->input(
 					'Search.binary_file_id',
 					array('label' => false,
@@ -50,7 +48,8 @@
 						'empty' => '',
 						'onchange' => 'this.form.submit();')
 				);
-			?></th>
+			?>
+			</th>
 
 			<th><?php echo $this->Form->input(
 					'Search.slot', 
@@ -62,7 +61,8 @@
 					'options' => array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9),
 					'onchange' => 'this.form.submit();')
 			);
-			?></th>
+			?>
+			</th>
 
 
 			<th><?php echo $this->Form->input(
@@ -71,7 +71,8 @@
 									'empty' => '',
 									'onchange' => 'this.form.submit();')
 							);
-			?></th>
+			?>
+			</th>
 
 			<th><?php echo $this->Form->input(
 					'Search.description',
@@ -79,8 +80,7 @@
 									'type' => 'text',
 									'size' => 20,
 									'maxlength' => 255));
-			?>
-			</th>
+			?></th>
 
 			<th></th>
 
@@ -90,29 +90,30 @@
 		</tr>
 
 		<?php
-	foreach ($saves as $safe): ?>
+	foreach ($quicksaves as $quicksave): ?>
 		<tr>
-			<td><?php echo h($safe['Safe']['act']); ?>
+			<td><?php echo h($quicksave['Quicksave']['act']); ?>
 			</td>
-			<td><?php echo h($safe['BinaryFile']['filename']); ?>
+			<td><?php echo h($quicksave['BinaryFile']['filename']); ?>
 			</td>
-			<td><?php echo h($safe['Safe']['slot']); ?>
+			<td><?php echo h($quicksave['Quicksave']['slot']); ?>
 			</td>
-			<td><?php echo h($safe['User']['username']); ?>
+			<td><?php echo h($quicksave['User']['username']); ?>
 			</td>
-			<td><?php echo h($safe['Safe']['description']); ?>
+			<td><?php echo h($quicksave['Quicksave']['description']); ?>
 			</td>
-			<td><?php echo $this->Time->format('d/m/Y H:i', $safe['Safe']['modified']
+			<td><?php echo $this->Time->format('d/m/Y H:i', $quicksave['Quicksave']['modified']
 					, null, $this->Session->read("Auth.User.timezone")); ?>
 			</td>
 			<td class="actions">
-				<?php echo $this->Html->link(__('Download'), array('admin' => false, 'action' => 'download', $safe['Safe']['id'], true)); ?>
-				<?php echo $this->Html->link(__('Download Original'), array('admin' => false, 'action' => 'download', $safe['Safe']['id'], true, true)); ?>
-				<?php echo $this->Html->link(__('Edit'), array_merge(
-						$this->passedArgs,array('action' => 'edit', $safe['Safe']['id']))); ?>
-				<?php echo $this->Form->postLink(__('Delete'), array_merge(
-						$this->passedArgs,array('action' => 'delete', $safe['Safe']['id'])), null, __('Delete Safe?')); ?>
-			</td>
+				<?php echo $this->Html->link(__('Download'), array('action' => 'download', $quicksave['Quicksave']['id'])); ?>
+				<?php echo $this->Html->link(__('Download Original'), array('admin' => false, 'action' => 'download', $quicksave['Quicksave']['id'], true, true)); ?>
+				<?php 
+				// Can access owner
+			if($this->Session->read('Auth.User.id') == $quicksave['Quicksave']['user_id']):?>
+				<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $quicksave['Quicksave']['id'])); ?>
+				<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $quicksave['Quicksave']['id']), null, __('Delete Quicksave?')); ?>
+				<?php endif; ?></td>
 		</tr>
 		<?php endforeach; ?>
 	</table>

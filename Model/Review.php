@@ -33,7 +33,7 @@ class Review extends AppModel {
 		return true;
 	}
 	
-	public function afterSave($created)
+	public function afterSave($created, $options = array())
 	{
 		// Execute updateAll only when update
 		if( !$created )
@@ -70,7 +70,7 @@ class Review extends AppModel {
 	 * Check if a review can be deleted
 	 * @return boolean returns false if review is validated.
 	 */
-	public function beforeDelete(){
+	public function beforeDelete($cascade = true){
 		if($this->field('validated')){
 			return false;
 		}
@@ -150,7 +150,7 @@ class Review extends AppModel {
 	*/
 	public function hasValidatedReview($data)
 	{
-		if( isset($data['validated']) && ($data['validated']) )
+		if( isset($data['validated']) )
 		{
 			return !$this->field('hasValidatedReview');
 		}

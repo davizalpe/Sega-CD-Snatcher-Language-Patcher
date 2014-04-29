@@ -48,8 +48,7 @@
 			?></th>
 			<th><?php echo $this->Form->input(
 							'Search.BinaryText.new_text', 
-							array('label' => false,
-									'required' => false, 
+							array('label' => false, 
 									'type' => 'text', 
 									'size' => 20, 
 									'maxlength' => 255, 
@@ -58,7 +57,6 @@
 			<th><?php echo $this->Form->input(
 							'Search.new_text', 
 							array('label' => false, 
-									'required' => false,
 									'type' => 'text', 
 									'size' => 20, 
 									'maxlength' => 255, 
@@ -130,10 +128,8 @@
 		<td><?php echo $this->Time->format('d/m/Y H:i', $review['Review']['modified']
 				, null, $this->Session->read("Auth.User.timezone")); ?></td>
 		<td class="actions">
-			<?php echo $this->Html->link(__('Edit'), array_merge(
-						$this->passedArgs, array('action' => 'edit', $review['Review']['id']))); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array_merge(
-						$this->passedArgs,array('action' => 'delete', $review['Review']['id'])), null, __('Delete %s?', __('Review'))); ?>
+			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $review['Review']['id'])); ?>
+			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $review['Review']['id']), null, __('Delete %s?', __('Review'))); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>

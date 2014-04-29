@@ -6,7 +6,7 @@
  *
  */
 //set_time_limit(0);
-class QuicksaveComponent extends Component {
+class QuicksaveCreatorComponent extends Component {
 	
 	/** 
 	 * @param ComponentCollection $collection

@@ -18,8 +18,8 @@ This is a CakePHP project to modify the texts from the great videogame Snatcher 
 # REQUIREMENTS # 
 ################
 
-- CakePHP 2.3 or later
-- jQuery 1.8 or later
+- CakePHP 2.4.8 or later
+- jQuery 1.10 or later
 - PHP 5.2 or later
 - Web Server and MySQL database
 

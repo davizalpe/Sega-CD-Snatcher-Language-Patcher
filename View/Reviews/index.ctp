@@ -46,7 +46,6 @@
 			<th><?php echo $this->Form->input(
 							'Search.BinaryText.new_text', 
 							array('label' => false, 
-									'required' => false,
 									'type' => 'text', 
 									'size' => 20, 
 									'maxlength' => 255, 
@@ -55,7 +54,6 @@
 			<th><?php echo $this->Form->input(
 							'Search.new_text', 
 							array('label' => false, 
-									'required' => false,
 									'type' => 'text', 
 									'size' => 20, 
 									'maxlength' => 255, 

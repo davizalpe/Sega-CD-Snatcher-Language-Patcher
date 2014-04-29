@@ -3,7 +3,7 @@
 function _isAdmin($params)
 {
 	$array_list = array('users',
-			'saves',
+			'quicksaves',
 			'characters',
 			'keywords',
 			'faqs'
@@ -40,7 +40,7 @@ function _isManager($params)
 
 function _isFile($params)
 {
-	$array_list = array('attachments', 'saves');
+	$array_list = array('attachments', 'quicksaves');
 			
 	if(
 			!isset($params['admin']) &&
@@ -143,8 +143,8 @@ function _isFaq($params)
 			
 			<li>			
 				<?php echo $this->Html->link(
-							__('Saves', true),
-							array('admin' => false, 'plugin' => false, 'controller' => 'saves', 'action' => 'index'));
+							__('Quicksaves', true),
+							array('admin' => false, 'plugin' => false, 'controller' => 'quicksaves', 'action' => 'index'));
 				?>	
 			</li>			
 		</ul>
@@ -233,8 +233,8 @@ function _isFaq($params)
 			
 			<li>			
 				<?php echo $this->Html->link(
-							__('Admin Saves', true),
-							array('admin' => true, 'plugin' => false, 'controller' => 'saves', 'action' => 'index'));
+							__('Admin Quicksaves', true),
+							array('admin' => true, 'plugin' => false, 'controller' => 'quicksaves', 'action' => 'index'));
 				?>	
 			</li>	
 			

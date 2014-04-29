@@ -22,10 +22,10 @@ class AppController extends Controller {
         	'loginAction' => array('admin' => false, 'plugin' => false, 'controller' => 'users', 'action' => 'login'),
             'loginRedirect' => array('admin' => false, 'plugin' => false, 'controller' => 'binary_files', 'action' => 'index'),
             'logoutRedirect' => array('admin' => false, 'plugin' => false, 'controller' => 'pages', 'action' => 'display', 'home'),
-        	/* Bcrypt auth since 2.3 recomended */
-			//'authenticate'  => array('Blowfish' => array('scope' => array('User.active' => true))),
+        	/* Bcrypt auth since 2.3 recomended. Require PHP 5.3 */
+		'authenticate'  => array('Blowfish' => array('scope' => array('User.active' => true))),
         	/* tradicional Auth login form */
-        	'authenticate'  => array('all' => array('scope' => array('User.active' => true)), 'Form'),        
+        	// 'authenticate'  => array('all' => array('scope' => array('User.active' => true)), 'Form'),        
     ));
 	   
 	public $helpers = array('Html', 'Js' => array('Jquery'));

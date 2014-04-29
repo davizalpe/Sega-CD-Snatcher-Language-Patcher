@@ -1,12 +1,12 @@
 <?php
 App::uses('AppModel', 'Model');
 /**
- * Safe Model
+ * Quicksave Model
  *
  * @property User $User
  * @property BinaryFile $BinaryFile
  */
-class Safe extends AppModel {
+class Quicksave extends AppModel {
 
 /**
  * Display field
