@@ -397,7 +397,7 @@ INSERT INTO `acos` (`id`, `parent_id`, `model`, `foreign_key`, `alias`, `lft`, `
 (278, 274, NULL, NULL, 'admin_add', 47, 48),
 (279, 274, NULL, NULL, 'admin_delete', 49, 50),
 (286, 215, NULL, NULL, 'FixedTexts', 52, 61),
-(293, 215, NULL, NULL, 'Saves', 62, 81),
+(293, 215, NULL, NULL, 'Quicksaves', 62, 81),
 (294, 293, NULL, NULL, 'index', 63, 64),
 (295, 293, NULL, NULL, 'download', 65, 66),
 (296, 293, NULL, NULL, 'add', 67, 68),
