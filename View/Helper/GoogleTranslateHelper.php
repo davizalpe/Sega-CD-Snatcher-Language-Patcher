@@ -46,24 +46,21 @@ class GoogleTranslateHelper extends AppHelper {
 	{
 		$url['host'] = $this->baseUrl['host'];
 		$url['path'] = $this->baseUrl['path'];
-		$url['port'] = 80;
+		$url['port'] = 443;
 		
 		$path = (isset($url['path'])) ? $url['path'] : '/';		
 		
 		if (isset($url['host']) && $url['host'] != gethostbyname($url['host'])) {
 		
-			$fp = fsockopen($url['host'], $url['port'], $errno, $errstr, 30);
-		
+            $fp = fsockopen('ssl://' . $url['host'], $url['port'], $errno, $errstr, 30);
+	
 			if (!$fp) return false; //socket not opened
 		
 			fputs($fp, "HEAD $path HTTP/1.1\r\nHost: $url[host]\r\n\r\n"); //socket opened
 			$headers = fread($fp, 4096);
 			fclose($fp);
 		
-			if(preg_match('#^HTTP/.*\s+[(200|301|302)]+\s#i', $headers)){//matching header
-				return true;
-			}
-			else return false;
+			return preg_match('#^HTTP/.*\s+[(200|301|302)]+\s#i', $headers); //matching header
 		
 		} // if parse url
 		else return false;
@@ -80,6 +77,7 @@ class GoogleTranslateHelper extends AppHelper {
 			return null;
 		}
 	
+/*
 		$this->connect = new HttpSocket();
 		$contents = $this->connect->get(
 				$this->baseUrl,
@@ -92,6 +90,28 @@ class GoogleTranslateHelper extends AppHelper {
 		}
 		
 		return $contents->body();
+*/
+
+                $url = "https://". $this->baseUrl['host'] . $this->baseUrl['path'];
+                $data = array('q' => $text, 'langpair' => $this->fromLang . '|' . $this->toLang);
+                $options = array(
+                                'http' => array(
+                                                'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                                                'method'  => 'POST',
+                                                'content' => http_build_query($data),
+                                )
+                );
+
+                $context  = stream_context_create($options);
+                $result = file_get_contents($url, false, $context);
+
+                if(!$result)
+                {
+                        return null;
+                }
+
+                return $result;
+
 	}
 	
 	/**
@@ -108,10 +128,12 @@ class GoogleTranslateHelper extends AppHelper {
 		if( ($ini === false) || ($fin === false) ){
 			return false;
 		}
+		
 		$result = substr($contents, $ini+strlen($text_ini), $fin-$ini-strlen($text_ini));
 					
-		// Remove all span tags beetwen the text
-		$result = preg_replace('/<\/span><span title="[^>]*">/', '', $result);
+		/* Remove all span tags beetwen the text */
+		$result = preg_replace('/<\/span>/', '', $result);
+		$result = preg_replace('/<span title=[^>].*>/', '', $result);
 		
 		return $result;
 	}
