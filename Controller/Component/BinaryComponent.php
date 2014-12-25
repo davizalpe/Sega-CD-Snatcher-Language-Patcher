@@ -37,9 +37,9 @@ class BinaryComponent extends Component {
 			$this->wildcard_chars_temp[] = "<".$key.">";
 		}
 		
-		// Replace chars that not supports by default original binary file.
-		$this->array_old_lang_chars = array('á', 'é', 'í', 'ó', 'ú', 'Á', 'É', 'Í', 'Ó', 'Ú', 'ñ', 'Ñ', '¡', '¿', 'ü', 'Ü');
-		$this->array_new_lang_chars = array('`', '{', '|', '}', '~', 'A', 'E', 'I', 'O', 'U', '^', '=', '*', '\\', '$', 'U');
+		// Replace characters that are not supported by original BINCODE file for a modified BINCODE file
+		$this->array_old_lang_chars = array('á', 'é', 'í', 'ó', 'ú', 'Á', 'É', 'Í', 'Ó', 'Ú', 'ñ', 'Ñ', '¡', '¿', 'ü', 'Ü', 'º', 'ª');
+		$this->array_new_lang_chars = array('`', '{', '|', '}', '~', 'A', 'E', 'I', 'O', 'U', '^', '=', '*', '\\', '$', 'U', pack("H*", "80"), pack("H*", "85"));
 	
 		$this->long_text = 224;  		// Min pixels text in lines 1, 2, 3 and 4
 		$this->long_text_min = 208; 	// Min pixels text in lines 5 and 6
@@ -367,8 +367,11 @@ class BinaryComponent extends Component {
 				);
 			}
 	
-			$str = str_replace($this->array_old_lang_chars, $this->array_new_lang_chars, $value['new_text']); // sustituye caracteres con tilde
-			$str = str_replace($this->wildcard_chars_temp, $this->wildcard_chars_orig, $str);				 // sustituye caracteres especiales <n>
+			/* replace mapped characters like accent vowels */
+			$str = str_replace($this->array_old_lang_chars, $this->array_new_lang_chars, $value['new_text']);
+			
+			/* replace special characters in "<XX>" format */
+			$str = str_replace($this->wildcard_chars_temp, $this->wildcard_chars_orig, $str);
 			
 			// If it is not a menu text, split in pages(<2>) and lines(<0>) 
 			if( $value['OldCharacter']['hex'] != $this->character_menu)
