@@ -185,7 +185,7 @@ function check_path(&$dir)
 	{
 		if(file_exists($dir . $valid_file))
 		{
-			$array_binary_filesary_files[] = $valid_file;
+			$array_binary_files[] = $valid_file;
 		}
 	}
 	
