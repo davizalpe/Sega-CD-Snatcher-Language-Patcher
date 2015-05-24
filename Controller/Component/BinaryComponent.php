@@ -334,6 +334,28 @@ class BinaryComponent extends Component {
 	}
 	
 	/**
+	 * Get preoffset necessary to replace old offset
+	 * from a specific text.
+	 * Fix "38 00 25" offset to replace "F9 38 00 25"
+	 * @param string $filename
+	 * @param stirng $offset
+	 */
+	private function _get_pre_offset($filename, $text_offset)
+	{
+		$result = "";
+	
+		switch($filename){
+			case 'SP24.BIN':
+				if($text_offset == 37)
+					$result = "f9";
+					break;
+			default:
+		}
+	
+		return $result;
+	}
+	
+	/**
 	 * A partir de un array de Sentence obtiene un array con los textos.
 	 * @param multitype:int $data
 	 * @param int $array_offsets
@@ -353,20 +375,21 @@ class BinaryComponent extends Component {
 // 					$str_first
 // 					);
 			
-			
 			// Store new offsets if it changes
 			if( 
 				($sum_offset != 0) || // Last position equals new position
 				($value['OldCharacter']['hex'] != $value['Character']['hex']) // New Character from text  
 			){
-				$array_offsets[] = array(
+				$array_new_offsets = array(
+						'pre_offset' => $this->_get_pre_offset($value['BinaryFile']['filename'], $value['text_offset']),
 						'old_offset' => sprintf("%04x", $value['text_offset'] ),
 						'new_offset' => sprintf("%04x", $value['text_offset'] + $sum_offset),
 						'old_character' => $value['OldCharacter']['hex'],
 						'new_character' => $value['Character']['hex']
 				);
+				$array_offsets[] = $array_new_offsets;
 			}
-	
+
 			/* replace mapped characters like accent vowels */
 			$str = str_replace($this->array_old_lang_chars, $this->array_new_lang_chars, $value['new_text']);
 			
@@ -383,8 +406,8 @@ class BinaryComponent extends Component {
 			$sum_offset += strlen($str) - $value['nchars']; // Necesario para calcular el nuevo offset de siguientes textos.
 	
 			$array[] = $str;
-		}	
-
+		}
+		
 		return implode($this->separator, $array);
 	}
 	
@@ -442,8 +465,8 @@ class BinaryComponent extends Component {
 		switch($offsets['old_character'])
 		{
 			case $this->character_menu:
-				$search  = $this->character_menu . $offsets['old_offset'];
-				$replace = $this->character_menu . $offsets['new_offset'];	
+				$search  = $offsets['pre_offset'] . $this->character_menu . $offsets['old_offset'];
++				$replace = $offsets['pre_offset'] . $this->character_menu . $offsets['new_offset'];
 				$multiple = true;
 				break;
 				

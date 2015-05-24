@@ -15,8 +15,8 @@ class BinaryFilesController extends AppController {
 			'fields' => array('id', 'user_id', 
 					'binary_texts_count', 'binary_texts_validated', 'reviews_count', 'reviews_validated', 
 					'filename', 'description')
-	);	
-	
+	);
+		
 	function beforeRender()
 	{
 		//debug($this->BinaryFile->validationErrors);die;
@@ -37,10 +37,51 @@ class BinaryFilesController extends AppController {
 	{
 		parent::beforeFilter();
 		
-		// path to create new binary files		
+		// path to upload files
+		$this->fileuploaddir = $this->files_path . $this->name . DS;
+		$this->ori_files_path = $this->fileuploaddir . 'original' . DS;
+
+		// path to create new binary files
 		$this->new_files_path = $this->files_path . $this->name . DS . 'translated' . DS;
+		$this->path = $this->files_path_relative . $this->name . DS . 'translated' . DS;					
 		
-		$this->path = $this->files_path_relative . $this->name . DS . 'translated' . DS;
+		$this->_checkdir($this->fileuploaddir);
+		$this->_checkdir($this->ori_files_path);
+		$this->_checkdir($this->new_files_path);		
+	}	
+	
+	/**
+	 * Uploads a new file
+	 * @param array $data
+	 * @throws NotFoundException
+	 */
+	private function _fileUpload($data = null)
+	{
+		if($data['error'])
+		{
+			throw new NotFoundException(__('Invalid file'));
+		}
+	
+		$filename = $data['name'];
+		$fileupload = $this->ori_files_path . $filename;
+		
+		if(file_exists($fileupload))
+		{
+			$this->Session->setFlash(__('The file %s is already uploaded.', $filename));
+			$this->redirect($this->_redirectPassedArgs());
+		}
+			
+		/* Copy original filename in path */
+		$result = copy($data['tmp_name'], $fileupload);
+		unset($fileupload);
+	
+		if( !$result )
+		{
+			$this->Session->setFlash(__('The file could not be saved.'));
+			$this->redirect($this->_redirectPassedArgs());
+		}
+	
+		return $filename;
 	}	
 	
 /**
@@ -98,7 +139,7 @@ class BinaryFilesController extends AppController {
 		$data = $this->BinaryFile->find('first', array(
 					'fields' => 'filename',
 					'contain' => array(
-							'BinaryText' => array('character_id', 'text_offset', 'new_text', 'nchars', 'Character.hex', 'OldCharacter.hex')
+							'BinaryText' => array('character_id', 'text_offset', 'new_text', 'nchars', 'Character.hex', 'OldCharacter.hex', 'BinaryFile.filename')
 							),
 					'conditions' => array($this->BinaryFile->alias . '.' . $this->BinaryFile->primaryKey => $id)
 				));
@@ -142,7 +183,7 @@ class BinaryFilesController extends AppController {
 		$binaryFiles = $this->BinaryFile->find('all', array(
 				'fields' => 'filename', 
 				'contain' => array(
-						'BinaryText' => array('character_id', 'text_offset', 'new_text', 'nchars', 'Character.hex', 'OldCharacter.hex')),				
+						'BinaryText' => array('character_id', 'text_offset', 'new_text', 'nchars', 'Character.hex', 'OldCharacter.hex', 'BinaryFile.filename')),				
 			));			
 		
 		foreach ($binaryFiles as $data)
@@ -215,82 +256,70 @@ public function admin_edit($id = null) {
 }
 
 /**
- * Agrega datos de un nuevo fichero,
- * lo almacena y guarda las frases relaciandas en
- * modelo Sentence con relación hasMany
+ * Add binary file
  *
  * @return void
  */
 	public function admin_add() {
-		$project_id = 1; //$this->params['named']['project_id'];
 
-		if (empty($project_id)) {
-			throw new NotFoundException(__('Invalid document'));
-		}
-
-		if ($this->request->is('post')) {
+		if ($this->request->is('post')) {		
+			
 			// save file
-			$this->_fileUpload($this->request->data['Document']['filename']);
+			$this->_fileUpload($this->request->data['BinaryFile']['filename']);
 
-			$this->request->data['Document']['project_id'] = $project_id;
-			$this->request->data['Document']['user_id'] = $this->Auth->user('id');
-			$this->request->data['Document']['filename'] = $this->request->data['Document']['filename']['name'];
+			$this->request->data['BinaryFile']['user_id'] = $this->Auth->user('id');
+			$this->request->data['BinaryFile']['filename'] = $this->request->data['BinaryFile']['filename']['name'];
 	
 			// get sentences
-			$this->request->data['Sentence'] = $this->_getSentences($this->request->data['Document']['filename']);
+			$this->request->data['BinaryText'] = $this->_getBinaryTexts($this->request->data['BinaryFile']['filename']);		
 	
-			// Definir que campos guardar
+			// options for save data
 			$options = array('validate' => false, 'fieldList' =>
 						array(
-								'Document' => array('project_id', 'user_id', 'filename', 'description'),
-								'Sentence' => array('document_id', 'user_id', 'order', 'nchars', 'nlines', 'binary', 'text', 'new_text', 'offset', 'offset_prev')
+								'BinaryFile' => array('user_id', 'binary_texts_validated', 'binary_texts_count', 'filename', 'description', 'created', 'modified'),
+								'BinaryText' => array('binary file_id', 'user_id', 'order', 'nchars', 'nlines', 'binary', 'text', 'new_text', 'offset', 'offset_prev')
 						)
 					);
-			// Habilitar GoogleTranslate para autotraducción, MyMemory tiene API pero es más lento.
-			if($this->request->data['Document']['autotranslate'])
-				{
-					$this->Document->Sentence->Behaviors->load('GoogleTranslate');
-				}
 			
-				//$this->Document->create();
-				if ($this->Document->saveAssociated($this->request->data, $options)) {
-					$this->Session->setFlash(__('The document has been saved'));
-					$this->redirect($this->_redirectPassedArgs());
-				} else {
-					$this->Session->setFlash(__('The document could not be saved. Please, try again.'));
-					unlink(ROOT. DS . APP_DIR . DS . 'files' . DS . $this->request->data['Document']['filename']);
-				}
+			// Enable autotranslate using GoogleTranslate behavior
+			if($this->request->data['BinaryFile']['autotranslate'])
+			{
+				$this->BinaryFile->BinaryText->Behaviors->load('GoogleTranslate');
 			}
-			$project = $this->Document->Project->find('first', array('conditions' => array('Project.id'=>$project_id), 'fields' => array('id','name'), 'recursive' => -1));
-			$this->set(compact('project'));
+			
+			$this->BinaryFile->create();
+			if ($this->BinaryFile->saveAssociated($this->request->data, $options)) {
+				$this->Session->setFlash(__('The binary file has been saved'));
+				$this->redirect($this->_redirectPassedArgs());
+			} else {
+				$this->Session->setFlash(__('The binary file could not be saved. Please, try again.'));
+				unlink(ROOT. DS . APP_DIR . DS . 'files' . DS . $this->request->data['BinaryFile']['filename']);
+			}
+			
 		}
-
+	}
+	
 	/**
 	 * Agrega datos de un nuevo fichero,
 	 * lo almacena y guarda las frases relaciandas en
-	 * modelo Sentence con relación hasMany
+	 * modelo BinaryText con relación hasMany
 	 *
 	 * @return void
 	 */
 	public function admin_addall() {
-		$project_id = 1; //$this->params['named']['project_id'];
-
-		if (empty($project_id)) {
-			throw new NotFoundException(__('Invalid document'));
-		}
-
+	
 		if ($this->request->is('post')) {
 			// Guardar varios files
-			foreach ($this->request->data['Document']['filenames'] as $filename){
+			foreach ($this->request->data['BinaryFile']['filenames'] as $filename){
 				// Subir fichero
 				$this->_fileUpload($filename);
-				// Crear registro documento
-				$array = array('Document' => array('project_id' => $project_id, 'user_id' => $this->Auth->user('id'), 'filename' => $filename['name']));
+				// Crear registro binary fileo
+				$array = array('BinaryFile' => array('user_id' => $this->Auth->user('id'), 'filename' => $filename['name']));
 
 				// Obtener frases
-				$sentences = $this->_getSentences($filename['name']);
+				$sentences = $this->_getBinaryTexts($filename['name']);
 				if($sentences != NULL){
-					$array = array_merge($array, array('Sentence' => $sentences));
+					$array = array_merge($array, array('BinaryText' => $sentences));
 				}
 				$new_data[] = $array;
 			}
@@ -300,29 +329,28 @@ public function admin_edit($id = null) {
 					'deep' => true,
 					'fieldList' =>
 						array(
-								'Document' => array('project_id', 'user_id', 'filename', 'description'),
-								'Sentence' => array('document_id', 'user_id', 'order', 'nchars', 'nlines', 'binary', 'text', 'new_text', 'offset', 'offset_prev')
+								'BinaryFile' => array('user_id', 'filename', 'description'),
+								'BinaryText' => array('binary file_id', 'user_id', 'order', 'nchars', 'nlines', 'binary', 'text', 'new_text', 'offset', 'offset_prev')
 						)
 					);
 
 			// Habilitar GoogleTranslate
-			if($this->request->data['Document']['autotranslate']){
-				$this->Document->Sentence->Behaviors->load('GoogleTranslate');
+			if($this->request->data['BinaryFile']['autotranslate']){
+				$this->BinaryFile->BinaryText->Behaviors->load('GoogleTranslate');
 			}
 
 // 			var_dump($new_data);
-// 			var_dump($new_data[0]['Sentence']);
+// 			var_dump($new_data[0]['BinaryText']);
 //			die;
-			//$this->Document->create();
-			if ($this->Document->saveMany($new_data, $options)) {
-				$this->Session->setFlash(__('The documents has been saved'));
+			//$this->BinaryFile->create();
+			if ($this->BinaryFile->saveMany($new_data, $options)) {
+				$this->Session->setFlash(__('The binary files has been saved'));
 				$this->redirect($this->_redirectPassedArgs());
 			} else {
-				$this->Session->setFlash(__('The documents could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The binary files could not be saved. Please, try again.'));
 			}
 		}
-		$project = $this->Document->Project->find('first', array('conditions' => array('Project.id'=>$project_id), 'fields' => array('id','name'), 'recursive' => -1));
-		$this->set(compact('project'));
+
 	}	
 	
  }

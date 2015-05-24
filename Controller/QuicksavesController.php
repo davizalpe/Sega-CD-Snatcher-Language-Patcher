@@ -92,7 +92,7 @@ class QuicksavesController extends AppController {
 		}
 	
 		return $filename;
-	}	
+	}
 	
 	/**
 	 * Create binary file to make saves
@@ -106,7 +106,7 @@ class QuicksavesController extends AppController {
 		$data = $this->Quicksave->BinaryFile->find('first', array(
 					'fields' => 'filename',
 					'contain' => array(
-							'BinaryText' => array('character_id', 'text_offset', 'text', 'new_text', 'nchars', 'Character.hex', 'OldCharacter.hex')
+							'BinaryText' => array('character_id', 'text_offset', 'text', 'new_text', 'nchars', 'Character.hex', 'OldCharacter.hex', 'BinaryFile.filename')
 							),
 					'conditions' => array($this->Quicksave->BinaryFile->alias . '.' . $this->Quicksave->BinaryFile->primaryKey => $id)
 				));		
@@ -268,9 +268,7 @@ class QuicksavesController extends AppController {
 			if ($this->Quicksave->save($this->request->data, $options)) {
 				$this->Session->setFlash(__('The safe has been saved'));
 				$this->redirect($this->_redirectPassedArgs(array('index'), $admin));
-			} else {
-				debug($this->request->data);
-				
+			} else {			
 				$this->Session->setFlash(__('The safe could not be saved. Please, try again.'));
 			}
 		}
