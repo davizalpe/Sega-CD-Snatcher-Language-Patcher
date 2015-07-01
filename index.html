@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Sega-cd-snatcher-language-patcher by dalbelap</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Sega-cd-snatcher-language-patcher</h1>
+      <h2 class="project-tagline">Sega CD Snatcher Language Patcher</h2>
+      <a href="https://github.com/dalbelap/Sega-CD-Snatcher-Language-Patcher" class="btn">View on GitHub</a>
+      <a href="https://github.com/dalbelap/Sega-CD-Snatcher-Language-Patcher/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/dalbelap/Sega-CD-Snatcher-Language-Patcher/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <p>Sega-CD-Snatcher-Language-Patcher</p>
+
+<h1>
+<a id="intro" class="anchor" href="#intro" aria-hidden="true"><span class="octicon octicon-link"></span></a>INTRO</h1>
+
+<p>This is a CakePHP project to modify the texts from the great videogame Snatcher from Hideo Kojima for Sega/Mega CD.</p>
+
+<h1>
+<a id="content" class="anchor" href="#content" aria-hidden="true"><span class="octicon octicon-link"></span></a>CONTENT</h1>
+
+<ul>
+<li>Console/spatcher.php: Script to patch sega cd ISO</li>
+<li>Controller/Component/BinaryComponent.php: Component class from CakePHP to generate translated binary files with the data from a file game.</li>
+<li>Controller/Component/QuicksaveComponent.php: Component class from CakePHP to patch quicksaves from Kega Fusion and include translated binary files. Usefull if you want to try a binary file from a Game directly without patch the ISO and use a save game.</li>
+</ul>
+
+<h1>
+<a id="requirements-" class="anchor" href="#requirements-" aria-hidden="true"><span class="octicon octicon-link"></span></a>REQUIREMENTS #</h1>
+
+<ul>
+<li>CakePHP 2.4.8 or later</li>
+<li>jQuery 1.10 or later</li>
+<li>PHP 5.2 or later</li>
+<li>Web Server and MySQL database</li>
+</ul>
+
+<h1>
+<a id="install" class="anchor" href="#install" aria-hidden="true"><span class="octicon octicon-link"></span></a>INSTALL</h1>
+
+<ul>
+<li>Download CakePHP (<a href="http://www.cakephp.org">www.cakephp.org</a>) and create a new project with cake bake script (I will call "app" here).</li>
+<li>Copy the folders from this project and paste into the new project.</li>
+<li>Use the sql file from Config/Schema/snatcher.sql to create database schema in MySQL.</li>
+<li>Copy data from Config/readme to the end of your core CakePHP file in app/Config/core.php (and change "esp" and "es" to your new language for translation).</li>
+<li>Copy app in your localhost directory from your web server and set user, groups and necesary permissions (app/tmp and app/File needs write permissions).</li>
+<li>To access web, first time you need create an user administrator:
+
+<ul>
+<li>Open Controller/UsersController.php with any text editor</li>
+<li>Uncomment the line 26:
+$this-&gt;Auth-&gt;allowedActions = array('admin_index', 'admin_add', 'admin_changePassword');</li>
+<li>Go to http://localhost/app/admin/users/</li>
+<li>Click at "New User" and create a new user with the role "Admin" selected.</li>
+<li>Comment the line 26 from Controller/UsersController.php file.</li>
+<li>Go to http://localhost/app/ and sign in.</li>
+</ul>
+</li>
+</ul>
+
+<h1>
+<a id="patch-iso" class="anchor" href="#patch-iso" aria-hidden="true"><span class="octicon octicon-link"></span></a>PATCH ISO</h1>
+
+<p>There is a spatcher.php CLI script in app/Console path for patch your ISO. Only needs specify the path from Snatcher Sega CD ISO and a folder where you stored the new binary files.</p>
+
+<h1>
+<a id="description" class="anchor" href="#description" aria-hidden="true"><span class="octicon octicon-link"></span></a>DESCRIPTION</h1>
+
+<p>Binary-&gt;wirteFile returns the new filesize. There is a limit for this files: 55296 bytes</p>
+
+<p>Instrucctions for use:</p>
+
+<p>1) For use add to your Controller from CakePHP:</p>
+
+<pre><code>public $components = array('Binary');
+</code></pre>
+
+<p>2) Add in your method:</p>
+
+<pre><code>$filesize = $this-&gt;Binary-&gt;writeFile(
+        $path_ori_files . $filename,
+        $path_new_files . $filename,
+        $data);
+</code></pre>
+
+<p>$path_ori_files is the path where store original files from Sega CD Snatcher (f.e /app/Files/snatcher/)</p>
+
+<p>$path_new_files is the patch where you can store new files pathed.</p>
+
+<p>$filename is the name to patch (f. e. SP06.BIN)</p>
+
+<p>$data is a array with this structure:</p>
+
+<ul>
+<li>characher_id: identify the character id necesary for patch offset for each character from the Game. You can find her names in SUBCODE.BIN</li>
+<li>position: It is the integer position from 0x3800, then first text in binary files has the integer position 0 (each word is one position)</li>
+<li>new_text: It is the translation text. It is important data array has all translations in order acording binary file you want patch.</li>
+<li>nchars: The number of characters from old original texts. I use it for avoid calculate the length in the "foreach" original texts loop.</li>
+</ul>
+
+<p>An example:</p>
+
+<p>array(
+    (int) 0 =&gt; array(
+        'character_id' =&gt; '1',
+        'position' =&gt; '0',
+        'new_text' =&gt; 'CONTINUAR',
+        'nchars' =&gt; '13'
+    ),
+    (int) 1 =&gt; array(
+        'character_id' =&gt; '1',
+        'position' =&gt; '14',
+        'new_text' =&gt; 'TERMINAR',
+        'nchars' =&gt; '6'
+    ),
+    (int) 2 =&gt; array(
+        'character_id' =&gt; '3',
+        'position' =&gt; '21',
+        'new_text' =&gt; '¡Oh no! ¡No hay suficiente memoria para guardar m¡s  datos! TendrÃ¡s que sobrescribir los datos existentes para guardar.',
+        'nchars' =&gt; '143'
+    ),</p>
+
+<pre><code>...
+
+(int) n =&gt; array(
+    'character_id' =&gt; '3',
+    'position' =&gt; '165',
+    'new_text' =&gt; 'Â¡Guardado!',
+    'nchars' =&gt; '15',
+</code></pre>
+
+<p>)</p>
+
+<p>3) You must convert special chars of the game into a &lt;{number}&gt; wildcard. The special chars are converted with array special_chars_orig:</p>
+
+<pre><code>    /** 
+     * WARNING!!! NO CHANGE THE ORDER OF special_chars 
+     * */ 
+    $this-&gt;special_chars_orig = array(
+            $this-&gt;new_line,   pack("H*" , "ec"), $this-&gt;new_page, // &lt;0&gt;, &lt;1&gt;, &lt;2&gt;
+            pack("H*" , "ee"), pack("H*" , "f0"), pack("H*" , "fe"), // &lt;3&gt;, &lt;4&gt;, &lt;5&gt;
+            pack("H*" , "f4"), pack("H*" , "fa"), pack("H*", "fb"), // &lt;6&gt;, &lt;7&gt;, &lt;8&gt;
+            pack("H*", "fc"),  pack("H*" , "fd"), pack("H*" , "f9"), // &lt;9&gt;, &lt;10&gt;, &lt;11&gt;
+            pack("H*" , "f7"), pack("H*" , "f8")  // &lt;12&gt;, &lt;13&gt;
+    );
+</code></pre>
+
+<p>When the script tranlates your new texts, it replaces the wildcard &lt;{number}&gt; with his special char defined in special_chars_orig.</p>
+
+<h1>
+<a id="thanks" class="anchor" href="#thanks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Thanks</h1>
+
+<ul>
+<li>Joxer for create and manage the translate project for Snatcher from EOL.</li>
+<li>Maitrus for his technical knowledge and helpful with romhacking and for explain me how to modify the binary files and iso.</li>
+<li>m4x1m0, jam007, Tolvatar, djnox, Manveru Ainu, livekraft, tonycc, Drasglaf, randam_hajile for their helpful translating the texts and review.</li>
+</ul>
+
+<h1>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h1>
+
+<p>The source code for the web project is licensed under the GPL version 3 or later
+(see LICENSE).</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/dalbelap/Sega-CD-Snatcher-Language-Patcher">Sega-cd-snatcher-language-patcher</a> is maintained by <a href="https://github.com/dalbelap">dalbelap</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
+
